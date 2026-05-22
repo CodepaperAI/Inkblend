@@ -18,7 +18,7 @@ export default function ContactPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1800"
+            src="/media/placeholders/interior-preview.jpg"
             alt="Contact Ink Blend"
             fill
             sizes="100vw"

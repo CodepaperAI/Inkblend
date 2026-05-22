@@ -43,9 +43,9 @@ export const navItems = [
 ];
 
 export const heroImages = [
-  "https://images.pexels.com/photos/10148450/pexels-photo-10148450.jpeg?auto=compress&cs=tinysrgb&w=1800",
-  "https://images.pexels.com/photos/8186739/pexels-photo-8186739.jpeg?auto=compress&cs=tinysrgb&w=1800",
-  "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1800&q=85",
+  "/media/placeholders/botanical-wall.jpg",
+  "/media/placeholders/restaurant-mural.jpg",
+  "/media/placeholders/luxury-room.jpg",
 ];
 
 export const trustStats = [
@@ -104,7 +104,7 @@ export const services = [
     description:
       "High-detail wall printing for commercial and residential interiors that need a permanent, vivid alternative to wallpaper or vinyl.",
     image:
-      "https://images.pexels.com/photos/10148450/pexels-photo-10148450.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "/media/placeholders/botanical-wall.jpg",
     icon: Printer,
     benefits: [
       "Vibrant color with crisp line detail",
@@ -140,7 +140,7 @@ export const services = [
     description:
       "Visual branding systems for customer-facing spaces that need to feel memorable, intentional, and photo-worthy.",
     image:
-      "https://images.pexels.com/photos/8186739/pexels-photo-8186739.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "/media/placeholders/restaurant-mural.jpg",
     icon: BadgeCheck,
     benefits: [
       "Branded spaces that photograph well",
@@ -171,7 +171,7 @@ export const services = [
     description:
       "Custom murals designed to match the room, audience, story, and mood of the space.",
     image:
-      "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1400&q=85",
+      "/media/placeholders/art-wall.jpg",
     icon: Palette,
     benefits: [
       "Made-to-measure artwork",
@@ -202,7 +202,7 @@ export const services = [
     description:
       "Surface printing options for projects that need durable high-resolution graphics across more than a standard wall.",
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85",
+      "/media/placeholders/office-branding.jpg",
     icon: Layers3,
     benefits: [
       "Flexible applications for multiple materials",
@@ -233,7 +233,7 @@ export const services = [
     description:
       "Graphics that integrate with finishes, lighting, furniture, and the overall interior story.",
     image:
-      "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "/media/placeholders/interior-preview.jpg",
     icon: GalleryHorizontalEnd,
     benefits: [
       "Supports design presentations and approvals",
@@ -264,7 +264,7 @@ export const services = [
     description:
       "Premium visual statements that make the main wall of a space feel custom, memorable, and finished.",
     image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",
+      "/media/placeholders/luxury-feature.jpg",
     icon: Sparkles,
     benefits: [
       "Creates a clear first impression",
@@ -295,7 +295,7 @@ export const services = [
     description:
       "From brand logos to personalized home art, Ink Blend prepares visuals for high-resolution, large-format production.",
     image:
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=85",
+      "/media/placeholders/custom-artwork.jpg",
     icon: PanelTop,
     benefits: [
       "Turns personal or business ideas into print-ready artwork",
@@ -325,7 +325,7 @@ export const portfolioProjects = [
     category: "Cafes",
     location: "Toronto, ON",
     image:
-      "https://images.pexels.com/photos/10148450/pexels-photo-10148450.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/media/placeholders/botanical-wall.jpg",
     summary: "A warm dining wall concept with layered botanical artwork.",
   },
   {
@@ -333,7 +333,7 @@ export const portfolioProjects = [
     category: "Restaurants",
     location: "Mississauga, ON",
     image:
-      "https://images.pexels.com/photos/8186739/pexels-photo-8186739.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/media/placeholders/restaurant-mural.jpg",
     summary: "A dramatic hospitality wall designed for social content.",
   },
   {
@@ -341,7 +341,7 @@ export const portfolioProjects = [
     category: "Offices",
     location: "Brampton, ON",
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+      "/media/placeholders/office-branding.jpg",
     summary: "Reception and meeting-zone graphics for a modern workplace.",
   },
   {
@@ -349,7 +349,7 @@ export const portfolioProjects = [
     category: "Retail Stores",
     location: "Vaughan, ON",
     image:
-      "https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/media/placeholders/salon-backdrop.jpg",
     summary: "A polished beauty-space print wall for client photos.",
   },
   {
@@ -357,7 +357,7 @@ export const portfolioProjects = [
     category: "Residential Projects",
     location: "Oakville, ON",
     image:
-      "https://images.pexels.com/photos/5998051/pexels-photo-5998051.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/media/placeholders/kids-room.jpg",
     summary: "Personalized home mural artwork for a playful bedroom wall.",
   },
   {
@@ -365,7 +365,7 @@ export const portfolioProjects = [
     category: "Religious Art",
     location: "Hamilton, ON",
     image:
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85",
+      "/media/placeholders/custom-artwork.jpg",
     summary: "A respectful cultural art concept prepared for large scale.",
   },
   {
@@ -373,7 +373,7 @@ export const portfolioProjects = [
     category: "Luxury Interiors",
     location: "Niagara, ON",
     image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",
+      "/media/placeholders/luxury-feature.jpg",
     summary: "A high-impact corridor wall with premium hospitality energy.",
   },
   {
@@ -381,7 +381,7 @@ export const portfolioProjects = [
     category: "Event Branding",
     location: "Canada",
     image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
+      "/media/placeholders/event-backdrop.jpg",
     summary: "A branded surface concept for campaign photos and guest content.",
   },
 ];

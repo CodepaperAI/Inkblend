@@ -18,7 +18,7 @@ export default function BeforeAfterPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85"
+            src="/media/placeholders/luxury-feature.jpg"
             alt="Before and after feature wall"
             fill
             sizes="100vw"

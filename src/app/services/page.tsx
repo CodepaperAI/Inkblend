@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/8186739/pexels-photo-8186739.jpeg?auto=compress&cs=tinysrgb&w=1800"
+            src="/media/placeholders/restaurant-mural.jpg"
             alt="Commercial wall branding"
             fill
             sizes="100vw"

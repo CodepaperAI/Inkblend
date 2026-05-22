@@ -17,7 +17,7 @@ export default function GetQuotePage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.pexels.com/photos/10148450/pexels-photo-10148450.jpeg?auto=compress&cs=tinysrgb&w=1800"
+            src="/media/placeholders/botanical-wall.jpg"
             alt="Request a wall printing quote"
             fill
             sizes="100vw"

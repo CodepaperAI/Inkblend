@@ -17,7 +17,7 @@ export default function FaqPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1800&q=85"
+            src="/media/placeholders/art-wall.jpg"
             alt="Custom wall art"
             fill
             sizes="100vw"

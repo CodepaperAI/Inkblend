@@ -215,7 +215,7 @@ export default function Home() {
         <div className="page-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <Reveal className="relative min-h-[430px] overflow-hidden rounded-[1.5rem] border border-white/10">
             <Image
-              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85"
+              src="/media/placeholders/luxury-feature.jpg"
               alt="Luxury interior feature wall"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"

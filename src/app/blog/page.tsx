@@ -19,7 +19,7 @@ export default function BlogPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=85"
+            src="/media/placeholders/custom-artwork.jpg"
             alt="Artwork and print design"
             fill
             sizes="100vw"

@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1800&q=85"
+            src="/media/placeholders/luxury-room.jpg"
             alt="Premium interior wall"
             fill
             sizes="100vw"
