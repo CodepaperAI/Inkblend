@@ -1,56 +1,142 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
-import { blogPosts } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
+import {
+  formatPublishDate,
+  getBlog,
+  listBlogs,
+  sanitizeBlogHtml,
+} from "@/lib/uplift";
+
+export const revalidate = 300;
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+const FALLBACK_HERO = "/media/placeholders/custom-artwork.jpg";
+
+export async function generateStaticParams() {
+  const posts = await listBlogs();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((item) => item.slug === slug);
+  const post = await getBlog(slug);
 
   if (!post) {
-    return {};
+    return { title: "Blog post not found" };
   }
 
+  const title = post.meta?.seoTitle || post.title;
+  const description = post.meta?.seoDescription || post.excerpt;
+  const ogImage = post.featuredImage?.trim() || FALLBACK_HERO;
+  const ogUrl = post.meta?.ogUrl || `/blog/${post.slug}`;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title,
+    description,
+    keywords: post.meta?.keywords || post.tags,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.meta?.ogTitle || title,
+      description: post.meta?.ogDescription || description,
+      type: "article",
+      url: ogUrl,
+      siteName: post.meta?.ogSiteName || siteConfig.name,
+      locale: post.meta?.ogLocale || "en_CA",
+      publishedTime: post.publishDate,
+      modifiedTime: post.updatedAt,
+      authors: post.authorName ? [post.authorName] : undefined,
+      tags: post.meta?.articleTags || post.tags,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.meta?.ogTitle || title,
+      description: post.meta?.ogDescription || description,
+      images: [ogImage],
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = blogPosts.find((item) => item.slug === slug);
+  const post = await getBlog(slug);
 
   if (!post) {
     notFound();
   }
 
+  const heroImage = post.featuredImage?.trim() || FALLBACK_HERO;
+  const formattedDate = formatPublishDate(post);
+  const readingTime =
+    typeof post.customFields?.readingTime === "string"
+      ? post.customFields.readingTime
+      : null;
+  const category = post.categories?.[0];
+  const safeContent = sanitizeBlogHtml(post.content);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: heroImage.startsWith("http") ? heroImage : `https://www.inkblend.ca${heroImage}`,
+    datePublished: post.publishDate,
+    dateModified: post.updatedAt,
+    author: post.authorName
+      ? {
+          "@type": "Person",
+          name: post.authorName,
+          url: post.authorUrl || undefined,
+        }
+      : {
+          "@type": "Organization",
+          name: siteConfig.name,
+        },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.inkblend.ca/favicon.ico",
+      },
+    },
+    articleSection: post.meta?.articleSection || category,
+    keywords: (post.meta?.keywords || post.tags || []).join(", "),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": post.meta?.ogUrl || `https://www.inkblend.ca/blog/${post.slug}`,
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <article>
         <section className="page-hero">
           <div className="absolute inset-0">
             <Image
-              src="/media/placeholders/custom-artwork.jpg"
+              src={heroImage}
               alt={post.title}
               fill
               sizes="100vw"
               className="object-cover opacity-70"
+              priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink-black/22 via-ink-black/50 to-ink-black/82" />
           </div>
           <div className="page-shell relative">
             <Reveal>
@@ -61,13 +147,48 @@ export default async function BlogPostPage({ params }: Props) {
                 <ArrowLeft size={16} />
                 Back to Blog
               </Link>
-              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
-                {post.category} / {post.date}
-              </p>
-              <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
+
+              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-bold uppercase tracking-[0.24em] text-ink-paper/80">
+                {category ? (
+                  <span className="rounded-full bg-ink-red px-3 py-1 text-ink-paper">
+                    {category}
+                  </span>
+                ) : null}
+                {formattedDate ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Calendar size={14} className="text-ink-red" />
+                    <time dateTime={post.publishDate}>{formattedDate}</time>
+                  </span>
+                ) : null}
+                {readingTime ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Clock size={14} className="text-ink-red" />
+                    {readingTime}
+                  </span>
+                ) : null}
+                {post.authorName ? (
+                  <span className="inline-flex items-center gap-2">
+                    <User size={14} className="text-ink-red" />
+                    {post.authorUrl ? (
+                      <a
+                        href={post.authorUrl}
+                        className="hover:text-ink-paper"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {post.authorName}
+                      </a>
+                    ) : (
+                      post.authorName
+                    )}
+                  </span>
+                ) : null}
+              </div>
+
+              <h1 className="mt-6 max-w-5xl font-display text-5xl leading-[0.95] text-balance text-ink-paper sm:text-7xl">
                 {post.title}
               </h1>
-              <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+              <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/72">
                 {post.excerpt}
               </p>
             </Reveal>
@@ -75,38 +196,50 @@ export default async function BlogPostPage({ params }: Props) {
         </section>
 
         <section className="section-pad">
-          <div className="page-shell max-w-3xl">
+          <div className="page-shell grid gap-12 lg:grid-cols-[1fr_18rem] lg:items-start">
             <Reveal className="prose-content">
-              <p>
-                Premium wall printing starts with context. The size of the wall,
-                lighting, surface texture, viewing distance, brand style, and
-                customer journey all shape what the final artwork should become.
-              </p>
-              <p>
-                For commercial spaces, the most effective print concepts do
-                more than decorate. They support the business identity, create a
-                memorable backdrop, and give customers a reason to photograph
-                the environment.
-              </p>
-              <p>
-                For residential spaces, the strongest projects feel personal.
-                A good mural or feature wall should match the room, the owner,
-                the scale of the furniture, and the mood the space needs.
-              </p>
-              <h2>What to prepare before requesting a quote</h2>
-              <p>
-                Send clear wall photos, rough width and height, the city, the
-                surface type, a desired timeline, and a few references for the
-                visual direction. That information helps Ink Blend respond with
-                a better first recommendation.
-              </p>
-              <h2>Why mockups matter</h2>
-              <p>
-                Mockups reduce guesswork. They help show scale, contrast,
-                artwork placement, and how a wall will feel before the final
-                print is produced.
-              </p>
+              <div dangerouslySetInnerHTML={{ __html: safeContent }} />
             </Reveal>
+
+            <aside className="space-y-8 lg:sticky lg:top-28">
+              {post.tags && post.tags.length > 0 ? (
+                <Reveal>
+                  <div className="rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
+                    <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-ink-red">
+                      <Tag size={14} />
+                      Tags
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-ink-paper/15 bg-ink-paper/[0.04] px-3 py-1 text-xs font-medium text-ink-paper/75"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              ) : null}
+
+              <Reveal>
+                <div className="rounded-[1.25rem] border border-ink-red/40 bg-ink-red/10 p-7">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-ink-red">
+                    Ready to print?
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl leading-tight text-ink-paper">
+                    Get a quote for your wall in 24 hours.
+                  </h3>
+                  <Link
+                    href="/get-quote"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-ink-red px-5 py-3 text-sm font-semibold text-ink-paper transition hover:-translate-y-0.5"
+                  >
+                    Start a quote
+                  </Link>
+                </div>
+              </Reveal>
+            </aside>
           </div>
         </section>
       </article>

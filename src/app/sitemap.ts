@@ -1,10 +1,15 @@
 import type { MetadataRoute } from "next";
 
-import { blogPosts, services } from "@/lib/site";
+import { services } from "@/lib/site";
+import { listBlogs } from "@/lib/uplift";
 
 const baseUrl = "https://inkblend.ca";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 300;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogPosts = await listBlogs();
+
   const staticRoutes = [
     "",
     "/about",
@@ -33,9 +38,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.65,
+      lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.7,
     })),
   ];
 }

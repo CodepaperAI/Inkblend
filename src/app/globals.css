@@ -204,6 +204,89 @@ img {
   color: var(--foreground);
 }
 
+.prose-content h3 {
+  margin-top: 2.5rem;
+  font-family: var(--font-instrument), serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+  color: var(--foreground);
+}
+
+.prose-content p + h3,
+.prose-content ul + h2,
+.prose-content ul + h3,
+.prose-content ol + h2,
+.prose-content ol + h3 {
+  margin-top: 2.5rem;
+}
+
+.prose-content ul,
+.prose-content ol {
+  margin-top: 1.5rem;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li::marker {
+  color: var(--ink-red);
+}
+
+.prose-content a {
+  color: var(--ink-red);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+.prose-content a:hover {
+  color: var(--ink-gold);
+}
+
+.prose-content strong,
+.prose-content b {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.prose-content blockquote {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--ink-red);
+  background: rgba(200, 47, 39, 0.05);
+  font-style: italic;
+  color: var(--foreground);
+}
+
+.prose-content code {
+  padding: 0.15rem 0.4rem;
+  background: rgba(36, 24, 18, 0.08);
+  border-radius: 0.35rem;
+  font-size: 0.92em;
+}
+
+.prose-content hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid rgba(36, 24, 18, 0.15);
+}
+
+.prose-content img,
+.prose-content figure {
+  margin: 2rem 0;
+  border-radius: 1rem;
+}
+
 @media (min-width: 640px) {
   .section-pad {
     padding-inline: 1.5rem;
