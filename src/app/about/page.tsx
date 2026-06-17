@@ -22,19 +22,19 @@ export default function AboutPage() {
             alt="Premium interior wall"
             fill
             sizes="100vw"
-            className="object-cover opacity-38"
+            className="object-cover opacity-72"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-ink-black/82 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               About Ink Blend
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               A print studio for walls that need presence.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               {siteConfig.description}
             </p>
           </Reveal>
@@ -47,7 +47,7 @@ export default function AboutPage() {
             Ink Blend works with businesses, designers, and homeowners to make
             interiors feel intentional, branded, and visually memorable.
           </SectionHeading>
-          <Reveal className="grid gap-5 text-lg leading-9 text-white/66">
+          <Reveal className="grid gap-5 text-lg leading-9 text-ink-paper/66">
             <p>
               We specialize in UV wall printing and large-format surface
               printing for restaurants, cafes, retail stores, offices, hotels,
@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Who we serve"
@@ -74,14 +74,14 @@ export default function AboutPage() {
               const Icon = segment.icon;
               return (
                 <StaggerItem key={segment.title}>
-                  <article className="min-h-[230px] rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-white text-black">
+                  <article className="min-h-[230px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
+                    <span className="grid size-12 place-items-center rounded-2xl bg-ink-paper text-ink-black">
                       <Icon size={20} />
                     </span>
-                    <h2 className="mt-6 font-display text-3xl text-white">
+                    <h2 className="mt-6 font-display text-3xl text-ink-paper">
                       {segment.title}
                     </h2>
-                    <p className="mt-3 text-sm leading-7 text-white/58">
+                    <p className="mt-3 text-sm leading-7 text-ink-paper/58">
                       {segment.description}
                     </p>
                   </article>
@@ -100,9 +100,9 @@ export default function AboutPage() {
             ["Modern Printing", "Durable UV printing as a custom alternative to wallpaper."],
           ].map(([title, body]) => (
             <Reveal key={title}>
-              <article className="min-h-[260px] rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-7">
-                <p className="font-display text-4xl text-white">{title}</p>
-                <p className="mt-5 text-base leading-8 text-white/62">{body}</p>
+              <article className="min-h-[260px] rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7">
+                <p className="font-display text-4xl text-ink-paper">{title}</p>
+                <p className="mt-5 text-base leading-8 text-ink-paper/62">{body}</p>
               </article>
             </Reveal>
           ))}

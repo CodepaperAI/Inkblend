@@ -46,7 +46,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-7"
+      className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.045] p-5 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-7"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Full name" name="name" required />
@@ -99,12 +99,12 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
         />
       </label>
 
-      <label className="mt-4 flex cursor-pointer flex-col items-center justify-center rounded-3xl border border-dashed border-white/18 bg-black/20 px-5 py-8 text-center transition hover:border-ink-red/60 hover:bg-ink-red/5">
+      <label className="mt-4 flex cursor-pointer flex-col items-center justify-center rounded-3xl border border-dashed border-ink-paper/18 bg-ink-black/20 px-5 py-8 text-center transition hover:border-ink-red/60 hover:bg-ink-red/5">
         <Upload className="text-ink-gold" size={28} />
-        <span className="mt-3 text-sm font-semibold text-white">
+        <span className="mt-3 text-sm font-semibold text-ink-paper">
           Upload wall photos or measurements
         </span>
-        <span className="mt-1 text-xs text-white/46">
+        <span className="mt-1 text-xs text-ink-paper/46">
           JPG, PNG, PDF, or HEIC. Add photos, drawings, or measurement notes.
         </span>
         <input

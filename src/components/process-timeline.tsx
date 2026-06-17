@@ -8,10 +8,10 @@ export function ProcessTimeline() {
     <Stagger className="grid gap-4 lg:grid-cols-4">
       {processSteps.map((step, index) => (
         <StaggerItem key={step.title}>
-          <article className="relative min-h-[250px] rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-6">
-            <span className="font-display text-6xl text-white/10">0{index + 1}</span>
-            <h3 className="mt-5 font-display text-3xl text-white">{step.title}</h3>
-            <p className="mt-4 text-sm leading-7 text-white/58">{step.description}</p>
+          <article className="relative min-h-[250px] rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
+            <span className="font-display text-6xl text-ink-paper/10">0{index + 1}</span>
+            <h3 className="mt-5 font-display text-3xl text-ink-paper">{step.title}</h3>
+            <p className="mt-4 text-sm leading-7 text-ink-paper/58">{step.description}</p>
             {index < processSteps.length - 1 ? (
               <ArrowRight
                 className="absolute -right-5 top-1/2 hidden text-ink-red lg:block"
@@ -27,11 +27,11 @@ export function ProcessTimeline() {
 
 export function ProcessIntro() {
   return (
-    <Reveal className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+    <Reveal className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-8">
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
         Quote-ready workflow
       </p>
-      <p className="mt-4 text-2xl leading-9 text-white/82">
+      <p className="mt-4 text-2xl leading-9 text-ink-paper/82">
         Every Ink Blend project starts with the practical details: wall
         condition, size, location, artwork direction, timeline, and budget.
         The design work becomes sharper once the space is understood.

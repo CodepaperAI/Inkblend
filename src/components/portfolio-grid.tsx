@@ -32,8 +32,8 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
               className={cn(
                 "shrink-0 rounded-full border px-4 py-2 text-sm transition",
                 active === category
-                  ? "border-white bg-white text-black"
-                  : "border-white/10 bg-white/[0.04] text-white/62 hover:border-white/24 hover:text-white",
+                  ? "border-ink-paper bg-ink-paper text-ink-black"
+                  : "border-ink-paper/10 bg-ink-paper/[0.04] text-ink-paper/62 hover:border-ink-paper/24 hover:text-ink-paper",
               )}
             >
               {category}
@@ -52,7 +52,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
               animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
               exit={reducedMotion ? undefined : { opacity: 0, y: 12, scale: 0.96 }}
               transition={{ duration: 0.45, delay: index * 0.03 }}
-              className="group relative min-h-[360px] overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.04]"
+              className="group relative min-h-[360px] overflow-hidden rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04]"
             >
               <Image
                 src={project.image}
@@ -61,11 +61,11 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 sizes="(min-width:1024px) 25vw, (min-width:768px) 50vw, 100vw"
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/36 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/82 via-ink-black/22 to-transparent" />
               <button
                 onClick={() => setSelected(project)}
                 aria-label={`Open ${project.title}`}
-                className="absolute right-4 top-4 grid size-11 place-items-center rounded-full border border-white/14 bg-black/35 text-white opacity-0 backdrop-blur-xl transition group-hover:opacity-100"
+                className="absolute right-4 top-4 grid size-11 place-items-center rounded-full border border-ink-paper/14 bg-ink-black/35 text-ink-paper opacity-0 backdrop-blur-xl transition group-hover:opacity-100"
               >
                 <Maximize2 size={17} />
               </button>
@@ -73,10 +73,10 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 <p className="text-xs uppercase tracking-[0.22em] text-ink-gold">
                   {project.category}
                 </p>
-                <h3 className="mt-2 font-display text-3xl leading-none text-white">
+                <h3 className="mt-2 font-display text-3xl leading-none text-ink-paper">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm text-white/56">{project.location}</p>
+                <p className="mt-3 text-sm text-ink-paper/56">{project.location}</p>
               </div>
             </motion.article>
           ))}
@@ -86,7 +86,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
       <AnimatePresence>
         {selected ? (
           <motion.div
-            className="fixed inset-0 z-[80] grid place-items-center bg-black/84 p-4 backdrop-blur-xl"
+            className="fixed inset-0 z-[80] grid place-items-center bg-ink-black/84 p-4 backdrop-blur-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -95,12 +95,12 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
               initial={reducedMotion ? false : { opacity: 0, y: 30, scale: 0.98 }}
               animate={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
               exit={reducedMotion ? undefined : { opacity: 0, y: 20, scale: 0.98 }}
-              className="relative max-h-[88vh] w-full max-w-5xl overflow-hidden rounded-[1.5rem] border border-white/12 bg-[#080808]"
+              className="relative max-h-[88vh] w-full max-w-5xl overflow-hidden rounded-[1.5rem] border border-ink-paper/12 bg-ink-black"
             >
               <button
                 onClick={() => setSelected(null)}
                 aria-label="Close project"
-                className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full bg-white text-black"
+                className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full bg-ink-paper text-ink-black"
               >
                 <X size={18} />
               </button>
@@ -118,14 +118,14 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                   <p className="text-xs uppercase tracking-[0.26em] text-ink-red">
                     {selected.category}
                   </p>
-                  <h3 className="mt-4 font-display text-5xl leading-none text-white">
+                  <h3 className="mt-4 font-display text-5xl leading-none text-ink-paper">
                     {selected.title}
                   </h3>
-                  <p className="mt-4 text-white/52">{selected.location}</p>
-                  <p className="mt-7 text-lg leading-8 text-white/68">
+                  <p className="mt-4 text-ink-paper/52">{selected.location}</p>
+                  <p className="mt-7 text-lg leading-8 text-ink-paper/68">
                     {selected.summary}
                   </p>
-                  <p className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-sm leading-7 text-white/58">
+                  <p className="mt-8 rounded-2xl border border-ink-paper/10 bg-ink-paper/[0.04] p-5 text-sm leading-7 text-ink-paper/58">
                     Placeholder visual. Replace with real Ink Blend project
                     media once available.
                   </p>

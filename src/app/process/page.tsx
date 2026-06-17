@@ -23,19 +23,19 @@ export default function ProcessPage() {
             alt="Office wall printing process"
             fill
             sizes="100vw"
-            className="object-cover opacity-38"
+            className="object-cover opacity-72"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/80 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Process
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               A clear path from wall photo to finished print.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               The workflow is built to reduce uncertainty: photos,
               measurements, concept direction, approvals, and production.
             </p>
@@ -49,7 +49,7 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
           <SectionHeading eyebrow="Start here" title="The better the input, the sharper the quote.">
             Upload photos, rough measurements, surface notes, timeline, and

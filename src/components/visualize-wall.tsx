@@ -11,14 +11,14 @@ export function VisualizeWall() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-      <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+      <div className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
           Visualize your wall
         </p>
-        <h3 className="mt-4 font-display text-5xl leading-none text-white">
+        <h3 className="mt-4 font-display text-5xl leading-none text-ink-paper">
           Preview the idea before print day.
         </h3>
-        <p className="mt-5 text-base leading-8 text-white/62">
+        <p className="mt-5 text-base leading-8 text-ink-paper/62">
           Upload a wall photo and share references. Ink Blend can turn that
           into a concept direction, layout mockup, and quote-ready plan.
         </p>
@@ -30,9 +30,9 @@ export function VisualizeWall() {
           ].map(({ label, Icon }) => (
             <div
               key={label}
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/24 p-3 text-white/74"
+              className="flex items-center gap-3 rounded-2xl border border-ink-paper/10 bg-ink-black/24 p-3 text-ink-paper/74"
             >
-              <span className="grid size-10 place-items-center rounded-xl bg-white text-black">
+              <span className="grid size-10 place-items-center rounded-xl bg-ink-paper text-ink-black">
                 <Icon size={18} />
               </span>
               <span className="text-sm font-semibold">{label}</span>
@@ -41,7 +41,7 @@ export function VisualizeWall() {
         </div>
       </div>
 
-      <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101010] p-4">
+      <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10 bg-ink-graphite/70 p-4">
         <div className="relative h-full min-h-[490px] overflow-hidden rounded-[1.1rem]">
           <Image
             src="/media/placeholders/interior-preview.jpg"
@@ -50,13 +50,13 @@ export function VisualizeWall() {
             sizes="(min-width:1024px) 55vw, 100vw"
             className="object-cover opacity-74"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-black/36 via-transparent to-ink-black/10" />
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, y: 28 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="absolute left-[12%] top-[18%] h-[42%] w-[54%] overflow-hidden rounded-[1rem] border border-white/24 shadow-[0_30px_80px_rgba(0,0,0,0.38)]"
+            className="absolute left-[12%] top-[18%] h-[42%] w-[54%] overflow-hidden rounded-[1rem] border border-ink-paper/24 shadow-[0_30px_80px_rgba(0,0,0,0.38)]"
           >
             <Image
               src="/media/placeholders/art-wall.jpg"
@@ -70,7 +70,7 @@ export function VisualizeWall() {
             {previewStyles.map((style) => (
               <span
                 key={style}
-                className="rounded-full border border-white/12 bg-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/68 backdrop-blur"
+                className="rounded-full border border-ink-paper/12 bg-ink-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-paper/68 backdrop-blur"
               >
                 {style}
               </span>

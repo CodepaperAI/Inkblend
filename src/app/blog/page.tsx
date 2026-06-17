@@ -23,19 +23,19 @@ export default function BlogPage() {
             alt="Artwork and print design"
             fill
             sizes="100vw"
-            className="object-cover opacity-36"
+            className="object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/80 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Blog
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Search-friendly content for visual branding clients.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               Educational articles that help potential clients understand UV
               wall printing, mural planning, and quote preparation.
             </p>
@@ -49,18 +49,18 @@ export default function BlogPage() {
             <Reveal key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block min-h-[320px] rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-7 transition hover:-translate-y-1 hover:border-ink-gold/40"
+                className="group block min-h-[320px] rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7 transition hover:-translate-y-1 hover:border-ink-gold/40"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-ink-red">
                   {post.category}
                 </p>
-                <h2 className="mt-5 font-display text-4xl leading-none text-white">
+                <h2 className="mt-5 font-display text-4xl leading-none text-ink-paper">
                   {post.title}
                 </h2>
-                <p className="mt-5 text-sm leading-7 text-white/58">
+                <p className="mt-5 text-sm leading-7 text-ink-paper/58">
                   {post.excerpt}
                 </p>
-                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
                   Read article
                   <ArrowRight size={16} className="transition group-hover:translate-x-1" />
                 </span>

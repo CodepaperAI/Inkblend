@@ -48,15 +48,15 @@ export default async function BlogPostPage({ params }: Props) {
               alt={post.title}
               fill
               sizes="100vw"
-              className="object-cover opacity-34"
+              className="object-cover opacity-70"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/80 to-ink-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
           </div>
           <div className="page-shell relative">
             <Reveal>
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white/66 hover:text-white"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-ink-paper/66 hover:text-ink-paper"
               >
                 <ArrowLeft size={16} />
                 Back to Blog
@@ -64,10 +64,10 @@ export default async function BlogPostPage({ params }: Props) {
               <p className="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
                 {post.category} / {post.date}
               </p>
-              <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+              <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
                 {post.title}
               </h1>
-              <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+              <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
                 {post.excerpt}
               </p>
             </Reveal>

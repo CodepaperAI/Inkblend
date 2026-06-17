@@ -28,40 +28,40 @@ export function ServiceShowcase({ compact = false }: { compact?: boolean }) {
               ease: [0.22, 1, 0.36, 1],
             }}
             whileHover={reducedMotion ? undefined : { y: -8 }}
-            className="group relative min-h-[390px] overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.04] shadow-[0_25px_70px_rgba(0,0,0,0.28)]"
+            className="group relative min-h-[390px] overflow-hidden rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] shadow-[0_25px_70px_rgba(0,0,0,0.28)]"
           >
             <Image
               src={service.image}
               alt={service.title}
               fill
               sizes="(min-width:1280px) 25vw, (min-width:768px) 50vw, 100vw"
-              className="object-cover opacity-35 transition duration-700 group-hover:scale-105 group-hover:opacity-45"
+              className="object-cover opacity-62 transition duration-700 group-hover:scale-105 group-hover:opacity-72"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/76 to-black/8" />
-            <div className="absolute inset-0 border border-white/0 transition group-hover:border-ink-red/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-black/88 via-ink-black/52 to-transparent" />
+            <div className="absolute inset-0 border border-ink-paper/0 transition group-hover:border-ink-red/40" />
             <div className="relative flex h-full flex-col justify-between p-6">
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="grid size-12 place-items-center rounded-2xl border border-white/12 bg-white/[0.08] text-ink-gold">
+                  <span className="grid size-12 place-items-center rounded-2xl border border-ink-paper/12 bg-ink-paper/[0.08] text-ink-gold">
                     <Icon size={21} />
                   </span>
-                  <span className="text-xs uppercase tracking-[0.24em] text-white/44">
+                  <span className="text-xs uppercase tracking-[0.24em] text-ink-paper/44">
                     0{index + 1}
                   </span>
                 </div>
                 <p className="mt-7 text-xs font-semibold uppercase tracking-[0.26em] text-ink-red">
                   {service.eyebrow}
                 </p>
-                <h3 className="mt-3 font-display text-3xl leading-none text-white">
+                <h3 className="mt-3 font-display text-3xl leading-none text-ink-paper">
                   {service.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-white/62">
+                <p className="mt-4 text-sm leading-7 text-ink-paper/62">
                   {service.short}
                 </p>
               </div>
               <Link
                 href={getServiceHref(service.slug)}
-                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:text-ink-gold"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper transition group-hover:text-ink-gold"
               >
                 Explore service
                 <ArrowRight size={16} className="transition group-hover:translate-x-1" />

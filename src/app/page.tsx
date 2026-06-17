@@ -35,14 +35,14 @@ export default function Home() {
               branding for spaces where the walls need to do more than sit in
               the background.
             </SectionHeading>
-            <Reveal className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6">
+            <Reveal className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
               <div className="grid gap-4 sm:grid-cols-3">
                 {[
                   "Wallpaper alternative",
                   "Restaurant-ready visuals",
                   "Quote from photos",
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-white/72">
+                  <div key={item} className="flex items-center gap-3 text-ink-paper/72">
                     <CheckCircle2 size={18} className="text-ink-gold" />
                     <span className="text-sm font-semibold">{item}</span>
                   </div>
@@ -56,7 +56,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Portfolio energy"
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <VisualizeWall />
         </div>
@@ -114,14 +114,14 @@ export default function Home() {
               const Icon = segment.icon;
               return (
                 <StaggerItem key={segment.title}>
-                  <article className="min-h-[230px] rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-red/35 hover:bg-white/[0.065]">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-white text-black">
+                  <article className="min-h-[230px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-red/35 hover:bg-ink-paper/[0.065]">
+                    <span className="grid size-12 place-items-center rounded-2xl bg-ink-paper text-ink-black">
                       <Icon size={20} />
                     </span>
-                    <h3 className="mt-6 font-display text-3xl text-white">
+                    <h3 className="mt-6 font-display text-3xl text-ink-paper">
                       {segment.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-white/58">
+                    <p className="mt-3 text-sm leading-7 text-ink-paper/58">
                       {segment.description}
                     </p>
                   </article>
@@ -132,7 +132,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
@@ -166,7 +166,7 @@ export default function Home() {
               {citiesServed.slice(0, 8).map((city) => (
                 <span
                   key={city}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-center text-sm text-white/62"
+                  className="rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] px-4 py-2 text-center text-sm text-ink-paper/62"
                 >
                   {city}
                 </span>
@@ -177,7 +177,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <SectionHeading
             eyebrow="SEO Blog"
@@ -189,18 +189,18 @@ export default function Home() {
               <Reveal key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group block min-h-[260px] rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-gold/40"
+                  className="group block min-h-[260px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-gold/40"
                 >
                   <p className="text-xs uppercase tracking-[0.24em] text-ink-red">
                     {post.category}
                   </p>
-                  <h3 className="mt-5 font-display text-3xl leading-none text-white">
+                  <h3 className="mt-5 font-display text-3xl leading-none text-ink-paper">
                     {post.title}
                   </h3>
-                  <p className="mt-5 text-sm leading-7 text-white/58">
+                  <p className="mt-5 text-sm leading-7 text-ink-paper/58">
                     {post.excerpt}
                   </p>
-                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
                     Read article
                     <ArrowRight size={15} className="transition group-hover:translate-x-1" />
                   </span>
@@ -213,7 +213,7 @@ export default function Home() {
 
       <section className="section-pad">
         <div className="page-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <Reveal className="relative min-h-[430px] overflow-hidden rounded-[1.5rem] border border-white/10">
+          <Reveal className="relative min-h-[430px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10">
             <Image
               src="/media/placeholders/luxury-feature.jpg"
               alt="Luxury interior feature wall"
@@ -221,22 +221,22 @@ export default function Home() {
               sizes="(min-width:1024px) 50vw, 100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/76 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-black/58 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
-              <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-black">
+              <p className="inline-flex items-center gap-2 rounded-full bg-ink-paper px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-ink-black">
                 <Sparkles size={14} />
                 Premium visual finish
               </p>
             </div>
           </Reveal>
-          <Reveal className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-7 sm:p-10">
+          <Reveal className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7 sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Fast contact
             </p>
-            <h2 className="mt-4 font-display text-5xl leading-none text-white">
+            <h2 className="mt-4 font-display text-5xl leading-none text-ink-paper">
               Send your wall. Get the next step.
             </h2>
-            <p className="mt-5 text-base leading-8 text-white/62">
+            <p className="mt-5 text-base leading-8 text-ink-paper/62">
               Start with a few photos, measurements, project type, and budget
               range. Ink Blend can respond with practical guidance and quote
               direction.

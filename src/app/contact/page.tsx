@@ -22,19 +22,19 @@ export default function ContactPage() {
             alt="Contact Ink Blend"
             fill
             sizes="100vw"
-            className="object-cover opacity-38"
+            className="object-cover opacity-72"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/80 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Contact
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Talk to Ink Blend about your wall.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               Send project details, ask a question, or start fast through phone
               and WhatsApp.
             </p>
@@ -62,16 +62,16 @@ export default function ContactPage() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex gap-4 rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-white/25"
+                  className="flex gap-4 rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-5 transition hover:-translate-y-1 hover:border-ink-paper/25"
                 >
-                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white text-black">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-ink-paper text-ink-black">
                     <Icon size={20} />
                   </span>
                   <span>
                     <span className="block text-xs font-bold uppercase tracking-[0.22em] text-ink-red">
                       {label}
                     </span>
-                    <span className="mt-2 block text-base leading-7 text-white/70">
+                    <span className="mt-2 block text-base leading-7 text-ink-paper/70">
                       {value}
                     </span>
                   </span>

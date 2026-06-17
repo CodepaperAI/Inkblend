@@ -46,13 +46,13 @@ function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-white/10 bg-black/78 shadow-2xl shadow-black/30 backdrop-blur-2xl"
+          ? "border-b border-ink-paper/10 bg-ink-black/78 shadow-[0_18px_60px_rgba(36,24,18,0.12)] backdrop-blur-2xl"
           : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="group flex items-center gap-3">
-          <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-white/15 bg-white/[0.04] shadow-[0_0_45px_rgba(249,39,39,0.2)]">
+          <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-ink-paper/15 bg-ink-paper/[0.04] shadow-[0_0_45px_rgba(249,39,39,0.2)]">
             <Image
               src="/brand/icon-web.png"
               alt="Ink Blend icon"
@@ -63,16 +63,16 @@ function Header() {
             />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-display text-2xl tracking-wide text-white">
+            <span className="font-display text-2xl tracking-wide text-ink-paper">
               Ink Blend
             </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-white/46">
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-ink-paper/46">
               UV Print Studio
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 text-sm text-white/70 backdrop-blur-xl lg:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] p-1 text-sm text-ink-paper/70 backdrop-blur-xl lg:flex">
           {navItems.map((item) => {
             const active =
               item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -81,8 +81,8 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-2 transition duration-300 hover:bg-white/10 hover:text-white",
-                  active && "bg-white text-black shadow-lg shadow-white/10",
+                  "rounded-full px-4 py-2 transition duration-300 hover:bg-ink-paper/10 hover:text-ink-paper",
+                  active && "bg-ink-paper text-ink-black shadow-lg shadow-ink-paper/10",
                 )}
               >
                 {item.label}
@@ -94,7 +94,7 @@ function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <button
             aria-label="Search"
-            className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 transition hover:border-white/25 hover:text-white"
+            className="grid size-11 place-items-center rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] text-ink-paper/70 transition hover:border-ink-paper/25 hover:text-ink-paper"
           >
             <Search size={18} />
           </button>
@@ -107,7 +107,7 @@ function Header() {
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((value) => !value)}
-          className="grid size-12 place-items-center rounded-full border border-white/12 bg-white/[0.06] text-white lg:hidden"
+          className="grid size-12 place-items-center rounded-full border border-ink-paper/12 bg-ink-paper/[0.06] text-ink-paper lg:hidden"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -115,7 +115,7 @@ function Header() {
 
       <div
         className={cn(
-          "grid overflow-hidden border-t border-white/10 bg-black/94 px-4 backdrop-blur-2xl transition-all duration-500 lg:hidden",
+          "grid overflow-hidden border-t border-ink-paper/10 bg-ink-black/94 px-4 backdrop-blur-2xl transition-all duration-500 lg:hidden",
           open ? "max-h-[560px] py-4" : "max-h-0 py-0",
         )}
       >
@@ -125,7 +125,7 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-2xl border border-white/8 bg-white/[0.04] px-4 py-3 text-white/78"
+                className="rounded-2xl border border-ink-paper/8 bg-ink-paper/[0.04] px-4 py-3 text-ink-paper/78"
               >
               {item.label}
             </Link>
@@ -152,14 +152,14 @@ function FloatingContact() {
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
-        className="group grid size-14 place-items-center rounded-full bg-[#25d366] text-black shadow-[0_0_45px_rgba(37,211,102,0.45)] transition hover:-translate-y-1"
+        className="group grid size-14 place-items-center rounded-full bg-[#25d366] text-[#073b1f] shadow-[0_0_45px_rgba(37,211,102,0.45)] transition hover:-translate-y-1"
       >
         <MessageCircle size={23} />
       </a>
       <a
         href={siteConfig.phoneHref}
         aria-label="Call Ink Blend"
-        className="group grid size-14 place-items-center rounded-full border border-white/12 bg-white/[0.08] text-white shadow-[0_0_45px_rgba(255,255,255,0.12)] backdrop-blur-xl transition hover:-translate-y-1 hover:bg-white hover:text-black"
+        className="group grid size-14 place-items-center rounded-full border border-ink-paper/12 bg-ink-paper/[0.08] text-ink-paper shadow-[0_0_45px_rgba(255,255,255,0.12)] backdrop-blur-xl transition hover:-translate-y-1 hover:bg-ink-paper hover:text-ink-black"
       >
         <Phone size={21} />
       </a>
@@ -169,12 +169,12 @@ function FloatingContact() {
 
 function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-[#050505]">
+    <footer className="relative border-t border-ink-paper/10 bg-ink-graphite/45">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-red to-transparent" />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
-            <span className="grid size-12 place-items-center overflow-hidden rounded-2xl border border-white/15 bg-white/[0.04]">
+            <span className="grid size-12 place-items-center overflow-hidden rounded-2xl border border-ink-paper/15 bg-ink-paper/[0.04]">
               <Image
                 src="/brand/icon-web.png"
                 alt="Ink Blend icon"
@@ -183,9 +183,9 @@ function Footer() {
                 className="h-9 w-9 object-contain"
               />
             </span>
-            <span className="font-display text-3xl text-white">Ink Blend</span>
+            <span className="font-display text-3xl text-ink-paper">Ink Blend</span>
           </Link>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-white/58">
+          <p className="mt-5 max-w-sm text-sm leading-7 text-ink-paper/58">
             Premium UV wall printing, custom murals, and surface graphics for
             businesses, designers, and homeowners across Canada.
           </p>
@@ -193,14 +193,14 @@ function Footer() {
             <a
               href={siteConfig.instagramHref}
               aria-label="Instagram"
-              className="grid size-11 place-items-center rounded-full border border-white/12 text-white/72 transition hover:bg-white hover:text-black"
+              className="grid size-11 place-items-center rounded-full border border-ink-paper/12 text-ink-paper/72 transition hover:bg-ink-paper hover:text-ink-black"
             >
               <Camera size={18} />
             </a>
             <a
               href={siteConfig.tiktokHref}
               aria-label="TikTok"
-              className="grid size-11 place-items-center rounded-full border border-white/12 text-white/72 transition hover:bg-white hover:text-black"
+              className="grid size-11 place-items-center rounded-full border border-ink-paper/12 text-ink-paper/72 transition hover:bg-ink-paper hover:text-ink-black"
             >
               <Send size={17} />
             </a>
@@ -209,13 +209,13 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Pages</h3>
-          <div className="mt-5 grid gap-3 text-sm text-white/58">
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-white">
+              <Link key={item.href} href={item.href} className="hover:text-ink-paper">
                 {item.label}
               </Link>
             ))}
-            <Link href="/blog" className="hover:text-white">
+            <Link href="/blog" className="hover:text-ink-paper">
               Blog
             </Link>
           </div>
@@ -223,17 +223,17 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Lead Actions</h3>
-          <div className="mt-5 grid gap-3 text-sm text-white/58">
-            <Link href="/get-quote" className="hover:text-white">
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+            <Link href="/get-quote" className="hover:text-ink-paper">
               Request a Quote
             </Link>
-            <a href={siteConfig.whatsappHref} className="hover:text-white">
+            <a href={siteConfig.whatsappHref} className="hover:text-ink-paper">
               WhatsApp Chat
             </a>
-            <a href={siteConfig.phoneHref} className="hover:text-white">
+            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
               Call Now
             </a>
-            <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-ink-paper">
               Email Inquiry
             </a>
           </div>
@@ -241,19 +241,19 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Contact</h3>
-          <div className="mt-5 grid gap-3 text-sm leading-7 text-white/58">
+          <div className="mt-5 grid gap-3 text-sm leading-7 text-ink-paper/58">
             <span>{siteConfig.address}</span>
-            <a href={siteConfig.phoneHref} className="hover:text-white">
+            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
               {siteConfig.phone}
             </a>
-            <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-ink-paper">
               {siteConfig.email}
             </a>
             <span>{siteConfig.hours}</span>
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10 px-4 py-6 text-center text-xs uppercase tracking-[0.28em] text-white/38">
+      <div className="border-t border-ink-paper/10 px-4 py-6 text-center text-xs uppercase tracking-[0.28em] text-ink-paper/38">
         Designed for premium visual environments.
       </div>
     </footer>

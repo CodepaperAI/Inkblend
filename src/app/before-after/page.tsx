@@ -22,19 +22,19 @@ export default function BeforeAfterPage() {
             alt="Before and after feature wall"
             fill
             sizes="100vw"
-            className="object-cover opacity-40"
+            className="object-cover opacity-74"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/80 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Before & After
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Show the transformation before clients ask.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               These sliders are ready for real site photos, renovation reveals,
               branded room upgrades, and mural installation comparisons.
             </p>
@@ -55,7 +55,7 @@ export default function BeforeAfterPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell grid gap-6 lg:grid-cols-3">
           {[
             [
@@ -72,9 +72,9 @@ export default function BeforeAfterPage() {
             ],
           ].map(([title, body]) => (
             <Reveal key={title}>
-              <article className="min-h-[230px] rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6">
-                <h2 className="font-display text-4xl text-white">{title}</h2>
-                <p className="mt-5 text-base leading-8 text-white/62">{body}</p>
+              <article className="min-h-[230px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
+                <h2 className="font-display text-4xl text-ink-paper">{title}</h2>
+                <p className="mt-5 text-base leading-8 text-ink-paper/62">{body}</p>
               </article>
             </Reveal>
           ))}

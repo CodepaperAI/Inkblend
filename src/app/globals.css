@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f7f2e8;
-  --ink-black: #050505;
-  --ink-graphite: #101010;
-  --ink-paper: #f7f2e8;
-  --ink-red: #fb1f2a;
-  --ink-gold: #f9a72b;
-  --ink-pink: #9c1661;
-  --ink-blue: #2c3892;
+  --background: #efe2cc;
+  --foreground: #241812;
+  --ink-black: #efe2cc;
+  --ink-graphite: #e2cfb2;
+  --ink-paper: #241812;
+  --ink-red: #c82f27;
+  --ink-gold: #b36f22;
+  --ink-pink: #7f2452;
+  --ink-blue: #27346f;
 }
 
 @theme inline {
@@ -31,22 +31,22 @@
 }
 
 html {
-  background: var(--ink-black);
+  background: var(--background);
 }
 
 body {
   min-width: 320px;
   background:
-    radial-gradient(circle at 20% 0%, rgba(251, 31, 42, 0.12), transparent 32rem),
-    radial-gradient(circle at 85% 12%, rgba(44, 56, 146, 0.14), transparent 34rem),
-    var(--ink-black);
+    radial-gradient(circle at 18% 0%, rgba(200, 47, 39, 0.13), transparent 32rem),
+    radial-gradient(circle at 85% 12%, rgba(179, 111, 34, 0.16), transparent 34rem),
+    linear-gradient(180deg, #f4ead9 0%, var(--background) 42rem);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
 }
 
 ::selection {
   background: var(--ink-red);
-  color: white;
+  color: #fff6e6;
 }
 
 button,
@@ -67,8 +67,8 @@ img {
   inset: 0;
   opacity: 0.14;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(36, 24, 18, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 24, 18, 0.05) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: linear-gradient(to bottom, black, transparent 82%);
 }
@@ -93,28 +93,28 @@ img {
 }
 
 .btn-primary {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(135deg, #fb1f2a, #f9a72b);
-  color: #080808;
-  box-shadow: 0 18px 50px rgba(251, 31, 42, 0.28);
+  border: 1px solid rgba(36, 24, 18, 0.14);
+  background: linear-gradient(135deg, var(--ink-red), #d89533);
+  color: #fff7e8;
+  box-shadow: 0 18px 50px rgba(200, 47, 39, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 24px 70px rgba(249, 167, 43, 0.28);
+  box-shadow: 0 24px 70px rgba(179, 111, 34, 0.24);
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: white;
+  border: 1px solid rgba(36, 24, 18, 0.14);
+  background: rgba(255, 247, 232, 0.54);
+  color: var(--foreground);
   backdrop-filter: blur(18px);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(36, 24, 18, 0.28);
+  background: rgba(255, 247, 232, 0.82);
 }
 
 .footer-title {
@@ -122,7 +122,7 @@ img {
   font-weight: 800;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(36, 24, 18, 0.78);
 }
 
 .field {
@@ -135,7 +135,7 @@ img {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.56);
+  color: rgba(36, 24, 18, 0.58);
 }
 
 .field input,
@@ -143,9 +143,9 @@ img {
 .field textarea {
   width: 100%;
   border-radius: 1.05rem;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(0, 0, 0, 0.24);
-  color: white;
+  border: 1px solid rgba(36, 24, 18, 0.14);
+  background: rgba(255, 247, 232, 0.58);
+  color: var(--foreground);
   outline: none;
   padding: 0.95rem 1rem;
   transition:
@@ -160,15 +160,15 @@ img {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(36, 24, 18, 0.38);
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   border-color: rgba(249, 167, 43, 0.75);
-  background: rgba(0, 0, 0, 0.36);
-  box-shadow: 0 0 0 4px rgba(249, 167, 43, 0.1);
+  background: rgba(255, 247, 232, 0.86);
+  box-shadow: 0 0 0 4px rgba(179, 111, 34, 0.12);
 }
 
 .page-hero {
@@ -189,7 +189,7 @@ img {
 .prose-content {
   font-size: 1.08rem;
   line-height: 2;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(36, 24, 18, 0.68);
 }
 
 .prose-content p + p,
@@ -201,7 +201,7 @@ img {
   font-family: var(--font-instrument), serif;
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   line-height: 1;
-  color: white;
+  color: var(--foreground);
 }
 
 @media (min-width: 640px) {

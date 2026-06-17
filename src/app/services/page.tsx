@@ -26,19 +26,19 @@ export default function ServicesPage() {
             alt="Commercial wall branding"
             fill
             sizes="100vw"
-            className="object-cover opacity-42"
+            className="object-cover opacity-76"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/58 via-ink-black/78 to-ink-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
         </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
               Services
             </p>
-            <h1 className="mt-5 max-w-5xl font-display text-6xl leading-[0.9] text-white sm:text-7xl">
+            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Surface printing services for premium visual spaces.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
               Choose a service, send photos and measurements, and Ink Blend can
               shape the right print direction for your space.
             </p>
@@ -52,7 +52,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-white/[0.025]">
+      <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Service detail"
@@ -67,20 +67,20 @@ export default function ServicesPage() {
               <Reveal key={service.slug}>
                 <Link
                   href={getServiceHref(service.slug)}
-                  className="group flex min-h-[220px] flex-col justify-between rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-red/40"
+                  className="group flex min-h-[220px] flex-col justify-between rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-red/40"
                 >
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-ink-gold">
                       {service.eyebrow}
                     </p>
-                    <h2 className="mt-4 font-display text-4xl text-white">
+                    <h2 className="mt-4 font-display text-4xl text-ink-paper">
                       {service.title}
                     </h2>
-                    <p className="mt-4 text-sm leading-7 text-white/58">
+                    <p className="mt-4 text-sm leading-7 text-ink-paper/58">
                       {service.description}
                     </p>
                   </div>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
                     Open service
                     <ArrowRight size={16} className="transition group-hover:translate-x-1" />
                   </span>
