@@ -12,14 +12,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { ServiceShowcase } from "@/components/service-showcase";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { VisualizeWall } from "@/components/visualize-wall";
-import {
-  audienceSegments,
-  blogPosts,
-  citiesServed,
-  siteConfig,
-} from "@/lib/site";
+import { audienceSegments, citiesServed, siteConfig } from "@/lib/site";
+import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
 
-export default function Home() {
+export default async function Home() {
+  const blogPosts = (await listRenderableBlogs()).slice(0, 3);
+
   return (
     <>
       <Hero />
@@ -177,39 +175,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-pad bg-ink-paper/[0.025]">
-        <div className="page-shell">
-          <SectionHeading
-            eyebrow="SEO Blog"
-            title="Articles built for clients searching before they are ready to call."
-            align="center"
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {blogPosts.map((post) => (
-              <Reveal key={post.slug}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group block min-h-[260px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-gold/40"
-                >
-                  <p className="text-xs uppercase tracking-[0.24em] text-ink-red">
-                    {post.category}
-                  </p>
-                  <h3 className="mt-5 font-display text-3xl leading-none text-ink-paper">
-                    {post.title}
-                  </h3>
-                  <p className="mt-5 text-sm leading-7 text-ink-paper/58">
-                    {post.excerpt}
-                  </p>
-                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
-                    Read article
-                    <ArrowRight size={15} className="transition group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+      {blogPosts.length > 0 ? (
+        <section className="section-pad bg-ink-paper/[0.025]">
+          <div className="page-shell">
+            <SectionHeading
+              eyebrow="SEO Blog"
+              title="Articles built for clients searching before they are ready to call."
+              align="center"
+            />
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {blogPosts.map((post) => (
+                <Reveal key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group block min-h-[260px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-gold/40"
+                  >
+                    <p className="text-xs uppercase tracking-[0.24em] text-ink-red">
+                      {post.categories?.[0] || formatPublishDate(post)}
+                    </p>
+                    <h3 className="mt-5 font-display text-3xl leading-none text-ink-paper">
+                      {post.title}
+                    </h3>
+                    <p className="mt-5 text-sm leading-7 text-ink-paper/58">
+                      {post.excerpt}
+                    </p>
+                    <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
+                      Read article
+                      <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="section-pad">
         <div className="page-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">

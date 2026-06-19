@@ -100,6 +100,20 @@ export async function listBlogs(): Promise<UpliftBlogSummary[]> {
   }
 }
 
+export async function listRenderableBlogs(): Promise<UpliftBlogSummary[]> {
+  const posts = await listBlogs();
+  if (posts.length === 0) return [];
+
+  const checkedPosts = await Promise.all(
+    posts.map(async (post) => {
+      const detail = await getBlog(post.slug);
+      return detail ? post : null;
+    }),
+  );
+
+  return checkedPosts.filter((post): post is UpliftBlogSummary => post !== null);
+}
+
 export async function getBlog(slug: string): Promise<UpliftBlogDetail | null> {
   const token = getToken();
   if (!token) return null;

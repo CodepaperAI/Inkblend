@@ -101,21 +101,34 @@ export async function POST(request: Request) {
     })),
   );
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      subject,
-      text,
-      reply_to: lead.email,
-      attachments: emailAttachments.length ? emailAttachments : undefined,
-    }),
-  });
+  let response: Response;
+
+  try {
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to,
+        subject,
+        text,
+        reply_to: lead.email,
+        attachments: emailAttachments.length ? emailAttachments : undefined,
+      }),
+    });
+  } catch (error) {
+    console.error("Resend delivery failed:", error);
+    return NextResponse.json(
+      {
+        message:
+          "The request was valid, but email delivery failed. Please use WhatsApp or call directly.",
+      },
+      { status: 502 },
+    );
+  }
 
   if (!response.ok) {
     return NextResponse.json(

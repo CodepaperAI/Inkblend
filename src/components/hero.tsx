@@ -19,9 +19,9 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-75"
+          className="object-cover opacity-[0.86]"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(200,47,39,0.16),transparent_34%),linear-gradient(90deg,rgba(239,226,204,0.9)_0%,rgba(239,226,204,0.62)_42%,rgba(239,226,204,0.18)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(200,47,39,0.12),transparent_34%),linear-gradient(90deg,rgba(239,226,204,0.82)_0%,rgba(239,226,204,0.48)_42%,rgba(239,226,204,0.1)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ink-black/82 to-transparent" />
         <div className="noise-layer" />
       </div>
@@ -46,17 +46,17 @@ export function Hero() {
       <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="min-w-0">
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+            initial={false}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 rounded-full border border-ink-paper/12 bg-ink-paper/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-ink-paper/72 backdrop-blur-xl"
+            className="inline-flex items-center gap-2 rounded-full border border-ink-paper/16 bg-ink-paper/[0.1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-ink-paper/78 backdrop-blur-xl"
           >
             <Sparkles size={14} className="text-ink-gold" />
             Premium UV Wall Printing
           </motion.div>
 
           <motion.h1
-            initial={reducedMotion ? false : { opacity: 0, y: 32 }}
+            initial={false}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="mt-7 max-w-[21rem] text-balance font-display text-5xl leading-[0.9] tracking-normal text-ink-paper sm:max-w-5xl sm:text-7xl lg:text-8xl"
@@ -65,10 +65,10 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 28 }}
+            initial={false}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 max-w-[21rem] text-pretty text-base leading-7 text-ink-paper/70 sm:max-w-2xl sm:text-xl sm:leading-8"
+            className="mt-7 max-w-[21rem] text-pretty text-base leading-7 text-ink-paper/82 sm:max-w-2xl sm:text-xl sm:leading-8"
           >
             Ink Blend creates immersive wall murals, commercial branding, and
             large-format surface prints with crisp UV detail and a premium
@@ -76,7 +76,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+            initial={false}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 grid w-full max-w-[21rem] gap-3 sm:flex sm:max-w-none sm:flex-row"
@@ -98,7 +98,7 @@ export function Hero() {
         </div>
 
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, x: 40, rotate: -2 }}
+          initial={false}
           animate={reducedMotion ? undefined : { opacity: 1, x: 0, rotate: 0 }}
           transition={{ duration: 1, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
           className="relative hidden lg:block"
@@ -148,7 +148,7 @@ export function Hero() {
         {trustStats.map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+            initial={false}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 + index * 0.08 }}
             className="border border-ink-paper/10 bg-ink-paper/[0.04] p-5 backdrop-blur"

@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
 import { services } from "@/lib/site";
-import { listBlogs } from "@/lib/uplift";
+import { listRenderableBlogs } from "@/lib/uplift";
 
 const baseUrl = "https://inkblend.ca";
 
 export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = await listBlogs();
+  const blogPosts = await listRenderableBlogs();
 
   const staticRoutes = [
     "",

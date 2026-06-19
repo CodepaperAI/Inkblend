@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 import {
   formatPublishDate,
   getBlog,
-  listBlogs,
+  listRenderableBlogs,
   sanitizeBlogHtml,
 } from "@/lib/uplift";
 
@@ -23,7 +23,7 @@ type Props = {
 const FALLBACK_HERO = "/media/placeholders/custom-artwork.jpg";
 
 export async function generateStaticParams() {
-  const posts = await listBlogs();
+  const posts = await listRenderableBlogs();
   return posts.map((post) => ({ slug: post.slug }));
 }
 

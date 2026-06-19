@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
-import { formatPublishDate, listBlogs } from "@/lib/uplift";
+import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
 
 export const revalidate = 300;
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await listBlogs();
+  const posts = await listRenderableBlogs();
 
   return (
     <>
