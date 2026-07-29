@@ -1,13 +1,45 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { CheckCircle2, Loader2, Upload } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { siteConfig } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function QuoteForm({ compact = false }: { compact?: boolean }) {
+/**
+ * `sourcePage` is what makes a lead attributable to the page that produced it.
+ * Without it no page on this site can be shown to have generated anything,
+ * which makes the whole exercise unmeasurable.
+ *
+ * Landing pages pass their `formSourceId` explicitly. Everywhere else falls
+ * back to the pathname, so existing pages gain attribution for free. The API
+ * route reads from an open array rather than a closed enum, so new pages will
+ * never be silently rejected — but the field still has to be sent.
+ */
+export function QuoteForm({
+  compact = false,
+  sourcePage,
+  prefillNotes,
+}: {
+  compact?: boolean;
+  sourcePage?: string;
+  /**
+   * Seeds the notes textarea. The tools carry their result here so an enquiry
+   * arrives with the answers already attached — which is what makes a
+   * tool-generated lead materially better than a bare "I have a wall".
+   *
+   * Read from the URL by the PAGE (a server component) and passed down, rather
+   * than read here with useSearchParams. Doing it here would push every page
+   * that renders this form into client rendering or force a Suspense boundary
+   * around all of them.
+   */
+  prefillNotes?: string;
+}) {
+  const pathname = usePathname();
+  const resolvedSource = sourcePage ?? pathname ?? "unknown";
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -32,9 +64,11 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
 
       setStatus("success");
       setMessage(payload.message || "Request received. Ink Blend will follow up soon.");
+      track("quote_submitted", { sourcePage: resolvedSource });
       form.reset();
     } catch (error) {
       setStatus("error");
+      track("quote_failed", { sourcePage: resolvedSource });
       setMessage(
         error instanceof Error
           ? error.message
@@ -48,6 +82,8 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
       onSubmit={onSubmit}
       className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.045] p-5 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-7"
     >
+      <input type="hidden" name="sourcePage" value={resolvedSource} />
+
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Full name" name="name" required />
         <Field label="Phone" name="phone" type="tel" required />
@@ -95,6 +131,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
         <textarea
           name="notes"
           rows={compact ? 4 : 5}
+          defaultValue={prefillNotes}
           placeholder="Tell us about the wall, business type, design idea, and any artwork you already have."
         />
       </label>

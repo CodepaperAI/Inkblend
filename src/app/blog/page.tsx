@@ -10,12 +10,12 @@ import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
 export const revalidate = 300;
 
 const FALLBACK_IMAGES = [
-  "/media/placeholders/custom-artwork.jpg",
-  "/media/placeholders/art-wall.jpg",
-  "/media/placeholders/luxury-feature.jpg",
-  "/media/placeholders/restaurant-mural.jpg",
-  "/media/placeholders/office-branding.jpg",
-  "/media/placeholders/botanical-wall.jpg",
+  "/media/placeholders/curved-modern-building-exterior.jpg",
+  "/media/placeholders/abstract-acrylic-painting-macro.jpg",
+  "/media/placeholders/concrete-feature-wall-dining-room.jpg",
+  "/media/placeholders/handpainted-brick-mural-bar.jpg",
+  "/media/placeholders/glass-partition-office-corridor.jpg",
+  "/media/placeholders/handpainted-crane-mural-restaurant.jpg",
 ];
 
 function fallbackImage(index: number): string {
@@ -44,7 +44,7 @@ export default async function BlogPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/custom-artwork.jpg"
+            src="/media/placeholders/curved-modern-building-exterior.jpg"
             alt="Artwork and print design"
             fill
             sizes="100vw"

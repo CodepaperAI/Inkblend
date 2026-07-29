@@ -20,7 +20,7 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-const FALLBACK_HERO = "/media/placeholders/custom-artwork.jpg";
+const FALLBACK_HERO = "/media/placeholders/curved-modern-building-exterior.jpg";
 
 export async function generateStaticParams() {
   const posts = await listRenderableBlogs();

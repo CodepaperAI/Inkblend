@@ -4,6 +4,10 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    // The tool tests run on Node's built-in runner using Node 24's native type
+    // stripping, which requires explicit .ts import specifiers. They are never
+    // bundled by Next, so allowing the extension here costs nothing.
+    "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,

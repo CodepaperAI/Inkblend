@@ -19,7 +19,7 @@ export default function ProcessPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/office-branding.jpg"
+            src="/media/placeholders/glass-partition-office-corridor.jpg"
             alt="Office wall printing process"
             fill
             sizes="100vw"

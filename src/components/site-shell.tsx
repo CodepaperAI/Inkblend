@@ -15,6 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 
+import { cityNav, industryNav, toolNav } from "@/data/landingPages/nav";
 import { navItems, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -253,6 +254,50 @@ function Footer() {
           </div>
         </div>
       </div>
+
+      {/*
+        Locations and sectors. Imported from data/landingPages/nav.ts — a
+        label+href-only module — and NOT from the landing-page registry. A
+        client component importing the registry would pull every record's
+        sections, FAQs and galleries into the bundle of every page that renders
+        this footer, which is all of them. The quality gate checks this list
+        stays in step with the real records.
+      */}
+      <div className="border-t border-ink-paper/10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
+          <div>
+            <h3 className="footer-title">Tools</h3>
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+              {toolNav.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="footer-title">Locations</h3>
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+              {cityNav.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="footer-title">Sectors</h3>
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+              {industryNav.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="border-t border-ink-paper/10 px-4 py-6 text-center text-xs uppercase tracking-[0.28em] text-ink-paper/38">
         Designed for premium visual environments.
       </div>

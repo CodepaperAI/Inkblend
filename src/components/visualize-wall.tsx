@@ -44,7 +44,7 @@ export function VisualizeWall() {
       <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10 bg-ink-graphite/70 p-4">
         <div className="relative h-full min-h-[490px] overflow-hidden rounded-[1.1rem]">
           <Image
-            src="/media/placeholders/interior-preview.jpg"
+            src="/media/placeholders/modern-living-room-blank-walls.jpg"
             alt="Interior wall mockup preview"
             fill
             sizes="(min-width:1024px) 55vw, 100vw"
@@ -59,7 +59,7 @@ export function VisualizeWall() {
             className="absolute left-[12%] top-[18%] h-[42%] w-[54%] overflow-hidden rounded-[1rem] border border-ink-paper/24 shadow-[0_30px_80px_rgba(0,0,0,0.38)]"
           >
             <Image
-              src="/media/placeholders/art-wall.jpg"
+              src="/media/placeholders/abstract-acrylic-painting-macro.jpg"
               alt="Preview artwork overlay"
               fill
               sizes="500px"

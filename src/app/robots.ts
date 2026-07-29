@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://inkblend.ca/sitemap.xml",
+    // www, not apex — the apex 308-redirects here.
+    sitemap: "https://www.inkblend.ca/sitemap.xml",
   };
 }

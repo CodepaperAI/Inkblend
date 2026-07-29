@@ -17,7 +17,7 @@ export default function PortfolioPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/botanical-wall.jpg"
+            src="/media/placeholders/handpainted-crane-mural-restaurant.jpg"
             alt="Wall mural portfolio"
             fill
             sizes="100vw"

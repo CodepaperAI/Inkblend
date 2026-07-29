@@ -28,6 +28,10 @@ export async function POST(request: Request) {
       "timeline",
       "surface",
       "notes",
+      // Which page produced this lead. An open array rather than a closed enum,
+      // so a new landing page can never be silently rejected — but the field
+      // still has to be listed here or the value is dropped on the floor.
+      "sourcePage",
     ].map((field) => [field, String(formData.get(field) || "").trim()]),
   );
 
@@ -53,6 +57,10 @@ export async function POST(request: Request) {
   const subject = `Ink Blend quote request from ${lead.name}`;
   const text = [
     subject,
+    "",
+    // First line of the email, deliberately. This is the number that tells you
+    // which pages are actually earning their keep.
+    `Source page: ${lead.sourcePage || "not recorded"}`,
     "",
     `Name: ${lead.name}`,
     `Phone: ${lead.phone}`,
@@ -84,14 +92,25 @@ export async function POST(request: Request) {
   const from = process.env.QUOTE_FROM_EMAIL || "Ink Blend <onboarding@resend.dev>";
 
   if (!apiKey) {
-    console.info("Ink Blend quote lead received without RESEND_API_KEY:", {
-      ...lead,
-      attachments: attachments.map(({ name, size, type }) => ({ name, size, type })),
-    });
+    // Do NOT log the lead body. It contains a name, phone number and email
+    // address, and this previously wrote all of it to the server console.
+    // Log only what is needed to diagnose the misconfiguration.
+    console.error(
+      `Quote submission could not be delivered: RESEND_API_KEY is not set. ` +
+        `Source page: ${lead.sourcePage || "not recorded"}, ` +
+        `${attachments.length} attachment(s).`,
+    );
 
-    return NextResponse.json({
-      message: "Quote request received. Ink Blend will follow up soon.",
-    });
+    // Previously this returned a success message, so the visitor was told their
+    // request had been received while it was silently discarded. Tell the truth
+    // and give them a route that works.
+    return NextResponse.json(
+      {
+        message:
+          "We could not deliver your request just now. Please email hello@inkblend.ca or use WhatsApp and we will pick it up.",
+      },
+      { status: 503 },
+    );
   }
 
   const emailAttachments = await Promise.all(

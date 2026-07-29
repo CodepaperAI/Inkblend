@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { QuoteForm } from "@/components/quote-form";
 import { Reveal } from "@/components/reveal";
+import { RenderTool } from "@/components/tools/render-tool";
 
 export const metadata: Metadata = {
   title: "Get a Quote",
@@ -11,13 +12,25 @@ export const metadata: Metadata = {
     "Request an Ink Blend quote by uploading wall photos, measurements, budget range, timeline, and project notes.",
 };
 
-export default function GetQuotePage() {
+/**
+ * `searchParams` is read here, on the server, and passed down as props. The
+ * tools link in with ?source=&notes= so a visitor arrives with their result
+ * already in the form. Reading the params inside QuoteForm instead would force
+ * every page rendering that form into client rendering.
+ */
+export default async function GetQuotePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ source?: string; notes?: string }>;
+}) {
+  const { source, notes } = await searchParams;
+
   return (
     <>
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/botanical-wall.jpg"
+            src="/media/placeholders/handpainted-crane-mural-restaurant.jpg"
             alt="Request a wall printing quote"
             fill
             sizes="100vw"
@@ -62,7 +75,28 @@ export default function GetQuotePage() {
 
       <section className="section-pad">
         <div className="page-shell">
-          <QuoteForm />
+          <QuoteForm sourcePage={source} prefillNotes={notes} />
+        </div>
+      </section>
+
+      {/* Not everyone arrives from a tool. Give them the planner here. */}
+      <section className="section-pad bg-ink-paper/[0.025]">
+        <div className="page-shell">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
+              Not sure what to put in the budget field?
+            </p>
+            <h2 className="mt-4 max-w-3xl font-display text-4xl leading-none text-ink-paper sm:text-5xl">
+              Work out what will move your number first
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-ink-paper/62">
+              Five questions, and you will know which parts of your project actually drive the price
+              — plus a comparison that runs on quotes you have already been given.
+            </p>
+          </Reveal>
+          <div className="mt-8">
+            <RenderTool toolId="quote-planner" sourcePage="get-quote" compact />
+          </div>
         </div>
       </section>
     </>

@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Instrument_Serif, Manrope } from "next/font/google";
 
@@ -20,7 +22,10 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inkblend.ca"),
+  // MUST be the www host. inkblend.ca 308-redirects to www.inkblend.ca, so
+  // canonicalising to the apex points every page at a redirect — the single
+  // most common way a site quietly undermines its own indexing.
+  metadataBase: new URL("https://www.inkblend.ca"),
   title: {
     default: "Ink Blend | Premium UV Wall Printing Across Canada",
     template: "%s | Ink Blend",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ink Blend | Transform Any Surface Into Art",
     description: siteConfig.description,
-    url: "https://inkblend.ca",
+    url: "https://www.inkblend.ca",
     siteName: "Ink Blend",
     images: [
       {
@@ -68,6 +73,15 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <SiteShell>{children}</SiteShell>
+        {/*
+          The site previously had no analytics of any kind — no GA4, no gtag, no
+          dataLayer — so no page could be shown to have produced anything.
+          Speed Insights matters here specifically because media is served
+          unoptimised (next.config.ts sets images.unoptimized), which is a real
+          Core Web Vitals exposure worth measuring rather than assuming.
+        */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

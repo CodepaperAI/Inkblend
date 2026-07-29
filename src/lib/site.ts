@@ -43,9 +43,9 @@ export const navItems = [
 ];
 
 export const heroImages = [
-  "/media/placeholders/botanical-wall.jpg",
-  "/media/placeholders/restaurant-mural.jpg",
-  "/media/placeholders/luxury-room.jpg",
+  "/media/placeholders/handpainted-crane-mural-restaurant.jpg",
+  "/media/placeholders/handpainted-brick-mural-bar.jpg",
+  "/media/placeholders/cgi-styled-living-room-blank-wall.jpg",
 ];
 
 export const trustStats = [
@@ -104,7 +104,7 @@ export const services = [
     description:
       "High-detail wall printing for commercial and residential interiors that need a permanent, vivid alternative to wallpaper or vinyl.",
     image:
-      "/media/placeholders/botanical-wall.jpg",
+      "/media/placeholders/handpainted-crane-mural-restaurant.jpg",
     icon: Printer,
     benefits: [
       "Vibrant color with crisp line detail",
@@ -140,7 +140,7 @@ export const services = [
     description:
       "Visual branding systems for customer-facing spaces that need to feel memorable, intentional, and photo-worthy.",
     image:
-      "/media/placeholders/restaurant-mural.jpg",
+      "/media/placeholders/handpainted-brick-mural-bar.jpg",
     icon: BadgeCheck,
     benefits: [
       "Branded spaces that photograph well",
@@ -171,7 +171,7 @@ export const services = [
     description:
       "Custom murals designed to match the room, audience, story, and mood of the space.",
     image:
-      "/media/placeholders/art-wall.jpg",
+      "/media/placeholders/abstract-acrylic-painting-macro.jpg",
     icon: Palette,
     benefits: [
       "Made-to-measure artwork",
@@ -202,7 +202,7 @@ export const services = [
     description:
       "Surface printing options for projects that need durable high-resolution graphics across more than a standard wall.",
     image:
-      "/media/placeholders/office-branding.jpg",
+      "/media/placeholders/glass-partition-office-corridor.jpg",
     icon: Layers3,
     benefits: [
       "Flexible applications for multiple materials",
@@ -233,7 +233,7 @@ export const services = [
     description:
       "Graphics that integrate with finishes, lighting, furniture, and the overall interior story.",
     image:
-      "/media/placeholders/interior-preview.jpg",
+      "/media/placeholders/modern-living-room-blank-walls.jpg",
     icon: GalleryHorizontalEnd,
     benefits: [
       "Supports design presentations and approvals",
@@ -264,7 +264,7 @@ export const services = [
     description:
       "Premium visual statements that make the main wall of a space feel custom, memorable, and finished.",
     image:
-      "/media/placeholders/luxury-feature.jpg",
+      "/media/placeholders/concrete-feature-wall-dining-room.jpg",
     icon: Sparkles,
     benefits: [
       "Creates a clear first impression",
@@ -295,7 +295,7 @@ export const services = [
     description:
       "From brand logos to personalized home art, Ink Blend prepares visuals for high-resolution, large-format production.",
     image:
-      "/media/placeholders/custom-artwork.jpg",
+      "/media/placeholders/curved-modern-building-exterior.jpg",
     icon: PanelTop,
     benefits: [
       "Turns personal or business ideas into print-ready artwork",
@@ -325,7 +325,7 @@ export const portfolioProjects = [
     category: "Cafes",
     location: "Toronto, ON",
     image:
-      "/media/placeholders/botanical-wall.jpg",
+      "/media/placeholders/handpainted-crane-mural-restaurant.jpg",
     summary: "A warm dining wall concept with layered botanical artwork.",
   },
   {
@@ -333,7 +333,7 @@ export const portfolioProjects = [
     category: "Restaurants",
     location: "Mississauga, ON",
     image:
-      "/media/placeholders/restaurant-mural.jpg",
+      "/media/placeholders/handpainted-brick-mural-bar.jpg",
     summary: "A dramatic hospitality wall designed for social content.",
   },
   {
@@ -341,7 +341,7 @@ export const portfolioProjects = [
     category: "Offices",
     location: "Brampton, ON",
     image:
-      "/media/placeholders/office-branding.jpg",
+      "/media/placeholders/glass-partition-office-corridor.jpg",
     summary: "Reception and meeting-zone graphics for a modern workplace.",
   },
   {
@@ -349,7 +349,7 @@ export const portfolioProjects = [
     category: "Retail Stores",
     location: "Vaughan, ON",
     image:
-      "/media/placeholders/salon-backdrop.jpg",
+      "/media/placeholders/spa-facial-treatment.jpg",
     summary: "A polished beauty-space print wall for client photos.",
   },
   {
@@ -357,7 +357,7 @@ export const portfolioProjects = [
     category: "Residential Projects",
     location: "Oakville, ON",
     image:
-      "/media/placeholders/kids-room.jpg",
+      "/media/placeholders/wood-panelled-hallway-framed-art.jpg",
     summary: "Personalized home mural artwork for a playful bedroom wall.",
   },
   {
@@ -365,7 +365,7 @@ export const portfolioProjects = [
     category: "Religious Art",
     location: "Hamilton, ON",
     image:
-      "/media/placeholders/custom-artwork.jpg",
+      "/media/placeholders/curved-modern-building-exterior.jpg",
     summary: "A respectful cultural art concept prepared for large scale.",
   },
   {
@@ -373,7 +373,7 @@ export const portfolioProjects = [
     category: "Luxury Interiors",
     location: "Niagara, ON",
     image:
-      "/media/placeholders/luxury-feature.jpg",
+      "/media/placeholders/concrete-feature-wall-dining-room.jpg",
     summary: "A high-impact corridor wall with premium hospitality energy.",
   },
   {
@@ -381,7 +381,7 @@ export const portfolioProjects = [
     category: "Event Branding",
     location: "Canada",
     image:
-      "/media/placeholders/event-backdrop.jpg",
+      "/media/placeholders/banquet-table-setting.jpg",
     summary: "A branded surface concept for campaign photos and guest content.",
   },
 ];

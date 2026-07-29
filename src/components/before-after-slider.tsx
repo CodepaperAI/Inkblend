@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 export function BeforeAfterSlider({
-  before = "/media/placeholders/blank-wall-before.jpg",
-  after = "/media/placeholders/botanical-wall.jpg",
+  before = "/media/placeholders/cgi-render-furnished-living-room.jpg",
+  after = "/media/placeholders/handpainted-crane-mural-restaurant.jpg",
 }: {
   before?: string;
   after?: string;

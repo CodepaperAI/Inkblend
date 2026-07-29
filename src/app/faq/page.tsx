@@ -17,7 +17,7 @@ export default function FaqPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/art-wall.jpg"
+            src="/media/placeholders/abstract-acrylic-painting-macro.jpg"
             alt="Custom wall art"
             fill
             sizes="100vw"

@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/luxury-room.jpg"
+            src="/media/placeholders/cgi-styled-living-room-blank-wall.jpg"
             alt="Premium interior wall"
             fill
             sizes="100vw"
