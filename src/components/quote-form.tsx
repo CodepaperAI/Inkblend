@@ -3,11 +3,15 @@
 import { track } from "@vercel/analytics";
 import { CheckCircle2, Loader2, Upload } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
+import TurnstileWidget, { type TurnstileHandle } from "@/components/TurnstileWidget";
+import { formGuardConfig } from "@/lib/form-guard.config";
 import { siteConfig } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 /**
  * `sourcePage` is what makes a lead attributable to the page that produced it.
@@ -42,6 +46,19 @@ export function QuoteForm({
   const resolvedSource = sourcePage ?? pathname ?? "unknown";
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileHandle>(null);
+  // Unique per mount: this form renders up to five times across the site, and
+  // two on one page would otherwise collide on the label's htmlFor target.
+  const honeypotId = useId();
+
+  // Set on mount, never during render. These pages are prerendered, so a
+  // build-time timestamp would make every visitor look like an instant
+  // submitter and trip the timing check.
+  const mountedAtRef = useRef(0);
+  useEffect(() => {
+    mountedAtRef.current = Date.now();
+  }, []);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,6 +67,12 @@ export function QuoteForm({
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    // The honeypot rides along as a normal named input. These two do not.
+    formData.set("turnstileToken", turnstileToken);
+    if (mountedAtRef.current) {
+      formData.set("elapsedMs", String(Date.now() - mountedAtRef.current));
+    }
 
     try {
       const response = await fetch("/api/quote", {
@@ -74,6 +97,10 @@ export function QuoteForm({
           ? error.message
           : "Something went wrong. Please try WhatsApp or call directly.",
       );
+      // Turnstile tokens are single-use — without a reset the visitor's retry
+      // would replay a spent token and fail again.
+      setTurnstileToken("");
+      turnstileRef.current?.reset();
     }
   }
 
@@ -153,10 +180,49 @@ export function QuoteForm({
         />
       </label>
 
+      {/*
+        Honeypot. Off-screen rather than display:none — some bots skip fields
+        that are outright hidden but fill anything readable in the DOM.
+        aria-hidden and tabIndex keep it away from screen readers and the tab
+        order, so no human can reach it. Uncontrolled, so form.reset() clears it
+        and FormData carries it without any React state.
+      */}
+      <div
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", top: "auto", height: 0, width: 0, overflow: "hidden" }}
+      >
+        <label htmlFor={honeypotId}>Company (leave this field empty)</label>
+        <input id={honeypotId} type="text" name="company" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      {TURNSTILE_SITE_KEY ? (
+        <TurnstileWidget
+          ref={turnstileRef}
+          siteKey={TURNSTILE_SITE_KEY}
+          action={formGuardConfig.action}
+          contactLabel={formGuardConfig.contactLabel}
+          contactHref={formGuardConfig.contactHref}
+          // This form sits on a near-black panel; Cloudflare's light default
+          // would drop a white box into the middle of it.
+          theme="dark"
+          onVerify={setTurnstileToken}
+          onUnavailable={() => setTurnstileToken("")}
+          className="mt-6"
+        />
+      ) : (
+        <p className="mt-6 rounded-2xl border border-ink-red/30 bg-ink-red/10 px-4 py-3 text-sm text-red-100">
+          The quote form is not fully configured. Please email{" "}
+          <a href={formGuardConfig.contactHref} className="underline">
+            {formGuardConfig.contactLabel}
+          </a>
+          .
+        </p>
+      )}
+
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <button
           type="submit"
-          disabled={status === "submitting"}
+          disabled={status === "submitting" || !turnstileToken}
           className="btn-primary justify-center disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "submitting" ? (

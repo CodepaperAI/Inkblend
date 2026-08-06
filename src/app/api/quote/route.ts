@@ -1,10 +1,69 @@
 import { NextResponse } from "next/server";
 
+import { formGuardConfig } from "@/lib/form-guard.config";
+import { runGuards, verificationFailedMessage } from "@/lib/form-guard/guard";
+import { hasAcceptableOrigin } from "@/lib/form-guard/origin";
+
 const requiredFields = ["name", "phone", "email", "city", "projectType", "budget"];
 const maxAttachmentBytes = 15 * 1024 * 1024;
+/**
+ * Total bytes was the only cap, so a request could carry thousands of tiny
+ * files and still pass. Each one is base64-encoded into the outbound email.
+ */
+const maxAttachmentCount = 10;
+/** Mirrors the `accept` list on the file input in quote-form.tsx. */
+const allowedAttachmentTypes = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+  "application/pdf",
+]);
+
+/** The success body, and the one a silent drop has to be indistinguishable from. */
+const SUCCESS_MESSAGE = "Quote request sent. Ink Blend will follow up soon.";
+
+/**
+ * No CORS headers are emitted, so browsers reject cross-origin calls outright.
+ * The form is same-origin and needs no preflight; anything that does is not us.
+ */
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 405, headers: { Allow: "POST" } });
+}
 
 export async function POST(request: Request) {
+  // Origin is checked BEFORE the body is read. It is the only guard that needs
+  // headers alone, and request.formData() buffers the entire upload — up to
+  // 15 MB — so running it first would make an attacker's wrong Origin cost us
+  // the full transfer before we could reject it.
+  if (!hasAcceptableOrigin(request.headers, formGuardConfig)) {
+    console.warn("[form-guard] blocked layer=origin");
+    return NextResponse.json(
+      { message: verificationFailedMessage(formGuardConfig) },
+      { status: 403 },
+    );
+  }
+
   const formData = await request.formData();
+
+  // honeypot -> timing -> Turnstile. FormData values arrive as strings; the
+  // envelope reader coerces elapsedMs rather than failing the parse.
+  const verdict = await runGuards({
+    headers: request.headers,
+    fields: formData,
+    config: formGuardConfig,
+  });
+
+  if (verdict.outcome === "reject") {
+    return NextResponse.json({ message: verdict.message }, { status: verdict.status });
+  }
+
+  // Honeypot or impossible submit speed: mirror the real success response and
+  // send nothing, so a spammer learns nothing about which filter caught them.
+  if (verdict.outcome === "silent-drop") {
+    return NextResponse.json({ message: SUCCESS_MESSAGE });
+  }
 
   const missing = requiredFields.filter((field) => !String(formData.get(field) || "").trim());
 
@@ -51,6 +110,25 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { message: "Uploads are too large. Please keep files under 15 MB total." },
       { status: 413 },
+    );
+  }
+
+  if (attachments.length > maxAttachmentCount) {
+    return NextResponse.json(
+      { message: `Please attach no more than ${maxAttachmentCount} files.` },
+      { status: 413 },
+    );
+  }
+
+  // The form's `accept` list is a hint the browser enforces and a scripted
+  // client ignores, so the same restriction has to hold here. Without it any
+  // file type at all was base64-encoded straight into the outbound email.
+  const rejected = attachments.filter((file) => !allowedAttachmentTypes.has(file.type));
+
+  if (rejected.length > 0) {
+    return NextResponse.json(
+      { message: "Attachments must be JPG, PNG, WEBP, HEIC, or PDF." },
+      { status: 415 },
     );
   }
 
@@ -159,7 +237,5 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({
-    message: "Quote request sent. Ink Blend will follow up soon.",
-  });
+  return NextResponse.json({ message: SUCCESS_MESSAGE });
 }
