@@ -15,8 +15,16 @@
 
 import { readAntiAbuseEnvelope, type FieldSource } from "./anti-abuse";
 import { allowedHosts, getClientIp, hasAcceptableOrigin } from "./origin";
-import { verifyTurnstileToken } from "./turnstile";
+import { verifyTurnstileToken, type TurnstileResult } from "./turnstile";
 import type { FormGuardConfig } from "./types";
+
+/**
+ * Narrowing a discriminated union on `!result.ok` needs strictNullChecks, and
+ * this core is vendored into repos that do not all enable it — Falcon Pest
+ * Control has `strict: false`, where TypeScript cannot see past `ok: true` and
+ * the build fails on `result.reason`. An explicit cast reads the same in both.
+ */
+type TurnstileFailure = Extract<TurnstileResult, { ok: false }>;
 
 export type GuardLayer = "origin" | "honeypot" | "timing" | "turnstile";
 
@@ -95,8 +103,9 @@ export const runGuards = async ({
   );
 
   if (!turnstile.ok) {
+    const failure = turnstile as TurnstileFailure;
     // Reason codes are Cloudflare's taxonomy plus our own; no submitter data.
-    console.warn(`[form-guard] blocked layer=turnstile reason=${turnstile.reason}`, turnstile.detail ?? "");
+    console.warn(`[form-guard] blocked layer=turnstile reason=${failure.reason}`, failure.detail ?? "");
     return {
       outcome: "reject",
       status: 403,
