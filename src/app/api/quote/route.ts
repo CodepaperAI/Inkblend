@@ -45,7 +45,16 @@ export async function POST(request: Request) {
     );
   }
 
-  const formData = await request.formData();
+  // request.formData() throws when the body is not form-encoded, and that threw
+  // uncaught: any junk POST — a bot probing with JSON, say — returned a 500
+  // framework error page rather than a controlled response.
+  let formData: FormData;
+
+  try {
+    formData = await request.formData();
+  } catch {
+    return NextResponse.json({ message: "Could not read the submitted form." }, { status: 400 });
+  }
 
   // honeypot -> timing -> Turnstile. FormData values arrive as strings; the
   // envelope reader coerces elapsedMs rather than failing the parse.
