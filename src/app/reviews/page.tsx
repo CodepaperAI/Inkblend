@@ -19,14 +19,16 @@ export default function ReviewsPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/media/placeholders/cgi-render-furnished-living-room.jpg"
-            alt="Finished living room with a printed feature wall"
+            src="/media/placeholders/handpainted-crane-mural-restaurant.jpg"
+            alt="Hand-painted crane mural on a restaurant wall"
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-72"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
+          {/* Cream wash on the left keeps the heading readable; the photo shows at full strength on the right. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ink-black/92 via-ink-black/60 to-ink-black/0" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-black to-transparent" />
         </div>
         <div className="page-shell relative">
           <Reveal>
