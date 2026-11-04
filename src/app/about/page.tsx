@@ -100,7 +100,7 @@ export default function AboutPage() {
             ["Creative Direction", "Mockups and concepts that match the brand and room."],
             ["Modern Printing", "Durable UV printing as a custom alternative to wallpaper."],
           ].map(([title, body]) => (
-            <Reveal key={title}>
+            <Reveal key={title} fill>
               <article className="min-h-[260px] rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7">
                 <p className="font-display text-4xl text-ink-paper">{title}</p>
                 <p className="mt-5 text-base leading-8 text-ink-paper/70">{body}</p>

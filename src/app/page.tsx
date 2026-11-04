@@ -151,8 +151,8 @@ export default async function Home() {
 
       <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div>
+          <div className="grid gap-10">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <SectionHeading
                 eyebrow="Process"
                 title="A polished workflow from photo to print."
@@ -160,7 +160,7 @@ export default async function Home() {
                 Ink Blend keeps projects quote-ready, visual, and organized from
                 the first wall photo through final production.
               </SectionHeading>
-              <Reveal className="mt-8">
+              <Reveal>
                 <Link href="/process" className="btn-primary">
                   See Process
                   <ArrowRight size={18} />
@@ -225,7 +225,7 @@ export default async function Home() {
             />
             <div className="mt-12 grid gap-5 md:grid-cols-3">
               {blogPosts.map((post) => (
-                <Reveal key={post.slug}>
+                <Reveal key={post.slug} fill>
                   <Link
                     href={`/blog/${post.slug}`}
                     className="group block min-h-[260px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-gold/40"

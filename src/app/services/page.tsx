@@ -65,7 +65,7 @@ export default function ServicesPage() {
           </SectionHeading>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {services.map((service) => (
-              <Reveal key={service.slug}>
+              <Reveal key={service.slug} fill>
                 <Link
                   href={getServiceHref(service.slug)}
                   className="group flex min-h-[220px] flex-col justify-between rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 transition hover:-translate-y-1 hover:border-ink-red/40"

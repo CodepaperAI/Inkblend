@@ -116,7 +116,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="section-pad bg-ink-paper/[0.025]">
         <div className="page-shell grid gap-8 lg:grid-cols-4">
           {service.process.map((step, index) => (
-            <Reveal key={step}>
+            <Reveal key={step} fill>
               <article className="min-h-[230px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
                 <p className="font-display text-5xl text-ink-paper/12">0{index + 1}</p>
                 <h3 className="mt-5 font-display text-3xl text-ink-paper">{step}</h3>

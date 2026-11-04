@@ -5,7 +5,7 @@ import { processSteps } from "@/lib/site";
 
 export function ProcessTimeline() {
   return (
-    <Stagger className="grid gap-4 lg:grid-cols-4">
+    <Stagger className="grid items-stretch gap-4 lg:grid-cols-4">
       {processSteps.map((step, index) => (
         <StaggerItem key={step.title}>
           <article className="relative min-h-[250px] rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">

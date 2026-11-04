@@ -58,7 +58,7 @@ export default function ContactPage() {
               { Icon: MapPin, label: "Service Area", value: siteConfig.address, href: siteConfig.mapHref },
               { Icon: Clock, label: "Hours", value: siteConfig.hours, href: "#" },
             ].map(({ Icon, label, value, href }) => (
-              <Reveal key={label}>
+              <Reveal key={label} fill>
                 <a
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}

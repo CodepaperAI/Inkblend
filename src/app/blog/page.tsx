@@ -106,7 +106,7 @@ export default async function BlogPage() {
                 const category = post.categories?.[0];
 
                 return (
-                  <Reveal key={post.slug}>
+                  <Reveal key={post.slug} fill>
                     <Link
                       href={`/blog/${post.slug}`}
                       className="group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] transition hover:-translate-y-1 hover:border-ink-gold/40"

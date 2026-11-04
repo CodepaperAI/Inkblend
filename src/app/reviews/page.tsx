@@ -46,7 +46,7 @@ export default function ReviewsPage() {
       <section className="section-pad">
         <div className="page-shell grid gap-6 md:grid-cols-2">
           {[reviews.slice(0, 3), reviews.slice(3)].map((column, i) => (
-            <Reveal key={i}>
+            <Reveal key={i} fill>
               <div className="h-full divide-y divide-ink-paper/10 rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] px-6 sm:px-8">
                 {column.map((review) => (
                   <ReviewCard key={review.name} review={review} plain className="py-7" />
