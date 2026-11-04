@@ -12,10 +12,6 @@ import type { LandingPage } from "./types";
  *
  * DELIBERATE OMISSIONS — do not "fix" these by inventing values:
  *
- *  • `telephone` — siteConfig.phone is (647) 555-0148, inside the NANP block
- *    reserved for fictional numbers. Putting a fake number into structured data
- *    feeds it directly to Google's entity systems, which is materially worse
- *    than merely displaying it. Add it here once a real number exists.
  *  • `address` / LocalBusiness — Ink Blend publishes no street address. A
  *    LocalBusiness node without a real PostalAddress is not useful, and
  *    inventing one would be worse. Switch Organization → LocalBusiness and add
@@ -35,6 +31,8 @@ function organization() {
     name: "Ink Blend",
     url: SITE_URL,
     logo: `${SITE_URL}/brand/logo-web.png`,
+    telephone: "+1-647-915-8722",
+    email: "hello@inkblend.ca",
     description:
       "Direct-to-wall UV printing and surface graphics for commercial and residential interiors.",
   };

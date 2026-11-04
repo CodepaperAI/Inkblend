@@ -27,10 +27,30 @@ Site: https://www.inkblend.ca (Next.js 16 on Vercel). Note: the audit workbook r
 
 ## Remaining issues / next actions
 
-1. **Placeholder contact details (high):** phone is `+1 (647) 555-0148` (a reserved 555 number), the address is generic, the map link is `maps.google.com/?q=Canada`, and Instagram/TikTok link to the platforms' home pages. Replace with real values in `src/lib/site.ts`, then add `telephone`/`sameAs` to the Organization schema. Needs the client.
+1. **Placeholder contact details (high):** phone is now the real 647-915-8722 (done 2026-11-05). Still placeholder: the address is generic, the map link is `maps.google.com/?q=Canada`, and Instagram/TikTok link to the platforms' home pages. Replace with real values in `src/lib/site.ts`, then add `telephone`/`sameAs` to the Organization schema. Needs the client.
 2. **Blog pages not verifiable locally:** blog content comes from the Uplift API and needs `UPLIFT_API_TOKEN` (set in Vercel only). Blog title/description clamps are unit-checked but should be spot-checked on the deployed site.
 3. **Form delivery not tested end to end:** submitting would send a real email via Resend. Test once on the deployed site with a real inbox.
 4. **Analytics / conversion tracking:** only Vercel Analytics and Speed Insights are installed; there is no GA4/GTM, and no conversion events on the quote form or WhatsApp/call CTAs. Needs the client's GA4 or GTM ID.
 5. **Portfolio content is placeholder:** project images are stock "placeholders" with generic captions. Replace with real work.
 6. **Residual Lighthouse notes:** ~50 KiB unused JS and ~14 KiB legacy JS from framework/framer-motion; low impact.
 7. **Mobile LCP** is the hero image (about 3 s in simulated throttling). Serving a smaller, purpose-cropped mobile hero would reduce it further.
+
+
+## 2026-11-05 — Revamp + "Client Website Ranking Checklist" pass
+
+Done in code:
+- Phone replaced everywhere with 647-915-8722 (header, hero, footer, contact, floating button, WhatsApp link, schema, llms.txt). Click-to-call in the mobile header and in every landing-page hero.
+- Design revamp: new paper/ink/vermilion palette, solid buttons, split hero with an answer-first intro, real image-first layout, mobile call button.
+- Phase 2: hub pages `/wall-printing` and `/industries` (previously breadcrumb schema pointed at 404s); visible breadcrumbs + BreadcrumbList on every page.
+- Phase 5/6: LocalBusiness/ProfessionalService schema sitewide with phone, hours, areaServed (no invented address); FAQPage on service pages; robots.txt explicitly allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, Applebot-Extended; `/llms.txt`; sitemap includes new hubs.
+- Phase 8: call, WhatsApp and email clicks tracked site-wide (Vercel Analytics events); existing CTA/tool events kept.
+
+Needs the client or a person (not fabricated):
+- **Proof assets (Phase 1.1/3):** licences, insurance, certifications, years in business, named team with photos, real review counts. None exist on the site yet.
+- **Real job photography:** images are still stock placeholders; checklist calls this a trust and conversion tax.
+- **Pricing ranges and first-party stats (Phase 3/7):** no price guidance is published; do not invent. Add real ranges and job data for quotable blocks.
+- **Google Business Profile, citations, reviews (Phase 5):** GBP, Bing/Apple/Yelp/BBB listings must use the same name and phone 647-915-8722; then add `address`, `geo`, `sameAs` and AggregateRating (only with visible reviews) to the schema.
+- **GA4 + call tracking (Phase 8):** needs a GA4/GTM ID. Search Console is verified; submit the sitemap.
+- **Keyword-to-URL map and competitor audit (Phase 1.2/1.3):** research deliverable, not code.
+- **City pages (Phase 2.2):** six exist; each needs real local jobs/reviews before adding more.
+- **GEO tracking (Phase 7):** set up UpliftAI baseline after launch.

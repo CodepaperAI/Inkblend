@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { CtaBand } from "@/components/cta-band";
-import { JsonLd, serviceJsonLd } from "@/components/json-ld";
+import { JsonLd, faqJsonLd, serviceJsonLd } from "@/components/json-ld";
 import { QuoteForm } from "@/components/quote-form";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
-import { services } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -46,6 +46,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <>
       <JsonLd data={serviceJsonLd(service)} />
+      {service.faqs.length > 0 && <JsonLd data={faqJsonLd(service.faqs)} />}
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
@@ -74,9 +75,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                 Get a Quote
                 <ArrowRight size={18} />
               </Link>
-              <Link href="/portfolio" className="btn-secondary justify-center">
-                View Examples
-              </Link>
+              <a href={siteConfig.phoneHref} className="btn-secondary justify-center">
+                <Phone size={17} />
+                Call {siteConfig.phone}
+              </a>
             </div>
           </Reveal>
           <Reveal className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.05] p-6 backdrop-blur-xl">
