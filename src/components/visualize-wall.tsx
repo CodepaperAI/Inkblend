@@ -41,36 +41,42 @@ export function VisualizeWall() {
         </div>
       </div>
 
-      <div className="relative min-h-[520px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10 bg-ink-graphite/70 p-4">
-        <div className="relative h-full min-h-[490px] overflow-hidden rounded-[1.1rem]">
+      <div className="grid place-items-center rounded-[1.5rem] border border-ink-paper/10 bg-ink-graphite/70 p-4">
+        {/*
+          The box is locked to the photo's crop (1125 x 1400 of the 1125 x 2000
+          original, top-aligned) so the percentages below land on the blank wall
+          at every width. The artwork is a framed print mounted on that wall,
+          not a translucent overlay.
+        */}
+        <div className="relative aspect-[1125/1400] w-full max-w-[560px] overflow-hidden rounded-[1.1rem]">
           <Image
-            src="/media/placeholders/modern-living-room-blank-walls.jpg"
-            alt="Interior wall mockup preview"
+            src="/media/placeholders/cgi-styled-living-room-blank-wall.jpg"
+            alt="Living room with a large blank wall ready for a printed mural"
             fill
-            sizes="(min-width:1024px) 55vw, 100vw"
-            className="object-cover opacity-74"
+            sizes="(min-width:1024px) 560px, 100vw"
+            className="object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-black/36 via-transparent to-ink-black/10" />
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 28 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="absolute left-[12%] top-[18%] h-[42%] w-[54%] overflow-hidden rounded-[1rem] border border-ink-paper/24 shadow-[0_30px_80px_rgba(0,0,0,0.38)]"
+            className="absolute left-[24%] top-[9%] h-[36%] w-[56%] overflow-hidden rounded-[2px] border-[6px] border-[#fbf7ef] shadow-[0_18px_40px_rgba(23,18,15,0.35),0_2px_4px_rgba(23,18,15,0.25)]"
           >
             <Image
               src="/media/placeholders/abstract-acrylic-painting-macro.jpg"
-              alt="Preview artwork overlay"
+              alt="Sample artwork mounted on the wall"
               fill
-              sizes="500px"
-              className="object-cover mix-blend-screen"
+              sizes="320px"
+              className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/12 via-transparent to-black/12" />
           </motion.div>
-          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
             {previewStyles.map((style) => (
               <span
                 key={style}
-                className="rounded-full border border-ink-paper/12 bg-ink-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-paper/70 backdrop-blur"
+                className="rounded-full bg-ink-black/90 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-paper shadow-sm"
               >
                 {style}
               </span>
