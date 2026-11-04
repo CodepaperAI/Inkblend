@@ -32,7 +32,7 @@ function organization() {
     name: "Ink Blend",
     url: SITE_URL,
     logo: `${SITE_URL}/brand/logo-web.png`,
-    telephone: "+1-647-915-8722",
+    telephone: ["+1-647-915-8722", "+1-647-870-8722"],
     email: "hello@inkblend.ca",
     description:
       "Direct-to-wall UV printing and surface graphics for commercial and residential interiors.",

@@ -49,7 +49,7 @@ Needs the client or a person (not fabricated):
 - **Proof assets (Phase 1.1/3):** licences, insurance, certifications, years in business, named team with photos, real review counts. None exist on the site yet.
 - **Real job photography:** images are still stock placeholders; checklist calls this a trust and conversion tax.
 - **Pricing ranges and first-party stats (Phase 3/7):** no price guidance is published; do not invent. Add real ranges and job data for quotable blocks.
-- **Google Business Profile, citations, reviews (Phase 5):** GBP, Bing/Apple/Yelp/BBB listings must use the same name and phone 647-915-8722; then add `address`, `geo`, `sameAs` and AggregateRating (only with visible reviews) to the schema.
+- **Google Business Profile, citations, reviews (Phase 5):** GBP, Bing/Apple/Yelp/BBB listings must use the same name and phones 647-915-8722 (primary) and 647-870-8722; then add `address`, `geo`, `sameAs` and AggregateRating (only with visible reviews) to the schema.
 - **GA4 + call tracking (Phase 8):** needs a GA4/GTM ID. Search Console is verified; submit the sitemap.
 - **Keyword-to-URL map and competitor audit (Phase 1.2/1.3):** research deliverable, not code.
 - **City pages (Phase 2.2):** six exist; each needs real local jobs/reviews before adding more.

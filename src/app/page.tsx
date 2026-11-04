@@ -287,9 +287,15 @@ export default async function Home() {
                 <ArrowRight size={18} />
               </Link>
               <a href={siteConfig.phoneHref} className="btn-secondary justify-center">
-                Call Now
+                Call {siteConfig.phone}
               </a>
             </div>
+            <p className="mt-4 text-sm font-semibold text-ink-paper/75">
+              Second line:{" "}
+              <a href={siteConfig.phone2Href} className="underline underline-offset-4 hover:text-ink-red">
+                {siteConfig.phone2}
+              </a>
+            </p>
           </Reveal>
         </div>
       </section>

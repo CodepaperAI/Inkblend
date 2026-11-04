@@ -17,7 +17,7 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { cityNav, industryNav, toolNav } from "@/data/landingPages/nav";
-import { navItems, siteConfig } from "@/lib/site";
+import { navItems, phones, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -121,13 +121,16 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={siteConfig.phoneHref}
-            className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-ink-paper transition hover:text-ink-red xl:inline-flex"
-          >
-            <Phone size={16} aria-hidden />
-            {siteConfig.phone}
-          </a>
+          <div className="hidden items-center gap-2 xl:flex">
+            <Phone size={16} aria-hidden className="text-ink-red" />
+            <div className="grid text-sm font-bold leading-5 text-ink-paper">
+              {phones.map((p) => (
+                <a key={p.href} href={p.href} className="transition hover:text-ink-red">
+                  {p.number}
+                </a>
+              ))}
+            </div>
+          </div>
           <Link href="/get-quote" className="btn-primary group">
             Get Quote
             <ArrowRight size={17} className="transition group-hover:translate-x-1" />
@@ -168,6 +171,18 @@ function Header() {
               {item.label}
             </Link>
           ))}
+          <div className="mt-1 grid grid-cols-2 gap-2">
+            {phones.map((p) => (
+              <a
+                key={p.href}
+                href={p.href}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-ink-paper/12 px-3 py-3 text-sm font-bold text-ink-paper"
+              >
+                <Phone size={15} aria-hidden />
+                {p.number}
+              </a>
+            ))}
+          </div>
             <Link
               href="/get-quote"
               onClick={() => setOpen(false)}
@@ -297,9 +312,11 @@ function Footer() {
           <h3 className="footer-title">Contact</h3>
           <div className="mt-5 grid gap-3 text-sm leading-6 text-ink-paper/70">
             <span>{siteConfig.address}</span>
-            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
-              {siteConfig.phone}
-            </a>
+            {phones.map((p) => (
+              <a key={p.href} href={p.href} className="hover:text-ink-paper">
+                {p.number}
+              </a>
+            ))}
             <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-ink-paper">
               {siteConfig.email}
             </a>

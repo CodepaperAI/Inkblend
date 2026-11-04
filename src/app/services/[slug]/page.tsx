@@ -80,6 +80,12 @@ export default async function ServiceDetailPage({ params }: Props) {
                 Call {siteConfig.phone}
               </a>
             </div>
+            <p className="mt-4 text-sm font-semibold text-ink-paper/75">
+              Second line:{" "}
+              <a href={siteConfig.phone2Href} className="underline underline-offset-4 hover:text-ink-red">
+                {siteConfig.phone2}
+              </a>
+            </p>
           </Reveal>
           <Reveal className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.05] p-6 backdrop-blur-xl">
             <span className="grid size-14 place-items-center rounded-2xl bg-ink-paper text-ink-black">
