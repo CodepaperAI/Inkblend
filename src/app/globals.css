@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
+/* Gallery palette: warm paper, deep ink, vermilion accent. */
 :root {
-  --background: #efe2cc;
-  --foreground: #241812;
-  --ink-black: #efe2cc;
-  --ink-graphite: #e2cfb2;
-  --ink-paper: #241812;
-  --ink-red: #a8261f;
+  --background: #f8f4ec;
+  --foreground: #17120f;
+  --ink-black: #f8f4ec;
+  --ink-graphite: #ece4d6;
+  --ink-paper: #17120f;
+  --ink-red: #b3261e;
   --ink-gold: #7a4a12;
   --ink-pink: #7f2452;
   --ink-blue: #27346f;
@@ -37,9 +38,8 @@ html {
 body {
   min-width: 320px;
   background:
-    radial-gradient(circle at 18% 0%, rgba(200, 47, 39, 0.13), transparent 32rem),
-    radial-gradient(circle at 85% 12%, rgba(179, 111, 34, 0.16), transparent 34rem),
-    linear-gradient(180deg, #f4ead9 0%, var(--background) 42rem);
+    radial-gradient(60rem 28rem at 100% -4rem, rgba(179, 38, 30, 0.07), transparent 70%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
 }
@@ -67,8 +67,8 @@ img {
   inset: 0;
   opacity: 0.14;
   background-image:
-    linear-gradient(rgba(36, 24, 18, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(36, 24, 18, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(23, 18, 15, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 18, 15, 0.05) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: linear-gradient(to bottom, black, transparent 82%);
 }
@@ -93,28 +93,28 @@ img {
 }
 
 .btn-primary {
-  border: 1px solid rgba(36, 24, 18, 0.14);
-  background: linear-gradient(135deg, var(--ink-red), #d89533);
-  color: #fff7e8;
-  box-shadow: 0 18px 50px rgba(200, 47, 39, 0.2);
+  border: 1px solid var(--ink-red);
+  background: var(--ink-red);
+  color: #fffaf2;
+  box-shadow: 0 14px 34px rgba(179, 38, 30, 0.22);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 24px 70px rgba(179, 111, 34, 0.24);
+  background: #98201a;
+  box-shadow: 0 18px 44px rgba(179, 38, 30, 0.3);
 }
 
 .btn-secondary {
-  border: 1px solid rgba(36, 24, 18, 0.14);
-  background: rgba(255, 247, 232, 0.54);
+  border: 1.5px solid var(--ink-paper);
+  background: transparent;
   color: var(--foreground);
-  backdrop-filter: blur(18px);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  border-color: rgba(36, 24, 18, 0.28);
-  background: rgba(255, 247, 232, 0.82);
+  background: var(--ink-paper);
+  color: var(--ink-black);
 }
 
 .footer-title {
@@ -122,7 +122,7 @@ img {
   font-weight: 800;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(36, 24, 18, 0.78);
+  color: rgba(23, 18, 15, 0.78);
 }
 
 .field {
@@ -135,7 +135,7 @@ img {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(36, 24, 18, 0.72);
+  color: rgba(23, 18, 15, 0.72);
 }
 
 .field input,
@@ -143,7 +143,7 @@ img {
 .field textarea {
   width: 100%;
   border-radius: 1.05rem;
-  border: 1px solid rgba(36, 24, 18, 0.14);
+  border: 1px solid rgba(23, 18, 15, 0.14);
   background: rgba(255, 247, 232, 0.58);
   color: var(--foreground);
   outline: none;
@@ -160,7 +160,7 @@ img {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: rgba(36, 24, 18, 0.38);
+  color: rgba(23, 18, 15, 0.38);
 }
 
 .field input:focus,
@@ -189,7 +189,7 @@ img {
 .prose-content {
   font-size: 1.08rem;
   line-height: 2;
-  color: rgba(36, 24, 18, 0.68);
+  color: rgba(23, 18, 15, 0.68);
 }
 
 .prose-content p + p,
@@ -270,7 +270,7 @@ img {
 
 .prose-content code {
   padding: 0.15rem 0.4rem;
-  background: rgba(36, 24, 18, 0.08);
+  background: rgba(23, 18, 15, 0.08);
   border-radius: 0.35rem;
   font-size: 0.92em;
 }
@@ -278,7 +278,7 @@ img {
 .prose-content hr {
   margin: 2.5rem 0;
   border: 0;
-  border-top: 1px solid rgba(36, 24, 18, 0.15);
+  border-top: 1px solid rgba(23, 18, 15, 0.15);
 }
 
 .prose-content img,

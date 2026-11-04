@@ -11,9 +11,8 @@ export const formGuardConfig: FormGuardConfig = {
   honeypotField: "company",
   minElapsedMs: 3000,
   action: "quote",
-  // Email rather than `siteConfig.phone`, which is +1 (647) 555-0148 — inside
-  // the 555-01XX range reserved for fiction. Sending a blocked customer to a
-  // number that cannot ring is worse than giving them no fallback at all.
+  // Email as the fallback: a blocked submitter may be a bot, and a written
+  // channel keeps the response off the phone line.
   contactLabel: siteConfig.email,
   contactHref: `mailto:${siteConfig.email}`,
 };

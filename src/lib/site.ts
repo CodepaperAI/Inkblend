@@ -21,10 +21,10 @@ export const siteConfig = {
   description:
     "Ink Blend transforms walls and surfaces into ultra-detailed branded environments with durable UV printing, custom murals, and large-format surface graphics.",
   email: "hello@inkblend.ca",
-  phone: "+1 (647) 555-0148",
-  phoneHref: "tel:+16475550148",
+  phone: "647-915-8722",
+  phoneHref: "tel:+16479158722",
   whatsappHref:
-    "https://wa.me/16475550148?text=Hi%20Ink%20Blend%2C%20I%20would%20like%20a%20quote%20for%20a%20wall%20printing%20project.",
+    "https://wa.me/16479158722?text=Hi%20Ink%20Blend%2C%20I%20would%20like%20a%20quote%20for%20a%20wall%20printing%20project.",
   address: "Serving Ontario and custom projects across Canada",
   hours: "Mon - Sat, 9:00 AM - 6:00 PM",
   mapHref: "https://maps.google.com/?q=Canada",

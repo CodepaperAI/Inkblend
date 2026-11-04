@@ -32,6 +32,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Hub page. The four tool pages themselves come through
     // landingPagePathnames() below, along with the city and sector pages.
     "/tools",
+    "/wall-printing",
+    "/industries",
   ];
 
   return [

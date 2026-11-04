@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CheckCircle2, MessageSquare } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageSquare, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -9,6 +9,7 @@ import { CtaLink } from "@/components/landing/cta-link";
 import { StickyCta } from "@/components/landing/sticky-cta";
 import { QuoteForm } from "@/components/quote-form";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
+import { siteConfig } from "@/lib/site";
 import { iconRegistry } from "@/data/landingPages/iconRegistry";
 import type { Segment } from "@/data/landingPages/linking";
 import type { LandingPage, LandingPageSummary } from "@/data/landingPages/types";
@@ -145,22 +146,14 @@ export function LandingTemplate({
                 Get a Quote
                 <ArrowRight size={18} />
               </CtaLink>
-              {/*
-                Deliberately NOT a tel: link. siteConfig.phone is currently
-                (647) 555-0148, which sits inside the NANP block reserved for
-                fictional numbers. It is already live in the header, footer and
-                contact page; these 12 new pages must not spread it further.
-                Swap this for a click-to-call once a real number exists —
-                in-content click-to-call converts well and should be here.
-              */}
               <CtaLink
-                href="/contact"
+                href={siteConfig.phoneHref}
                 location="hero"
                 page={record.formSourceId}
                 className="btn-secondary justify-center"
               >
-                <MessageSquare size={18} />
-                Talk to the team
+                <Phone size={18} />
+                Call {siteConfig.phone}
               </CtaLink>
             </div>
           </Reveal>

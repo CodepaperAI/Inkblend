@@ -14,14 +14,43 @@ export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      // Service-area business: no storefront address is published, so none is
+      // invented. Add `address`, `geo` and `sameAs` once real values exist.
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `${SITE_URL}/#organization`,
       name: "Ink Blend",
       legalName: "Ink Blend Visual Branding",
       url: SITE_URL,
       logo: `${SITE_URL}/brand/logo-web.png`,
+      image: `${SITE_URL}/brand/logo-web.png`,
+      description:
+        "Direct-to-wall UV printing, custom murals and large-format surface graphics for commercial and residential interiors across Ontario and Canada.",
+      telephone: "+1-647-915-8722",
       email: "hello@inkblend.ca",
-      areaServed: { "@type": "Country", name: "Canada" },
+      knowsAbout: ["UV wall printing", "Custom wall murals", "Commercial wall branding", "Large-format surface printing"],
+      areaServed: [
+        ...["Brampton", "Mississauga", "Toronto", "Vaughan", "Oakville", "Hamilton", "Markham", "Kitchener", "Waterloo", "Ottawa"].map((name) => ({
+          "@type": "City",
+          name,
+        })),
+        { "@type": "Country", name: "Canada" },
+      ],
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: "09:00",
+          closes: "18:00",
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: "+1-647-915-8722",
+        email: "hello@inkblend.ca",
+        areaServed: "CA",
+        availableLanguage: ["English"],
+      },
     },
     {
       "@type": "WebSite",
@@ -55,5 +84,18 @@ export function serviceJsonLd(service: { slug: string; title: string; descriptio
     url: `${SITE_URL}/services/${service.slug}`,
     areaServed: { "@type": "Country", name: "Canada" },
     provider: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
+    })),
   };
 }

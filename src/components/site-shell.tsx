@@ -9,25 +9,49 @@ import {
   Send,
   X,
 } from "lucide-react";
+import { track } from "@vercel/analytics";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { cityNav, industryNav, toolNav } from "@/data/landingPages/nav";
 import { navItems, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function SiteShell({ children }: { children: ReactNode }) {
+  // One delegated listener so every call/WhatsApp link on the site is counted
+  // without wiring each anchor, tagged with the page it was clicked on.
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.("a");
+      const href = link?.getAttribute("href") ?? "";
+      const kind = href.startsWith("tel:")
+        ? "call_click"
+        : href.includes("wa.me/")
+          ? "whatsapp_click"
+          : href.startsWith("mailto:")
+            ? "email_click"
+            : null;
+      if (kind) track(kind, { page: window.location.pathname });
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   return (
     <div className="min-h-screen overflow-hidden bg-ink-black text-ink-paper">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" tabIndex={-1} className="outline-none">
-        {children}
-      </main>
+      <div className="relative">
+        <Breadcrumbs />
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
+      </div>
       <Footer />
       <FloatingContact />
     </div>
@@ -86,7 +110,7 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-2 transition duration-300 hover:bg-ink-paper/10 hover:text-ink-paper",
+                  "whitespace-nowrap rounded-full px-3 py-2 transition duration-300 xl:px-4 hover:bg-ink-paper/10 hover:text-ink-paper",
                   active && "bg-ink-paper text-ink-black shadow-lg shadow-ink-paper/10",
                 )}
               >
@@ -97,12 +121,26 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href={siteConfig.phoneHref}
+            className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-ink-paper transition hover:text-ink-red xl:inline-flex"
+          >
+            <Phone size={16} aria-hidden />
+            {siteConfig.phone}
+          </a>
           <Link href="/get-quote" className="btn-primary group">
             Get Quote
             <ArrowRight size={17} className="transition group-hover:translate-x-1" />
           </Link>
         </div>
 
+        <a
+          href={siteConfig.phoneHref}
+          aria-label={`Call ${siteConfig.phone}`}
+          className="ml-auto mr-2 grid size-12 place-items-center rounded-full bg-ink-red text-white lg:hidden"
+        >
+          <Phone size={20} />
+        </a>
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
