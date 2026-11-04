@@ -54,3 +54,6 @@ Needs the client or a person (not fabricated):
 - **Keyword-to-URL map and competitor audit (Phase 1.2/1.3):** research deliverable, not code.
 - **City pages (Phase 2.2):** six exist; each needs real local jobs/reviews before adding more.
 - **GEO tracking (Phase 7):** set up UpliftAI baseline after launch.
+
+## Image credits
+- `public/media/placeholders/reception-watercolour-mural.jpg`: Pexels, "Modern Reception Area with Artistic Wall Design" (https://www.pexels.com/photo/modern-reception-area-with-artistic-wall-design-39492293/), cropped. Pexels licence, no attribution required. Replace with a real Ink Blend job photo when available.

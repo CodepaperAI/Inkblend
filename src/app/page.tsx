@@ -194,8 +194,8 @@ export default async function Home() {
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-ink-paper/10 shadow-[0_30px_70px_rgba(23,18,15,0.18)]">
                 <Image
-                  src="/media/placeholders/concrete-feature-wall-dining-room.jpg"
-                  alt="Printed feature wall in a modern dining room"
+                  src="/media/placeholders/reception-watercolour-mural.jpg"
+                  alt="Teal watercolour mural behind a modern reception desk"
                   fill
                   sizes="(min-width:1024px) 50vw, 100vw"
                   className="object-cover"
