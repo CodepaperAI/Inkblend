@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { audienceSegments, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About Us",
   description:
     "Learn about Ink Blend, a premium UV wall printing and visual branding studio serving commercial and residential spaces across Canada.",
@@ -34,7 +35,7 @@ export default function AboutPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               A print studio for walls that need presence.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               {siteConfig.description}
             </p>
           </Reveal>
@@ -47,7 +48,7 @@ export default function AboutPage() {
             Ink Blend works with businesses, designers, and homeowners to make
             interiors feel intentional, branded, and visually memorable.
           </SectionHeading>
-          <Reveal className="grid gap-5 text-lg leading-9 text-ink-paper/66">
+          <Reveal className="grid gap-5 text-lg leading-9 text-ink-paper/70">
             <p>
               We specialize in UV wall printing and large-format surface
               printing for restaurants, cafes, retail stores, offices, hotels,
@@ -81,7 +82,7 @@ export default function AboutPage() {
                     <h2 className="mt-6 font-display text-3xl text-ink-paper">
                       {segment.title}
                     </h2>
-                    <p className="mt-3 text-sm leading-7 text-ink-paper/58">
+                    <p className="mt-3 text-sm leading-7 text-ink-paper/70">
                       {segment.description}
                     </p>
                   </article>
@@ -102,7 +103,7 @@ export default function AboutPage() {
             <Reveal key={title}>
               <article className="min-h-[260px] rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7">
                 <p className="font-display text-4xl text-ink-paper">{title}</p>
-                <p className="mt-5 text-base leading-8 text-ink-paper/62">{body}</p>
+                <p className="mt-5 text-base leading-8 text-ink-paper/70">{body}</p>
               </article>
             </Reveal>
           ))}

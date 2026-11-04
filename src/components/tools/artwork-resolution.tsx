@@ -148,7 +148,7 @@ export function ArtworkResolutionTool({
           hint="Be honest rather than cautious — picking closer than reality demands a much larger file for detail nobody will see."
         >
           <ChoiceGroup name="distance" value={distance} options={DISTANCE_OPTIONS} onChange={setDistance} />
-          <p className="mt-3 text-sm leading-6 text-ink-paper/58">
+          <p className="mt-3 text-sm leading-6 text-ink-paper/70">
             {activeTarget.detail} — target around {activeTarget.targetPpi} PPI.
           </p>
         </Fieldset>
@@ -159,21 +159,21 @@ export function ArtworkResolutionTool({
           <ResultPanel heading={VERDICT_COPY[result.verdict].heading} tone={VERDICT_COPY[result.verdict].tone}>
             <dl className="grid gap-4 sm:grid-cols-3">
               <div>
-                <dt className="text-sm text-ink-paper/58">At print size</dt>
+                <dt className="text-sm text-ink-paper/70">At print size</dt>
                 <dd className="mt-1 font-display text-4xl text-ink-paper">
                   {result.effectivePpi.toFixed(0)}
-                  <span className="ml-1 text-lg text-ink-paper/58">PPI</span>
+                  <span className="ml-1 text-lg text-ink-paper/70">PPI</span>
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-ink-paper/58">Target at this distance</dt>
+                <dt className="text-sm text-ink-paper/70">Target at this distance</dt>
                 <dd className="mt-1 font-display text-4xl text-ink-paper/70">
                   {result.targetPpi}
-                  <span className="ml-1 text-lg text-ink-paper/50">PPI</span>
+                  <span className="ml-1 text-lg text-ink-paper/70">PPI</span>
                 </dd>
               </div>
               <div>
-                <dt className="text-sm text-ink-paper/58">Pixels needed</dt>
+                <dt className="text-sm text-ink-paper/70">Pixels needed</dt>
                 <dd className="mt-1 font-display text-2xl leading-tight text-ink-paper/70">
                   {result.requiredWidthPx.toLocaleString()} × {result.requiredHeightPx.toLocaleString()}
                 </dd>
@@ -225,7 +225,7 @@ export function ArtworkResolutionTool({
           <ResetButton tool="artwork-resolution" onReset={reset} />
         </>
       ) : (
-        <p className="mt-6 text-sm text-ink-paper/50">
+        <p className="mt-6 text-sm text-ink-paper/70">
           Fill in the wall size and the image dimensions to see the result.
         </p>
       )}

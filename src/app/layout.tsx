@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Instrument_Serif, Manrope } from "next/font/google";
 
+import { JsonLd, organizationJsonLd } from "@/components/json-ld";
 import { SiteShell } from "@/components/site-shell";
 import { siteConfig } from "@/lib/site";
 
@@ -42,7 +43,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ink Blend | Transform Any Surface Into Art",
     description: siteConfig.description,
-    url: "https://www.inkblend.ca",
     siteName: "Ink Blend",
     images: [
       {
@@ -54,6 +54,12 @@ export const metadata: Metadata = {
     ],
     locale: "en_CA",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ink Blend | Premium UV Wall Printing Across Canada",
+    description: siteConfig.description,
+    images: ["/brand/logo-web.png"],
   },
   robots: {
     index: true,
@@ -72,6 +78,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${instrumentSerif.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full">
+        <JsonLd data={organizationJsonLd} />
         <SiteShell>{children}</SiteShell>
         {/*
           The site previously had no analytics of any kind — no GA4, no gtag, no

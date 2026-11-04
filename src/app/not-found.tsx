@@ -10,7 +10,7 @@ export default function NotFound() {
         <h1 className="mt-5 font-display text-6xl leading-none text-ink-paper">
           This wall is blank.
         </h1>
-        <p className="mt-5 text-lg leading-8 text-ink-paper/62">
+        <p className="mt-5 text-lg leading-8 text-ink-paper/70">
           The page you are looking for is not available.
         </p>
         <Link href="/" className="btn-primary mt-8">

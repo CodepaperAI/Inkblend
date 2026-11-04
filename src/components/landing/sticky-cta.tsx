@@ -54,7 +54,7 @@ export function StickyCta({ page }: { readonly page: string }) {
           type="button"
           onClick={() => setDismissed(true)}
           aria-label="Dismiss"
-          className="grid size-9 shrink-0 place-items-center rounded-full border border-ink-paper/15 text-ink-paper/60 transition hover:text-ink-paper"
+          className="grid size-9 shrink-0 place-items-center rounded-full border border-ink-paper/15 text-ink-paper/70 transition hover:text-ink-paper"
         >
           <X size={16} />
         </button>

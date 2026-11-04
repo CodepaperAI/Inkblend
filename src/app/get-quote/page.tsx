@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { RenderTool } from "@/components/tools/render-tool";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/get-quote" },
   title: "Get a Quote",
   description:
     "Request an Ink Blend quote by uploading wall photos, measurements, budget range, timeline, and project notes.",
@@ -46,7 +47,7 @@ export default async function GetQuotePage({
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Upload the wall. Ink Blend maps the next step.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               Share photos, measurements, budget range, and project notes so the
               quote conversation can start with real context.
             </p>
@@ -89,7 +90,7 @@ export default async function GetQuotePage({
             <h2 className="mt-4 max-w-3xl font-display text-4xl leading-none text-ink-paper sm:text-5xl">
               Work out what will move your number first
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-ink-paper/62">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-ink-paper/70">
               Five questions, and you will know which parts of your project actually drive the price
               — plus a comparison that runs on quotes you have already been given.
             </p>

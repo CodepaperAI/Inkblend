@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description:
     "Contact Ink Blend for premium UV wall printing, commercial visual branding, custom murals, and quote requests across Canada.",
@@ -34,7 +35,7 @@ export default function ContactPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Talk to Ink Blend about your wall.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               Send project details, ask a question, or start fast through phone
               and WhatsApp.
             </p>

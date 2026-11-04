@@ -8,7 +8,13 @@ import Link from "next/link";
 import { services } from "@/lib/site";
 import { getServiceHref } from "@/lib/utils";
 
-export function ServiceShowcase({ compact = false }: { compact?: boolean }) {
+export function ServiceShowcase({
+  compact = false,
+  headingLevel: Heading = "h3",
+}: {
+  compact?: boolean;
+  headingLevel?: "h2" | "h3";
+}) {
   const reducedMotion = useReducedMotion();
   const visibleServices = compact ? services.slice(0, 4) : services;
 
@@ -45,17 +51,17 @@ export function ServiceShowcase({ compact = false }: { compact?: boolean }) {
                   <span className="grid size-12 place-items-center rounded-2xl border border-ink-paper/12 bg-ink-paper/[0.08] text-ink-gold">
                     <Icon size={21} />
                   </span>
-                  <span className="text-xs uppercase tracking-[0.24em] text-ink-paper/44">
+                  <span className="text-xs uppercase tracking-[0.24em] text-ink-paper/70">
                     0{index + 1}
                   </span>
                 </div>
                 <p className="mt-7 text-xs font-semibold uppercase tracking-[0.26em] text-ink-red">
                   {service.eyebrow}
                 </p>
-                <h3 className="mt-3 font-display text-3xl leading-none text-ink-paper">
+                <Heading className="mt-3 font-display text-3xl leading-none text-ink-paper">
                   {service.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-ink-paper/62">
+                </Heading>
+                <p className="mt-4 text-sm leading-7 text-ink-paper/70">
                   {service.short}
                 </p>
               </div>

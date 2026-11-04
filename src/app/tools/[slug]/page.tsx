@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { fitDescription } from "@/lib/utils";
 import { notFound } from "next/navigation";
 
 import { CtaBand } from "@/components/cta-band";
@@ -24,11 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: record.title,
-    description: record.metaDescription,
+    description: fitDescription(record.metaDescription),
     alternates: { canonical: record.pathname },
     openGraph: {
       title: record.title,
-      description: record.metaDescription,
+      description: fitDescription(record.metaDescription),
       url: record.pathname,
       type: "website",
       images: [record.hero.src],

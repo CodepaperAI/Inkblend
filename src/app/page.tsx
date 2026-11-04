@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +15,10 @@ import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { VisualizeWall } from "@/components/visualize-wall";
 import { audienceSegments, citiesServed, siteConfig } from "@/lib/site";
 import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function Home() {
   const blogPosts = (await listRenderableBlogs()).slice(0, 3);
@@ -119,7 +124,7 @@ export default async function Home() {
                     <h3 className="mt-6 font-display text-3xl text-ink-paper">
                       {segment.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-ink-paper/58">
+                    <p className="mt-3 text-sm leading-7 text-ink-paper/70">
                       {segment.description}
                     </p>
                   </article>
@@ -164,7 +169,7 @@ export default async function Home() {
               {citiesServed.slice(0, 8).map((city) => (
                 <span
                   key={city}
-                  className="rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] px-4 py-2 text-center text-sm text-ink-paper/62"
+                  className="rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] px-4 py-2 text-center text-sm text-ink-paper/70"
                 >
                   {city}
                 </span>
@@ -196,7 +201,7 @@ export default async function Home() {
                     <h3 className="mt-5 font-display text-3xl leading-none text-ink-paper">
                       {post.title}
                     </h3>
-                    <p className="mt-5 text-sm leading-7 text-ink-paper/58">
+                    <p className="mt-5 text-sm leading-7 text-ink-paper/70">
                       {post.excerpt}
                     </p>
                     <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper">
@@ -236,7 +241,7 @@ export default async function Home() {
             <h2 className="mt-4 font-display text-5xl leading-none text-ink-paper">
               Send your wall. Get the next step.
             </h2>
-            <p className="mt-5 text-base leading-8 text-ink-paper/62">
+            <p className="mt-5 text-base leading-8 text-ink-paper/70">
               Start with a few photos, measurements, project type, and budget
               range. Ink Blend can respond with practical guidance and quote
               direction.

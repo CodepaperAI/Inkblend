@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CtaBand } from "@/components/cta-band";
+import { JsonLd, serviceJsonLd } from "@/components/json-ld";
 import { QuoteForm } from "@/components/quote-form";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { services } from "@/lib/site";
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.title,
     description: service.description,
+    alternates: { canonical: `/services/${service.slug}` },
   };
 }
 
@@ -43,6 +45,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={serviceJsonLd(service)} />
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
@@ -63,7 +66,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               {service.title}
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               {service.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -80,7 +83,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <span className="grid size-14 place-items-center rounded-2xl bg-ink-paper text-ink-black">
               <Icon size={24} />
             </span>
-            <p className="mt-5 text-lg leading-8 text-ink-paper/68">{service.short}</p>
+            <p className="mt-5 text-lg leading-8 text-ink-paper/70">{service.short}</p>
           </Reveal>
         </div>
       </section>
@@ -130,7 +133,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h2 className="mt-4 font-display text-5xl leading-none text-ink-paper">
               Service questions
             </h2>
-            <p className="mt-5 text-base leading-8 text-ink-paper/62">
+            <p className="mt-5 text-base leading-8 text-ink-paper/70">
               Send photos and details if your surface, project type, or artwork
               needs a more specific answer.
             </p>
@@ -140,7 +143,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <Reveal key={faq.question}>
                 <article className="rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
                   <h3 className="font-display text-3xl text-ink-paper">{faq.question}</h3>
-                  <p className="mt-4 text-base leading-8 text-ink-paper/62">
+                  <p className="mt-4 text-base leading-8 text-ink-paper/70">
                     {faq.answer}
                   </p>
                 </article>
@@ -159,7 +162,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h2 className="mt-4 font-display text-5xl leading-none text-ink-paper">
               Share your wall and measurements.
             </h2>
-            <p className="mt-5 text-base leading-8 text-ink-paper/62">
+            <p className="mt-5 text-base leading-8 text-ink-paper/70">
               The quote form is built to collect the details Ink Blend needs:
               photos, dimensions, location, budget range, surface type, and
               project notes.

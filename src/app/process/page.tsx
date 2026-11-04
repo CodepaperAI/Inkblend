@@ -8,6 +8,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/process" },
   title: "Process",
   description:
     "See Ink Blend's process for quote requests, mockups, artwork approval, UV wall printing, and final installation.",
@@ -35,7 +36,7 @@ export default function ProcessPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               A clear path from wall photo to finished print.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               The workflow is built to reduce uncertainty: photos,
               measurements, concept direction, approvals, and production.
             </p>

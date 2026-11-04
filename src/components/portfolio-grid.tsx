@@ -33,7 +33,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 "shrink-0 rounded-full border px-4 py-2 text-sm transition",
                 active === category
                   ? "border-ink-paper bg-ink-paper text-ink-black"
-                  : "border-ink-paper/10 bg-ink-paper/[0.04] text-ink-paper/62 hover:border-ink-paper/24 hover:text-ink-paper",
+                  : "border-ink-paper/10 bg-ink-paper/[0.04] text-ink-paper/70 hover:border-ink-paper/24 hover:text-ink-paper",
               )}
             >
               {category}
@@ -76,7 +76,7 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                 <h3 className="mt-2 font-display text-3xl leading-none text-ink-paper">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm text-ink-paper/56">{project.location}</p>
+                <p className="mt-3 text-sm text-ink-paper/70">{project.location}</p>
               </div>
             </motion.article>
           ))}
@@ -121,11 +121,11 @@ export function PortfolioGrid({ limit }: { limit?: number }) {
                   <h3 className="mt-4 font-display text-5xl leading-none text-ink-paper">
                     {selected.title}
                   </h3>
-                  <p className="mt-4 text-ink-paper/52">{selected.location}</p>
-                  <p className="mt-7 text-lg leading-8 text-ink-paper/68">
+                  <p className="mt-4 text-ink-paper/70">{selected.location}</p>
+                  <p className="mt-7 text-lg leading-8 text-ink-paper/70">
                     {selected.summary}
                   </p>
-                  <p className="mt-8 rounded-2xl border border-ink-paper/10 bg-ink-paper/[0.04] p-5 text-sm leading-7 text-ink-paper/58">
+                  <p className="mt-8 rounded-2xl border border-ink-paper/10 bg-ink-paper/[0.04] p-5 text-sm leading-7 text-ink-paper/70">
                     Placeholder visual. Replace with real Ink Blend project
                     media once available.
                   </p>

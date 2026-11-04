@@ -178,13 +178,13 @@ export function QuotePlannerTool({
               </li>
             ))}
           </ol>
-          <p className="mt-5 text-sm leading-6 text-ink-paper/50">
+          <p className="mt-5 text-sm leading-6 text-ink-paper/70">
             No figures here, deliberately. Ink Blend quotes per wall rather than from a rate card, and
             a number from a form that has never seen your surface would be a guess.
           </p>
         </ResultPanel>
       ) : (
-        <p className="mt-6 text-sm text-ink-paper/50">Answer all five to see what drives your quote.</p>
+        <p className="mt-6 text-sm text-ink-paper/70">Answer all five to see what drives your quote.</p>
       )}
 
       {!compact ? (
@@ -195,7 +195,7 @@ export function QuotePlannerTool({
           <h3 className="mt-3 font-display text-3xl leading-tight text-ink-paper">
             Using the quotes you have already been given
           </h3>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-ink-paper/62">
+          <p className="mt-3 max-w-2xl text-base leading-7 text-ink-paper/70">
             Enter what you have actually been quoted and how long you expect each option to last.
             We supply the arithmetic and nothing else — there are no figures of ours in here, which
             is exactly why you can trust the output. Use whatever currency you were quoted in.
@@ -217,7 +217,7 @@ export function QuotePlannerTool({
             </div>
             <div className="rounded-[1.25rem] border border-ink-paper/12 p-5">
               <p className="font-display text-2xl text-ink-paper">The alternative</p>
-              <p className="mt-1 text-sm text-ink-paper/50">Vinyl, wallpaper, repainting — whatever you are weighing it against.</p>
+              <p className="mt-1 text-sm text-ink-paper/70">Vinyl, wallpaper, repainting — whatever you are weighing it against.</p>
               <div className="mt-4 grid gap-4">
                 <NumberField label="Quoted amount" value={altCost} onChange={setAltCost} placeholder="Your quote" />
                 <NumberField
@@ -245,9 +245,9 @@ export function QuotePlannerTool({
               <dl className="grid gap-4 sm:grid-cols-2">
                 {comparison.options.map((option) => (
                   <div key={option.key} className="rounded-[1rem] border border-ink-paper/12 p-4">
-                    <dt className="text-sm text-ink-paper/58">{option.label}</dt>
+                    <dt className="text-sm text-ink-paper/70">{option.label}</dt>
                     <dd className="mt-1 font-display text-3xl text-ink-paper">{fmt(option.total)}</dd>
-                    <p className="mt-1 text-sm text-ink-paper/50">
+                    <p className="mt-1 text-sm text-ink-paper/70">
                       paid {option.applications} {option.applications === 1 ? "time" : "times"} across{" "}
                       {comparison.horizonYears} years
                     </p>
@@ -261,13 +261,13 @@ export function QuotePlannerTool({
                   ? `On your numbers, the printed wall stops being the dearer option in year ${comparison.breakEvenYear}.`
                   : `On your numbers, the printed wall does not overtake the alternative inside ${comparison.horizonYears} years. Whether that settles it depends on how long you expect to be in the space.`}
               </p>
-              <p className="mt-4 text-sm leading-6 text-ink-paper/50">
+              <p className="mt-4 text-sm leading-6 text-ink-paper/70">
                 This is arithmetic on what you entered, including the lifespans you supplied — not a
                 prediction. Change an assumption and the answer moves with it.
               </p>
             </ResultPanel>
           ) : (
-            <p className="mt-6 flex items-center gap-2 text-sm text-ink-paper/50">
+            <p className="mt-6 flex items-center gap-2 text-sm text-ink-paper/70">
               <Plus size={15} />
               Fill in all four fields to see the comparison.
             </p>

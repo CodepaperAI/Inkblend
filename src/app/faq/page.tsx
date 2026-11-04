@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { CtaBand } from "@/components/cta-band";
+import { JsonLd, faqJsonLd } from "@/components/json-ld";
 import { FaqList } from "@/components/faq-list";
 import { Reveal } from "@/components/reveal";
+import { faqs } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQ",
   description:
     "Answers to common Ink Blend questions about UV wall printing, quotes, artwork, durability, and project fit.",
@@ -14,6 +17,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd(faqs)} />
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
@@ -33,7 +37,7 @@ export default function FaqPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Questions before you print.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               Quick answers for project planning, quoting, artwork preparation,
               durability, and whether your wall is a fit.
             </p>

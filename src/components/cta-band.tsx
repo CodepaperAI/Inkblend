@@ -19,7 +19,7 @@ export function CtaBand() {
               <h2 className="mt-4 max-w-3xl font-display text-5xl leading-[0.92] text-ink-paper sm:text-6xl">
                 Ready to turn a blank surface into the room&apos;s main event?
               </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-paper/64">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-paper/70">
                 Send photos, measurements, and a rough idea. Ink Blend will map
                 the fastest path from concept to quote.
               </p>
