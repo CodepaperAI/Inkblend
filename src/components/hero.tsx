@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Camera, Phone, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Camera, Phone, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { VideoDialogButton } from "@/components/video-dialog";
 import { heroImages, siteConfig, trustStats } from "@/lib/site";
 
 export function Hero() {
@@ -119,9 +120,12 @@ export function Hero() {
                       Mural-ready spaces
                     </p>
                   </div>
-                  <span className="grid size-12 place-items-center rounded-full bg-ink-paper text-ink-black">
-                    <Play size={18} fill="currentColor" />
-                  </span>
+                  <VideoDialogButton
+                    src="/media/video/mural-painting.mp4"
+                    poster="/media/video/mural-painting-poster.jpg"
+                    label="Play video: an artist painting a wall mural"
+                    className="grid size-12 shrink-0 place-items-center rounded-full bg-ink-paper text-ink-black transition hover:scale-105 focus-visible:scale-105"
+                  />
                 </div>
               </div>
             </div>

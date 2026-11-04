@@ -209,7 +209,12 @@ function Footer() {
   return (
     <footer className="relative border-t border-ink-paper/10 bg-ink-graphite/45">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-red to-transparent" />
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
+      {/* One row: brand, Pages, Tools, Locations, Sectors, Contact. The tool, city
+          and sector lists come from data/landingPages/nav.ts (label + href only),
+          NOT the landing-page registry, which would ship every record's sections,
+          FAQs and galleries in the bundle of every page. The quality gate checks
+          these lists stay in step with the real records. */}
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.5fr_0.7fr_1fr_0.8fr_1.1fr_1.1fr] lg:gap-8 lg:px-8">
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
             <span className="grid size-12 place-items-center overflow-hidden rounded-2xl border border-ink-paper/15 bg-ink-paper/[0.04]">
@@ -223,7 +228,7 @@ function Footer() {
             </span>
             <span className="font-display text-3xl text-ink-paper">Ink Blend</span>
           </Link>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-ink-paper/70">
+          <p className="mt-5 max-w-xs text-sm leading-7 text-ink-paper/70">
             Premium UV wall printing, custom murals, and surface graphics for
             businesses, designers, and homeowners across Canada.
           </p>
@@ -258,79 +263,53 @@ function Footer() {
             </Link>
           </div>
         </div>
-
         <div>
-          <h3 className="footer-title">Lead Actions</h3>
+          <h3 className="footer-title">Tools</h3>
           <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
-            <Link href="/get-quote" className="hover:text-ink-paper">
+            {toolNav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 className="footer-title">Locations</h3>
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
+            {cityNav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 className="footer-title">Sectors</h3>
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
+            {industryNav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-ink-paper">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 className="footer-title">Contact</h3>
+          <div className="mt-5 grid gap-3 text-sm leading-6 text-ink-paper/70">
+            <span>{siteConfig.address}</span>
+            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
+              {siteConfig.phone}
+            </a>
+            <a href={`mailto:${siteConfig.email}`} className="break-all hover:text-ink-paper">
+              {siteConfig.email}
+            </a>
+            <span>{siteConfig.hours}</span>
+            <Link href="/get-quote" className="font-bold text-ink-red hover:underline">
               Request a Quote
             </Link>
             <a href={siteConfig.whatsappHref} className="hover:text-ink-paper">
               WhatsApp Chat
             </a>
-            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
-              Call Now
-            </a>
-            <a href={`mailto:${siteConfig.email}`} className="hover:text-ink-paper">
-              Email Inquiry
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="footer-title">Contact</h3>
-          <div className="mt-5 grid gap-3 text-sm leading-7 text-ink-paper/70">
-            <span>{siteConfig.address}</span>
-            <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
-              {siteConfig.phone}
-            </a>
-            <a href={`mailto:${siteConfig.email}`} className="hover:text-ink-paper">
-              {siteConfig.email}
-            </a>
-            <span>{siteConfig.hours}</span>
-          </div>
-        </div>
-      </div>
-
-      {/*
-        Locations and sectors. Imported from data/landingPages/nav.ts — a
-        label+href-only module — and NOT from the landing-page registry. A
-        client component importing the registry would pull every record's
-        sections, FAQs and galleries into the bundle of every page that renders
-        this footer, which is all of them. The quality gate checks this list
-        stays in step with the real records.
-      */}
-      <div className="border-t border-ink-paper/10">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-          <div>
-            <h3 className="footer-title">Tools</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
-              {toolNav.map((item) => (
-                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="footer-title">Locations</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
-              {cityNav.map((item) => (
-                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="footer-title">Sectors</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
-              {industryNav.map((item) => (
-                <Link key={item.href} href={item.href} className="hover:text-ink-paper">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </div>

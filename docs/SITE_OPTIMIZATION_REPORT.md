@@ -57,3 +57,4 @@ Needs the client or a person (not fabricated):
 
 ## Image credits
 - `public/media/placeholders/reception-watercolour-mural.jpg`: Pexels, "Modern Reception Area with Artistic Wall Design" (https://www.pexels.com/photo/modern-reception-area-with-artistic-wall-design-39492293/), cropped. Pexels licence, no attribution required. Replace with a real Ink Blend job photo when available.
+- `public/media/video/mural-painting.mp4` + `-poster.jpg`: Pexels, "Artist Painting Colorful Mural Indoors" (https://www.pexels.com/video/artist-painting-colorful-mural-indoors-32316899/), re-encoded to 720p. Pexels licence, no attribution required. Replace with a real Ink Blend install video when available.
