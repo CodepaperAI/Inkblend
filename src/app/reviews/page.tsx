@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { CtaBand } from "@/components/cta-band";
-import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
+import { Reveal } from "@/components/reveal";
 import { ReviewCard } from "@/components/review-card";
 import { reviews } from "@/lib/site";
 
@@ -16,6 +17,17 @@ export default function ReviewsPage() {
   return (
     <>
       <section className="page-hero">
+        <div className="absolute inset-0">
+          <Image
+            src="/media/placeholders/cgi-render-furnished-living-room.jpg"
+            alt="Finished living room with a printed feature wall"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-72"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-black/18 via-ink-black/42 to-ink-black/70" />
+        </div>
         <div className="page-shell relative">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">Reviews</p>
@@ -29,15 +41,17 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <section className="section-pad pt-0">
-        <div className="page-shell">
-          <Stagger className="grid gap-5 md:grid-cols-2">
-            {reviews.map((review) => (
-              <StaggerItem key={review.name} className="h-full">
-                <ReviewCard review={review} className="h-full" />
-              </StaggerItem>
-            ))}
-          </Stagger>
+      <section className="section-pad">
+        <div className="page-shell grid gap-6 md:grid-cols-2">
+          {[reviews.slice(0, 3), reviews.slice(3)].map((column, i) => (
+            <Reveal key={i}>
+              <div className="h-full divide-y divide-ink-paper/10 rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] px-6 sm:px-8">
+                {column.map((review) => (
+                  <ReviewCard key={review.name} review={review} plain className="py-7" />
+                ))}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 

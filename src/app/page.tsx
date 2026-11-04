@@ -174,20 +174,33 @@ export default async function Home() {
 
       <section className="section-pad">
         <div className="page-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <SectionHeading eyebrow="Trust" title="Premium detail without the generic print-shop feeling.">
-              Clear creative direction, high-resolution production, and a site
-              flow focused on getting clients to inquire quickly.
-            </SectionHeading>
-            <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {citiesServed.slice(0, 8).map((city) => (
-                <span
-                  key={city}
-                  className="rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] px-4 py-2 text-center text-sm text-ink-paper/70"
-                >
-                  {city}
-                </span>
-              ))}
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <SectionHeading eyebrow="Trust" title="Premium detail without the generic print-shop feeling.">
+                Clear creative direction, high-resolution production, and a site
+                flow focused on getting clients to inquire quickly.
+              </SectionHeading>
+              <Reveal className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+                {citiesServed.slice(0, 8).map((city) => (
+                  <span
+                    key={city}
+                    className="rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] px-4 py-2 text-center text-sm text-ink-paper/70"
+                  >
+                    {city}
+                  </span>
+                ))}
+              </Reveal>
+            </div>
+            <Reveal>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-ink-paper/10 shadow-[0_30px_70px_rgba(23,18,15,0.18)]">
+                <Image
+                  src="/media/placeholders/concrete-feature-wall-dining-room.jpg"
+                  alt="Printed feature wall in a modern dining room"
+                  fill
+                  sizes="(min-width:1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
           </div>
         </div>

@@ -4,10 +4,21 @@ import type { reviews } from "@/lib/site";
 
 type Review = (typeof reviews)[number];
 
-export function ReviewCard({ review, className = "" }: { review: Review; className?: string }) {
+export function ReviewCard({
+  review,
+  className = "",
+  plain = false,
+}: {
+  review: Review;
+  className?: string;
+  /** No border/background/padding, for use inside a parent box. */
+  plain?: boolean;
+}) {
   return (
     <figure
-      className={`flex flex-col rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-7 ${className}`}
+      className={`flex flex-col ${
+        plain ? "" : "rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-7"
+      } ${className}`}
     >
       <div className="flex items-center gap-2">
         <span className="flex gap-0.5 text-ink-gold" role="img" aria-label={`${review.rating} out of 5 stars`}>
