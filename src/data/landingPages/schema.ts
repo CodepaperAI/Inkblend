@@ -18,8 +18,9 @@ import type { LandingPage } from "./types";
  *    the address at the same time as the phone.
  *  • `priceRange` / `offers` — no pricing is published. The quote form's budget
  *    bands are input options, not a price list.
- *  • `aggregateRating` / `review` — the three on-site testimonials are
- *    anonymous archetypes, not attributable reviews.
+ *  • `aggregateRating` / `review` — reviews are shown on-page, but the
+ *    source and verification of each one is not recorded in this repo. Add
+ *    Review/AggregateRating only once they can be tied to a platform.
  */
 
 const SITE_URL = "https://www.inkblend.ca";

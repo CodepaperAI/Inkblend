@@ -332,3 +332,37 @@ img {
   outline: 2px solid var(--ink-red);
   outline-offset: 3px;
 }
+
+.marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 55s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track,
+.marquee-viewport:focus .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-viewport {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+}

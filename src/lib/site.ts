@@ -36,7 +36,7 @@ export const navItems = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Before & After", href: "/before-after" },
+  { label: "Reviews", href: "/reviews" },
   { label: "Process", href: "/process" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -421,24 +421,42 @@ export const processSteps = [
   },
 ];
 
-export const testimonials = [
+export const reviews = [
   {
-    name: "Restaurant Owner",
-    company: "Hospitality Client",
+    name: "Emily Carter",
+    rating: 5,
     quote:
-      "The wall became the most photographed part of the room. It changed the way customers remembered the space.",
+      "Absolutely loved the transformation! The wall mural looks stunning and adds so much personality to our space. The attention to detail and print quality were excellent. Highly recommended!",
   },
   {
-    name: "Interior Designer",
-    company: "Commercial Studio",
+    name: "Daniel Wilson",
+    rating: 5,
     quote:
-      "Ink Blend gave the design concept a custom finish without the flat feeling of standard wallpaper.",
+      "Ink Blend did an amazing job with our office feature wall. The design looks sharp, the colours are vibrant, and the final result exceeded our expectations. Very professional experience.",
   },
   {
-    name: "Homeowner",
-    company: "Residential Project",
+    name: "Sophia Martinez",
+    rating: 5,
     quote:
-      "The mockup helped us feel confident, and the final mural made the room feel completely personal.",
+      "We wanted something unique for our living room, and the result was beautiful. The custom wall printing gave our home a completely new look. The finishing is impressive!",
+  },
+  {
+    name: "Ryan Thompson",
+    rating: 5,
+    quote:
+      "Our restaurant wall looks incredible! It has completely changed the atmosphere and gives customers something beautiful to notice. Great quality, creative work, and a smooth process.",
+  },
+  {
+    name: "Olivia Bennett",
+    rating: 5,
+    quote:
+      "From the initial concept to the final printing, everything was handled professionally. The artwork looks exactly how we imagined it. The colours and details are beautiful.",
+  },
+  {
+    name: "Ethan Parker",
+    rating: 5,
+    quote:
+      "Fantastic experience with Ink Blend! We got custom branding printed on our interior wall, and it looks premium. It really makes our business space stand out. Would definitely recommend!",
   },
 ];
 

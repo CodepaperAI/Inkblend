@@ -39,6 +39,12 @@ console.log(
 );
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // The Before & After page now lives on the home page.
+      { source: "/before-after", destination: "/#before-after", permanent: true },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,

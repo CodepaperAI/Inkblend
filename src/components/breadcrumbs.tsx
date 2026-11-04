@@ -11,7 +11,7 @@ import { services } from "@/lib/site";
 const sectionLabels: Record<string, string> = {
   services: "Services",
   portfolio: "Portfolio",
-  "before-after": "Before & After",
+  reviews: "Reviews",
   process: "Process",
   faq: "FAQ",
   blog: "Blog",

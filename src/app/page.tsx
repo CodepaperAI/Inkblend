@@ -11,7 +11,7 @@ import { ProcessTimeline } from "@/components/process-timeline";
 import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceShowcase } from "@/components/service-showcase";
-import { TestimonialCarousel } from "@/components/testimonial-carousel";
+import { ReviewsMarquee } from "@/components/reviews-marquee";
 import { VisualizeWall } from "@/components/visualize-wall";
 import { audienceSegments, citiesServed, siteConfig } from "@/lib/site";
 import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
@@ -82,16 +82,30 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section id="before-after" className="scroll-mt-24 pb-14 pt-16 sm:px-6 lg:px-8">
         <div className="page-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <SectionHeading
-              eyebrow="Before and after"
-              title="Blank walls become high-impact brand moments."
-            >
-              The comparison slider is built for real project transformations,
-              renovation reveals, and social proof once finished work is ready.
-            </SectionHeading>
+          <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div>
+              <SectionHeading
+                eyebrow="Before and after"
+                title="Blank walls become high-impact brand moments."
+              >
+                Move the slider to reveal the finished wall.
+              </SectionHeading>
+              <Reveal>
+                <ul className="mt-6 grid gap-3 text-sm leading-6 text-ink-paper/75">
+                  {[
+                    ["Residential mural", "A plain bedroom, media room or entry becomes a custom art moment."],
+                    ["Commercial brand wall", "A business interior goes from generic to memorable."],
+                    ["Hospitality feature", "Restaurants, cafés, lounges and hotels, before and after print."],
+                  ].map(([title, body]) => (
+                    <li key={title} className="border-l-2 border-ink-red pl-4">
+                      <strong className="text-ink-paper">{title}.</strong> {body}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
             <Reveal>
               <BeforeAfterSlider />
             </Reveal>
@@ -159,13 +173,13 @@ export default async function Home() {
       </section>
 
       <section className="section-pad">
-        <div className="page-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
+        <div className="page-shell">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <SectionHeading eyebrow="Trust" title="Premium detail without the generic print-shop feeling.">
               Clear creative direction, high-resolution production, and a site
               flow focused on getting clients to inquire quickly.
             </SectionHeading>
-            <Reveal className="mt-8 grid grid-cols-2 gap-3">
+            <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {citiesServed.slice(0, 8).map((city) => (
                 <span
                   key={city}
@@ -176,8 +190,16 @@ export default async function Home() {
               ))}
             </Reveal>
           </div>
-          <TestimonialCarousel />
         </div>
+        <div className="mt-12">
+          <ReviewsMarquee />
+        </div>
+        <Reveal className="mt-8 text-center">
+          <Link href="/reviews" className="btn-secondary">
+            View all reviews
+            <ArrowRight size={18} />
+          </Link>
+        </Reveal>
       </section>
 
       {blogPosts.length > 0 ? (
