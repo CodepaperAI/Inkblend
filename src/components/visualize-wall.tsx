@@ -18,7 +18,7 @@ export function VisualizeWall() {
         <h3 className="mt-4 font-display text-5xl leading-none text-ink-paper">
           Preview the idea before print day.
         </h3>
-        <p className="mt-5 text-base leading-8 text-ink-paper/62">
+        <p className="mt-5 text-base leading-8 text-ink-paper/70">
           Upload a wall photo and share references. Ink Blend can turn that
           into a concept direction, layout mockup, and quote-ready plan.
         </p>
@@ -70,7 +70,7 @@ export function VisualizeWall() {
             {previewStyles.map((style) => (
               <span
                 key={style}
-                className="rounded-full border border-ink-paper/12 bg-ink-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-paper/68 backdrop-blur"
+                className="rounded-full border border-ink-paper/12 bg-ink-black/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-paper/70 backdrop-blur"
               >
                 {style}
               </span>

@@ -110,13 +110,14 @@ export function Hero() {
                 alt="Printed restaurant wall visual"
                 fill
                 sizes="520px"
+                loading="eager"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-black/38 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 rounded-3xl border border-ink-paper/12 bg-ink-black/34 p-5 backdrop-blur-xl">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.28em] text-ink-paper/46">
+                    <p className="text-xs uppercase tracking-[0.28em] text-ink-paper/70">
                       Visual Preview
                     </p>
                     <p className="mt-2 font-display text-3xl text-ink-paper">
@@ -137,7 +138,7 @@ export function Hero() {
               </span>
               <div>
                 <p className="text-sm font-semibold text-ink-paper">Before to wow</p>
-                <p className="text-xs text-ink-paper/54">Mockups, approvals, print</p>
+                <p className="text-xs text-ink-paper/70">Mockups, approvals, print</p>
               </div>
             </div>
           </div>
@@ -154,7 +155,7 @@ export function Hero() {
             className="border border-ink-paper/10 bg-ink-paper/[0.04] p-5 backdrop-blur"
           >
             <p className="font-display text-3xl text-ink-paper">{stat.value}</p>
-            <p className="mt-2 text-sm leading-6 text-ink-paper/54">{stat.label}</p>
+            <p className="mt-2 text-sm leading-6 text-ink-paper/70">{stat.label}</p>
           </motion.div>
         ))}
       </div>

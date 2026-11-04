@@ -78,7 +78,7 @@ const TENURES: { value: Tenure; label: string }[] = [
 ];
 
 const STATUS_META: Record<FindingStatus, { icon: typeof CheckCircle2; className: string; label: string }> = {
-  ready: { icon: CheckCircle2, className: "text-emerald-400", label: "Looks fine" },
+  ready: { icon: CheckCircle2, className: "text-emerald-800", label: "Looks fine" },
   ask: { icon: HelpCircle, className: "text-ink-gold", label: "Worth confirming" },
   prep: { icon: Wrench, className: "text-ink-gold", label: "Preparation likely" },
   decision: { icon: AlertTriangle, className: "text-ink-red", label: "Decision needed" },
@@ -179,7 +179,7 @@ export function WallReadinessTool({
       </div>
 
       {!complete ? (
-        <p className="mt-6 text-sm text-ink-paper/50">
+        <p className="mt-6 text-sm text-ink-paper/70">
           {answered} of 6 answered — the result appears once all six are in.
         </p>
       ) : null}
@@ -199,7 +199,7 @@ export function WallReadinessTool({
                         {finding.topic}
                         <span className={`ml-2 font-normal ${meta.className}`}>{meta.label}</span>
                       </p>
-                      <p className="mt-1 text-base leading-7 text-ink-paper/68">{finding.note}</p>
+                      <p className="mt-1 text-base leading-7 text-ink-paper/70">{finding.note}</p>
                     </div>
                   </li>
                 );
@@ -214,7 +214,7 @@ export function WallReadinessTool({
                 </p>
                 <ul className="mt-3 grid gap-2">
                   {result.photos.map((photo) => (
-                    <li key={photo} className="flex gap-3 text-base leading-7 text-ink-paper/68">
+                    <li key={photo} className="flex gap-3 text-base leading-7 text-ink-paper/70">
                       <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-ink-gold" />
                       {photo}
                     </li>

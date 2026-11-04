@@ -28,7 +28,7 @@ const STATUS_META: Record<
   CoverageStatus,
   { icon: typeof CheckCircle2; tone: "good" | "caution" | "neutral"; className: string }
 > = {
-  mapped: { icon: CheckCircle2, tone: "good", className: "text-emerald-400" },
+  mapped: { icon: CheckCircle2, tone: "good", className: "text-emerald-800" },
   likely: { icon: HelpCircle, tone: "neutral", className: "text-ink-gold" },
   outside: { icon: MapPin, tone: "neutral", className: "text-ink-gold" },
   invalid: { icon: XCircle, tone: "caution", className: "text-ink-red" },
@@ -74,7 +74,7 @@ export function ServiceAreaTool({ sourcePage }: { readonly sourcePage: string })
           aria-describedby="service-area-hint"
         />
       </label>
-      <p id="service-area-hint" className="mt-2 text-sm text-ink-paper/50">
+      <p id="service-area-hint" className="mt-2 text-sm text-ink-paper/70">
         The first three characters are enough — there is no reason to ask for a full address to
         answer a coverage question.
       </p>

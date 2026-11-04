@@ -6,8 +6,8 @@
   --ink-black: #efe2cc;
   --ink-graphite: #e2cfb2;
   --ink-paper: #241812;
-  --ink-red: #c82f27;
-  --ink-gold: #b36f22;
+  --ink-red: #a8261f;
+  --ink-gold: #7a4a12;
   --ink-pink: #7f2452;
   --ink-blue: #27346f;
 }
@@ -135,7 +135,7 @@ img {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(36, 24, 18, 0.58);
+  color: rgba(36, 24, 18, 0.72);
 }
 
 .field input,
@@ -308,4 +308,27 @@ img {
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: var(--ink-paper);
+  color: var(--ink-black);
+  padding: 0.65rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink-red);
+  outline-offset: 3px;
 }

@@ -11,7 +11,7 @@ export function ProcessTimeline() {
           <article className="relative min-h-[250px] rounded-[1.35rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
             <span className="font-display text-6xl text-ink-paper/10">0{index + 1}</span>
             <h3 className="mt-5 font-display text-3xl text-ink-paper">{step.title}</h3>
-            <p className="mt-4 text-sm leading-7 text-ink-paper/58">{step.description}</p>
+            <p className="mt-4 text-sm leading-7 text-ink-paper/70">{step.description}</p>
             {index < processSteps.length - 1 ? (
               <ArrowRight
                 className="absolute -right-5 top-1/2 hidden text-ink-red lg:block"

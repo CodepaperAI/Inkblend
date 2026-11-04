@@ -33,7 +33,7 @@ export function TestimonialCarousel() {
           </p>
           <div className="mt-8">
             <p className="font-semibold text-ink-paper">{item.name}</p>
-            <p className="mt-1 text-sm text-ink-paper/48">{item.company}</p>
+            <p className="mt-1 text-sm text-ink-paper/70">{item.company}</p>
           </div>
         </motion.div>
       </AnimatePresence>

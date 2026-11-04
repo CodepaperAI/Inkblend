@@ -61,7 +61,7 @@ export default async function BlogPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Fresh thinking on walls, surfaces, and print craft.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               New articles published daily. UV wall printing insights, mural
               planning guides, and interior branding ideas from the Ink Blend
               studio.
@@ -81,7 +81,7 @@ export default async function BlogPage() {
                 <h2 className="mt-4 font-display text-3xl text-ink-paper sm:text-4xl">
                   First articles publishing this week.
                 </h2>
-                <p className="mt-4 text-base leading-7 text-ink-paper/64">
+                <p className="mt-4 text-base leading-7 text-ink-paper/70">
                   In the meantime, browse the portfolio or request a quote to
                   start your wall print project.
                 </p>
@@ -144,7 +144,7 @@ export default async function BlogPage() {
                         <h2 className="mt-5 font-display text-[1.75rem] leading-[1.05] text-ink-paper">
                           {post.title}
                         </h2>
-                        <p className="mt-4 text-sm leading-7 text-ink-paper/64">
+                        <p className="mt-4 text-sm leading-7 text-ink-paper/70">
                           {post.excerpt}
                         </p>
                         <span className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-semibold text-ink-paper">

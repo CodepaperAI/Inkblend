@@ -168,7 +168,7 @@ export function QuoteForm({
         <span className="mt-3 text-sm font-semibold text-ink-paper">
           Upload wall photos or measurements
         </span>
-        <span className="mt-1 text-xs text-ink-paper/46">
+        <span className="mt-1 text-xs text-ink-paper/70">
           JPG, PNG, PDF, or HEIC. Add photos, drawings, or measurement notes.
         </span>
         <input
@@ -210,7 +210,7 @@ export function QuoteForm({
           className="mt-6"
         />
       ) : (
-        <p className="mt-6 rounded-2xl border border-ink-red/30 bg-ink-red/10 px-4 py-3 text-sm text-red-100">
+        <p className="mt-6 rounded-2xl border border-ink-red/30 bg-ink-red/10 px-4 py-3 text-sm text-ink-red">
           The quote form is not fully configured. Please email{" "}
           <a href={formGuardConfig.contactHref} className="underline">
             {formGuardConfig.contactLabel}
@@ -246,8 +246,8 @@ export function QuoteForm({
         <p
           className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${
             status === "success"
-              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
-              : "border-ink-red/30 bg-ink-red/10 text-red-100"
+              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-800"
+              : "border-ink-red/30 bg-ink-red/10 text-ink-red"
           }`}
         >
           {message}

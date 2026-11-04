@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
+import { fitDescription, fitTitle } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
 import {
   formatPublishDate,
@@ -35,8 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Blog post not found" };
   }
 
-  const title = post.meta?.seoTitle || post.title;
-  const description = post.meta?.seoDescription || post.excerpt;
+  const title = fitTitle(post.meta?.seoTitle || post.title);
+  const description = fitDescription(post.meta?.seoDescription || post.excerpt || "");
   const ogImage = post.featuredImage?.trim() || FALLBACK_HERO;
   const ogUrl = post.meta?.ogUrl || `/blog/${post.slug}`;
 
@@ -142,7 +143,7 @@ export default async function BlogPostPage({ params }: Props) {
             <Reveal>
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-ink-paper/66 hover:text-ink-paper"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-ink-paper/70 hover:text-ink-paper"
               >
                 <ArrowLeft size={16} />
                 Back to Blog

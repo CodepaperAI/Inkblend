@@ -54,7 +54,7 @@ interface LandingTemplateProps {
 
 function Paragraph({ segments }: { readonly segments: readonly Segment[] }) {
   return (
-    <p className="text-base leading-8 text-ink-paper/68">
+    <p className="text-base leading-8 text-ink-paper/70">
       {segments.map((segment, index) =>
         segment.href ? (
           <Link
@@ -193,7 +193,7 @@ export function LandingTemplate({
             </h2>
             <ul className="mt-6 space-y-2">
               {listItems.map((item) => (
-                <li key={item} className="flex gap-3 text-base leading-7 text-ink-paper/62">
+                <li key={item} className="flex gap-3 text-base leading-7 text-ink-paper/70">
                   <CheckCircle2 className="mt-1 shrink-0 text-ink-gold" size={16} />
                   {item}
                 </li>
@@ -212,7 +212,7 @@ export function LandingTemplate({
                     <h3 className="mt-5 font-display text-2xl leading-tight text-ink-paper">
                       {benefit.title}
                     </h3>
-                    <p className="mt-3 text-base leading-7 text-ink-paper/64">
+                    <p className="mt-3 text-base leading-7 text-ink-paper/70">
                       {benefit.description}
                     </p>
                   </article>
@@ -243,7 +243,7 @@ export function LandingTemplate({
                   <dt className="text-sm font-semibold uppercase tracking-[0.14em] text-ink-gold">
                     {row.label}
                   </dt>
-                  <dd className="text-base leading-7 text-ink-paper/68">{row.value}</dd>
+                  <dd className="text-base leading-7 text-ink-paper/70">{row.value}</dd>
                 </div>
               ))}
             </dl>
@@ -315,7 +315,7 @@ export function LandingTemplate({
             <h2 className="mt-4 max-w-3xl font-display text-4xl leading-none text-ink-paper sm:text-5xl">
               Spaces of this kind
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-ink-paper/58">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-ink-paper/70">
               Reference imagery showing the sorts of rooms and surfaces this work sits in. These
               are not Ink Blend projects — each caption describes what the photograph actually
               shows.
@@ -359,7 +359,7 @@ export function LandingTemplate({
                 <summary className="cursor-pointer list-none font-display text-2xl leading-tight text-ink-paper marker:hidden">
                   {faq.question}
                 </summary>
-                <p className="mt-4 text-base leading-8 text-ink-paper/64">{faq.answer}</p>
+                <p className="mt-4 text-base leading-8 text-ink-paper/70">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -390,7 +390,7 @@ export function LandingTemplate({
                     <span className="mt-3 font-display text-2xl leading-tight text-ink-paper">
                       {item.label}
                     </span>
-                    <span className="mt-3 text-sm leading-6 text-ink-paper/58">{item.blurb}</span>
+                    <span className="mt-3 text-sm leading-6 text-ink-paper/70">{item.blurb}</span>
                   </CtaLink>
                 </StaggerItem>
               ))}
@@ -409,7 +409,7 @@ export function LandingTemplate({
             <h2 className="mt-4 font-display text-4xl leading-none text-ink-paper sm:text-5xl">
               {record.ctaHeading}
             </h2>
-            <p className="mt-5 text-base leading-8 text-ink-paper/62">{record.ctaBody}</p>
+            <p className="mt-5 text-base leading-8 text-ink-paper/70">{record.ctaBody}</p>
             {/* See the note in the hero: no tel: link until the number is real. */}
             <CtaLink
               href="/contact"

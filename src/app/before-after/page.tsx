@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/before-after" },
   title: "Before & After",
   description:
     "Compare blank walls and finished visual branding concepts with Ink Blend before and after project sliders.",
@@ -34,7 +35,7 @@ export default function BeforeAfterPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Show the transformation before clients ask.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               These sliders are ready for real site photos, renovation reveals,
               branded room upgrades, and mural installation comparisons.
             </p>
@@ -74,7 +75,7 @@ export default function BeforeAfterPage() {
             <Reveal key={title}>
               <article className="min-h-[230px] rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6">
                 <h2 className="font-display text-4xl text-ink-paper">{title}</h2>
-                <p className="mt-5 text-base leading-8 text-ink-paper/62">{body}</p>
+                <p className="mt-5 text-base leading-8 text-ink-paper/70">{body}</p>
               </article>
             </Reveal>
           ))}

@@ -6,6 +6,7 @@ import { PortfolioGrid } from "@/components/portfolio-grid";
 import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/portfolio" },
   title: "Portfolio",
   description:
     "Browse Ink Blend portfolio categories for restaurants, cafes, offices, retail stores, residential projects, cultural artwork, and luxury interiors.",
@@ -33,7 +34,7 @@ export default function PortfolioPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               A gallery system built for real Ink Blend work.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               Filter by project type, open larger previews, and replace
               placeholders with completed project photography when ready.
             </p>

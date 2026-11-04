@@ -6,7 +6,6 @@ import {
   Menu,
   MessageCircle,
   Phone,
-  Search,
   Send,
   X,
 } from "lucide-react";
@@ -22,8 +21,13 @@ import { cn } from "@/lib/utils";
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen overflow-hidden bg-ink-black text-ink-paper">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Header />
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1} className="outline-none">
+        {children}
+      </main>
       <Footer />
       <FloatingContact />
     </div>
@@ -67,7 +71,7 @@ function Header() {
             <span className="font-display text-2xl tracking-wide text-ink-paper">
               Ink Blend
             </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-ink-paper/46">
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-ink-paper/70">
               UV Print Studio
             </span>
           </span>
@@ -93,12 +97,6 @@ function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <button
-            aria-label="Search"
-            className="grid size-11 place-items-center rounded-full border border-ink-paper/10 bg-ink-paper/[0.04] text-ink-paper/70 transition hover:border-ink-paper/25 hover:text-ink-paper"
-          >
-            <Search size={18} />
-          </button>
           <Link href="/get-quote" className="btn-primary group">
             Get Quote
             <ArrowRight size={17} className="transition group-hover:translate-x-1" />
@@ -107,6 +105,7 @@ function Header() {
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
           className="grid size-12 place-items-center rounded-full border border-ink-paper/12 bg-ink-paper/[0.06] text-ink-paper lg:hidden"
         >
@@ -186,7 +185,7 @@ function Footer() {
             </span>
             <span className="font-display text-3xl text-ink-paper">Ink Blend</span>
           </Link>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-ink-paper/58">
+          <p className="mt-5 max-w-sm text-sm leading-7 text-ink-paper/70">
             Premium UV wall printing, custom murals, and surface graphics for
             businesses, designers, and homeowners across Canada.
           </p>
@@ -210,7 +209,7 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Pages</h3>
-          <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="hover:text-ink-paper">
                 {item.label}
@@ -224,7 +223,7 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Lead Actions</h3>
-          <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+          <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
             <Link href="/get-quote" className="hover:text-ink-paper">
               Request a Quote
             </Link>
@@ -242,7 +241,7 @@ function Footer() {
 
         <div>
           <h3 className="footer-title">Contact</h3>
-          <div className="mt-5 grid gap-3 text-sm leading-7 text-ink-paper/58">
+          <div className="mt-5 grid gap-3 text-sm leading-7 text-ink-paper/70">
             <span>{siteConfig.address}</span>
             <a href={siteConfig.phoneHref} className="hover:text-ink-paper">
               {siteConfig.phone}
@@ -267,7 +266,7 @@ function Footer() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
           <div>
             <h3 className="footer-title">Tools</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
               {toolNav.map((item) => (
                 <Link key={item.href} href={item.href} className="hover:text-ink-paper">
                   {item.label}
@@ -277,7 +276,7 @@ function Footer() {
           </div>
           <div>
             <h3 className="footer-title">Locations</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
               {cityNav.map((item) => (
                 <Link key={item.href} href={item.href} className="hover:text-ink-paper">
                   {item.label}
@@ -287,7 +286,7 @@ function Footer() {
           </div>
           <div>
             <h3 className="footer-title">Sectors</h3>
-            <div className="mt-5 grid gap-3 text-sm text-ink-paper/58">
+            <div className="mt-5 grid gap-3 text-sm text-ink-paper/70">
               {industryNav.map((item) => (
                 <Link key={item.href} href={item.href} className="hover:text-ink-paper">
                   {item.label}
@@ -298,7 +297,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-ink-paper/10 px-4 py-6 text-center text-xs uppercase tracking-[0.28em] text-ink-paper/38">
+      <div className="border-t border-ink-paper/10 px-4 py-6 text-center text-xs uppercase tracking-[0.28em] text-ink-paper/70">
         Designed for premium visual environments.
       </div>
     </footer>

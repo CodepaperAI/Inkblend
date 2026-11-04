@@ -11,6 +11,7 @@ import { services } from "@/lib/site";
 import { getServiceHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title: "Services",
   description:
     "Explore Ink Blend services including UV wall printing, custom murals, commercial branding, surface printing, and luxury feature walls.",
@@ -38,7 +39,7 @@ export default function ServicesPage() {
             <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.92] text-balance text-ink-paper sm:text-7xl">
               Surface printing services for premium visual spaces.
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/68">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-paper/70">
               Choose a service, send photos and measurements, and Ink Blend can
               shape the right print direction for your space.
             </p>
@@ -48,7 +49,7 @@ export default function ServicesPage() {
 
       <section className="section-pad">
         <div className="page-shell">
-          <ServiceShowcase />
+          <ServiceShowcase headingLevel="h2" />
         </div>
       </section>
 
@@ -76,7 +77,7 @@ export default function ServicesPage() {
                     <h2 className="mt-4 font-display text-4xl text-ink-paper">
                       {service.title}
                     </h2>
-                    <p className="mt-4 text-sm leading-7 text-ink-paper/58">
+                    <p className="mt-4 text-sm leading-7 text-ink-paper/70">
                       {service.description}
                     </p>
                   </div>

@@ -37,7 +37,7 @@ export function FaqList() {
                 exit={reducedMotion ? undefined : { height: 0, opacity: 0 }}
                 transition={{ duration: 0.35 }}
               >
-                <p className="px-5 pb-6 text-base leading-8 text-ink-paper/62 sm:px-7">
+                <p className="px-5 pb-6 text-base leading-8 text-ink-paper/70 sm:px-7">
                   {faq.answer}
                 </p>
               </motion.div>

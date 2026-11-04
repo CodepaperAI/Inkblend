@@ -28,7 +28,7 @@ export function SectionHeading({
         {title}
       </h2>
       {children ? (
-        <p className="mt-6 text-base leading-8 text-ink-paper/62 sm:text-lg">
+        <p className="mt-6 text-base leading-8 text-ink-paper/70 sm:text-lg">
           {children}
         </p>
       ) : null}

@@ -9,7 +9,7 @@ import { tools } from "@/data/landingPages";
 export const metadata: Metadata = {
   title: "Tools",
   description:
-    "Four free tools for planning a printed wall: check whether the surface is ready, whether your artwork is big enough, what will move your quote, and whether we cover you.",
+    "Four free tools for planning a printed wall: check surface readiness, artwork size, what drives your quote, and whether we cover your area.",
   alternates: { canonical: "/tools" },
 };
 
@@ -51,12 +51,12 @@ export default function ToolsIndexPage() {
                   className="flex h-full flex-col rounded-[1.25rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-7 transition hover:border-ink-gold/40"
                 >
                   <h2 className="font-display text-3xl leading-tight text-ink-paper">{tool.title}</h2>
-                  <p className="mt-4 flex-1 text-base leading-7 text-ink-paper/64">
+                  <p className="mt-4 flex-1 text-base leading-7 text-ink-paper/70">
                     {tool.metaDescription}
                   </p>
                   <ul className="mt-5 grid gap-2">
                     {tool.useWhen.slice(0, 3).map((item) => (
-                      <li key={item} className="flex gap-3 text-sm leading-6 text-ink-paper/54">
+                      <li key={item} className="flex gap-3 text-sm leading-6 text-ink-paper/70">
                         <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-ink-gold" />
                         {item}
                       </li>
@@ -72,7 +72,7 @@ export default function ToolsIndexPage() {
           </Stagger>
 
           <Reveal className="mt-10 rounded-[1.25rem] border border-ink-paper/12 bg-ink-black/25 p-6">
-            <p className="text-base leading-7 text-ink-paper/68">
+            <p className="text-base leading-7 text-ink-paper/70">
               None of these will give you a price. Ink Blend quotes per wall rather than from a rate
               card, and a figure produced by a form that has never seen your surface would be a guess
               dressed up as an answer. The Quote Planner tells you what will move your number

@@ -78,7 +78,7 @@ export function Fieldset({
       <legend className="text-sm font-semibold uppercase tracking-[0.14em] text-ink-gold">
         {legend}
       </legend>
-      {hint ? <p className="mt-2 text-sm leading-6 text-ink-paper/58">{hint}</p> : null}
+      {hint ? <p className="mt-2 text-sm leading-6 text-ink-paper/70">{hint}</p> : null}
       <div className="mt-3">{children}</div>
     </fieldset>
   );
@@ -106,7 +106,7 @@ export function ChoiceGroup<T extends string>({
             className={`cursor-pointer rounded-full border px-4 py-2 text-sm transition ${
               selected
                 ? "border-ink-gold bg-ink-gold/15 font-semibold text-ink-paper"
-                : "border-ink-paper/15 text-ink-paper/68 hover:border-ink-paper/35"
+                : "border-ink-paper/15 text-ink-paper/70 hover:border-ink-paper/35"
             }`}
           >
             <input
@@ -153,7 +153,7 @@ export function NumberField({
           onChange={(event) => onChange(event.target.value)}
         />
         {suffix ? (
-          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-ink-paper/45">
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-ink-paper/70">
             {suffix}
           </span>
         ) : null}
@@ -241,7 +241,7 @@ export function ResetButton({ tool, onReset }: { readonly tool: ToolId; readonly
         onReset();
         trackTool("tool_reset", tool);
       }}
-      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper/58 transition hover:text-ink-paper"
+      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink-paper/70 transition hover:text-ink-paper"
     >
       <RotateCcw size={15} />
       Start again

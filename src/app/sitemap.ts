@@ -8,6 +8,11 @@ import { listRenderableBlogs } from "@/lib/uplift";
 // submit a redirect for every URL on the site.
 const baseUrl = "https://www.inkblend.ca";
 
+// Fixed, not `new Date()`. A lastmod that changes on every regeneration tells
+// crawlers every URL changed every five minutes, so they learn to ignore it.
+// Bump this when page content or templates meaningfully change.
+const SITE_LAST_MODIFIED = new Date("2026-11-04T00:00:00Z");
+
 export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -32,30 +37,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: route === "" ? 1 : 0.8,
+      lastModified: SITE_LAST_MODIFIED,
     })),
     ...services.map((service) => ({
       url: `${baseUrl}/services/${service.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.75,
+      lastModified: SITE_LAST_MODIFIED,
     })),
     // City and industry landing pages. These are statically generated from a
     // local data file, so unlike the CMS-backed blog entries below they cannot
     // silently drop out of the sitemap when a remote call fails.
     ...landingPagePathnames().map((pathname) => ({
       url: `${baseUrl}${pathname}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
+      lastModified: SITE_LAST_MODIFIED,
     })),
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
-      changeFrequency: "daily" as const,
-      priority: 0.7,
+      lastModified: post.updatedAt ? new Date(post.updatedAt) : SITE_LAST_MODIFIED,
     })),
   ];
 }
