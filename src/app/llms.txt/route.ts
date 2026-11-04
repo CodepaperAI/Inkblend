@@ -14,7 +14,7 @@ export function GET() {
     "Ink Blend is a UV wall printing and surface branding studio serving Ontario and custom commercial and residential projects across Canada.",
     "",
     "## Contact",
-    `- Phone: ${siteConfig.phone} or ${siteConfig.phone2}`,
+    `- Phone: ${siteConfig.phone}`,
     `- Email: ${siteConfig.email}`,
     `- Hours: ${siteConfig.hours}`,
     `- Quote: ${BASE}/get-quote`,

@@ -48,7 +48,6 @@ export default function ContactPage() {
           <div className="grid gap-4">
             {[
               { Icon: Phone, label: "Call", value: siteConfig.phone, href: siteConfig.phoneHref },
-              { Icon: Phone, label: "Call (second line)", value: siteConfig.phone2, href: siteConfig.phone2Href },
               {
                 Icon: MessageCircle,
                 label: "WhatsApp",

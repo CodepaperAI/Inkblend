@@ -21,25 +21,16 @@ export const siteConfig = {
   description:
     "Ink Blend transforms walls and surfaces into ultra-detailed branded environments with durable UV printing, custom murals, and large-format surface graphics.",
   email: "hello@inkblend.ca",
-  phone: "647-915-8722",
-  phoneHref: "tel:+16479158722",
-  // Second line. `phone` stays the primary used for WhatsApp, schema ordering
-  // and single-number slots; surfaces with room list both via `phones`.
-  phone2: "647-870-8722",
-  phone2Href: "tel:+16478708722",
+  phone: "647-870-8722",
+  phoneHref: "tel:+16478708722",
   whatsappHref:
-    "https://wa.me/16479158722?text=Hi%20Ink%20Blend%2C%20I%20would%20like%20a%20quote%20for%20a%20wall%20printing%20project.",
+    "https://wa.me/16478708722?text=Hi%20Ink%20Blend%2C%20I%20would%20like%20a%20quote%20for%20a%20wall%20printing%20project.",
   address: "Serving Ontario and custom projects across Canada",
   hours: "Mon - Sat, 9:00 AM - 6:00 PM",
   mapHref: "https://maps.google.com/?q=Canada",
   instagramHref: "https://www.instagram.com/",
   tiktokHref: "https://www.tiktok.com/",
 };
-
-export const phones = [
-  { number: siteConfig.phone, href: siteConfig.phoneHref, e164: "+1-647-915-8722" },
-  { number: siteConfig.phone2, href: siteConfig.phone2Href, e164: "+1-647-870-8722" },
-] as const;
 
 export const navItems = [
   { label: "Home", href: "/" },

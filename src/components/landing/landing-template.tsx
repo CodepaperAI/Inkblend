@@ -156,12 +156,6 @@ export function LandingTemplate({
                 Call {siteConfig.phone}
               </CtaLink>
             </div>
-            <p className="mt-4 text-sm font-semibold text-ink-paper/75">
-              Second line:{" "}
-              <a href={siteConfig.phone2Href} className="underline underline-offset-4 hover:text-ink-red">
-                {siteConfig.phone2}
-              </a>
-            </p>
           </Reveal>
         </div>
       </section>

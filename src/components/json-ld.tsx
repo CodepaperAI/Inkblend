@@ -25,7 +25,7 @@ export const organizationJsonLd = {
       image: `${SITE_URL}/brand/logo-web.png`,
       description:
         "Direct-to-wall UV printing, custom murals and large-format surface graphics for commercial and residential interiors across Ontario and Canada.",
-      telephone: ["+1-647-915-8722", "+1-647-870-8722"],
+      telephone: "+1-647-870-8722",
       email: "hello@inkblend.ca",
       knowsAbout: ["UV wall printing", "Custom wall murals", "Commercial wall branding", "Large-format surface printing"],
       areaServed: [
@@ -43,14 +43,14 @@ export const organizationJsonLd = {
           closes: "18:00",
         },
       ],
-      contactPoint: ["+1-647-915-8722", "+1-647-870-8722"].map((telephone) => ({
+      contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer service",
-        telephone,
+        telephone: "+1-647-870-8722",
         email: "hello@inkblend.ca",
         areaServed: "CA",
         availableLanguage: ["English"],
-      })),
+      },
     },
     {
       "@type": "WebSite",
