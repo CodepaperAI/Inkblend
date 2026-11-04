@@ -10,8 +10,8 @@ export function VisualizeWall() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-      <div className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-8">
+    <div className="grid gap-6 lg:grid-cols-[1fr_minmax(0,440px)] lg:items-start">
+      <div className="rounded-[1.5rem] border border-ink-paper/10 bg-ink-paper/[0.04] p-6 sm:p-8 lg:sticky lg:top-28">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-red">
           Visualize your wall
         </p>
@@ -41,22 +41,22 @@ export function VisualizeWall() {
         </div>
       </div>
 
-      {/* One box, stretched to the left card's height. The wall is a plain
-          colour, so cover-cropping never moves the artwork off it. */}
-      <div className="relative min-h-[460px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10">
+      {/* One box at the photo's own 1125:2000 ratio, so nothing is cropped and
+          the percentages below stay on the blank wall at every width. */}
+      <div className="relative mx-auto aspect-[1125/2000] w-full max-w-[440px] overflow-hidden rounded-[1.5rem] border border-ink-paper/10">
         <Image
           src="/media/placeholders/cgi-styled-living-room-blank-wall.jpg"
           alt="Living room with a large blank wall ready for a printed mural"
           fill
-          sizes="(min-width:1024px) 55vw, 100vw"
-          className="object-cover object-[50%_18%]"
+          sizes="(min-width:1024px) 440px, 100vw"
+          className="object-cover"
         />
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="absolute left-[22%] top-[8%] h-[36%] w-[56%] overflow-hidden rounded-[2px] border-[6px] border-[#fbf7ef] shadow-[0_18px_40px_rgba(23,18,15,0.35),0_2px_4px_rgba(23,18,15,0.25)]"
+          className="absolute left-[28%] top-[13%] h-[19%] w-[56%] overflow-hidden rounded-[2px] border-[6px] border-[#fbf7ef] shadow-[0_18px_40px_rgba(23,18,15,0.35),0_2px_4px_rgba(23,18,15,0.25)]"
         >
           <Image
             src="/media/placeholders/abstract-acrylic-painting-macro.jpg"
