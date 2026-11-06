@@ -4,21 +4,28 @@ import { cache } from "react";
 const API_BASE = process.env.UPLIFT_API_BASE || "https://api.upliftai.co/api/public/v1";
 
 /**
- * How long a fetched list/detail is reused before the next visitor triggers a
- * background refresh (stale-while-revalidate). This is the main Uplift cost
- * control: the blog has ~100 posts and listRenderableBlogs() checks every
- * one, so each refresh window costs ~101 API calls. At 300s that was ~29,000
- * calls a day; at 6 hours it is ~400.
+ * Uplift API cost control. No keys, webhooks or extra infrastructure involved.
  *
- * Content still goes live promptly: POST /api/revalidate (see
- * src/app/api/revalidate/route.ts) marks the tags stale the moment Uplift
- * publishes, so the long window costs nothing in freshness. Only 200 responses
- * are written to Next's fetch cache, so a failed call is retried, not cached.
+ *  1. ONE list call is the source for everything. The list already carries each
+ *     post's full body and meta, so the sitemap, home, blog index and every post
+ *     page are built from it. Previously every post's detail endpoint was also
+ *     called to "verify" it (~101 calls per refresh, every 5 minutes, ~29,000 a
+ *     day). Now it is 1 call per refresh window.
+ *  2. The window is 6 hours (stale-while-revalidate: visitors always get the
+ *     cached page; the refresh runs in the background). That is ~4 calls a day.
+ *     New posts therefore appear within 6 hours.
+ *  3. The per-post detail endpoint is only a fallback: for a post whose list
+ *     entry has no body, or when the list call itself failed. Unknown slugs
+ *     (crawlers probing /blog/anything) return 404 without touching the API.
+ *
+ * Only 200 responses are written to Next's fetch cache, so a failed call is
+ * retried on the next request rather than cached.
  *
  * Keep in step with `export const revalidate` in sitemap.ts, blog/page.tsx and
  * blog/[slug]/page.tsx: those must be literals, so they cannot import this.
  */
 const REVALIDATE_SECONDS = 21600;
+const LIST_PAGE_SIZE = 100;
 
 export type UpliftBlogSummary = {
   id: string;
@@ -93,57 +100,93 @@ function getToken(): string | null {
   return process.env.UPLIFT_API_TOKEN || null;
 }
 
-export async function listBlogs(): Promise<UpliftBlogSummary[]> {
-  const token = getToken();
-  if (!token) return [];
+type LoadedList = { ok: boolean; posts: UpliftBlogSummary[] };
 
-  try {
-    const res = await fetch(`${API_BASE}/blogs?limit=100&status=PUBLISH`, {
+const hasBody = (post: UpliftBlogSummary) =>
+  typeof post.content === "string" && post.content.trim().length > 0;
+
+async function fetchListPage(token: string, page: number): Promise<ListResponse["data"] | null> {
+  const res = await fetch(
+    `${API_BASE}/blogs?limit=${LIST_PAGE_SIZE}&page=${page}&status=PUBLISH`,
+    {
       headers: { Authorization: `Bearer ${token}` },
       next: { revalidate: REVALIDATE_SECONDS, tags: ["uplift-blogs"] },
-    });
-    if (!res.ok) {
-      console.error("UpliftAI list failed:", res.status, await res.text());
-      return [];
+    },
+  );
+  if (!res.ok) {
+    console.error("UpliftAI list failed:", res.status, await res.text());
+    return null;
+  }
+  const json = (await res.json()) as ListResponse;
+  return json.success ? json.data : null;
+}
+
+// React cache(): sitemap, home, blog index, generateStaticParams and every post
+// page share one result per render pass, on top of Next's cross-request cache.
+const loadList = cache(async (): Promise<LoadedList> => {
+  const token = getToken();
+  if (!token) return { ok: false, posts: [] };
+
+  try {
+    const first = await fetchListPage(token, 1);
+    if (!first) return { ok: false, posts: [] };
+
+    const posts = [...first.blogs];
+    // Normally one page (100 posts). Only fetch more if the blog outgrows it.
+    for (let page = 2; page <= (first.pagination?.totalPages ?? 1); page++) {
+      const next = await fetchListPage(token, page);
+      if (!next) return { ok: false, posts: [] };
+      posts.push(...next.blogs);
     }
-    const json = (await res.json()) as ListResponse;
-    if (!json.success) return [];
-    return [...json.data.blogs].sort((a, b) =>
+
+    posts.sort((a, b) =>
       `${b.publishDate}T${b.publishTime || "00:00"}`.localeCompare(
         `${a.publishDate}T${a.publishTime || "00:00"}`,
       ),
     );
+    return { ok: true, posts };
   } catch (err) {
     console.error("UpliftAI list error:", err);
-    return [];
+    return { ok: false, posts: [] };
   }
+});
+
+export async function listBlogs(): Promise<UpliftBlogSummary[]> {
+  return (await loadList()).posts;
 }
 
-// React cache(): sitemap, home, blog index and generateStaticParams all call this
-// in one render pass; the verification below runs once, not once per caller.
+/**
+ * Posts safe to link to. A post counts when the list entry has a body; only an
+ * entry without one costs a detail call (cached like everything else).
+ */
 export const listRenderableBlogs = cache(async (): Promise<UpliftBlogSummary[]> => {
-  const posts = await listBlogs();
-  if (posts.length === 0) return [];
-
-  const checkedPosts = await Promise.all(
+  const { posts } = await loadList();
+  const checked = await Promise.all(
     posts.map(async (post) => {
-      const detail = await getBlog(post.slug);
-      return detail ? post : null;
+      if (hasBody(post)) return post;
+      return (await fetchDetail(post.slug)) ? post : null;
     }),
   );
-
-  return checkedPosts.filter((post): post is UpliftBlogSummary => post !== null);
+  return checked.filter((post): post is UpliftBlogSummary => post !== null);
 });
 
 export async function getBlog(slug: string): Promise<UpliftBlogDetail | null> {
+  const { ok, posts } = await loadList();
+  const hit = posts.find((post) => post.slug === slug);
+  if (hit && hasBody(hit)) return hit;
+  // List loaded fine and the slug isn't in it: a real 404, no API call.
+  if (ok && !hit) return null;
+  // Entry without a body, or the list call failed: ask the detail endpoint.
+  return fetchDetail(slug);
+}
+
+async function fetchDetail(slug: string): Promise<UpliftBlogDetail | null> {
   const token = getToken();
   if (!token) return null;
 
   try {
     const res = await fetch(`${API_BASE}/blog/${encodeURIComponent(slug)}`, {
       headers: { Authorization: `Bearer ${token}` },
-      // Per-post tag only (not "uplift-blogs"): a webhook for the list must not
-      // mark all ~100 detail entries stale and re-fetch every one of them.
       next: { revalidate: REVALIDATE_SECONDS, tags: [`uplift-blog-${slug}`] },
     });
     if (res.status === 404) return null;

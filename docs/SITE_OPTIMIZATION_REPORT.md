@@ -61,6 +61,11 @@ Needs the client or a person (not fabricated):
 
 ## 2026-11-07 — Uplift API cost + robots
 
-- Blog data (list + ~100 post details) was re-fetched every 5 minutes: about 101 Uplift calls per window, roughly 29,000 a day. Cache window is now 6 hours (`REVALIDATE_SECONDS` in `src/lib/uplift.ts`; matching `revalidate` literals in `sitemap.ts`, `blog/page.tsx`, `blog/[slug]/page.tsx`). Tested against a local mock of 100 posts: build costs one-time 101 calls, then 25 page views cost 0.
-- `POST /api/revalidate` (Bearer `REVALIDATE_SECRET`) refreshes on demand so new posts do not wait for the window: no body = refresh the list (about 1-3 calls); `{"slug": "..."}` also refreshes that one post (+1 call). **Action:** set `REVALIDATE_SECRET` in Vercel (`openssl rand -hex 32`) and point an Uplift publish/update webhook at it, or call it manually. Until then new posts appear within 6 hours.
+No keys, webhooks or extra services are needed.
+
+- **Before:** the blog list plus a detail call for every one of ~100 posts, refreshed every 5 minutes: about 101 Uplift calls per window, roughly 29,000 a day, plus one upstream call for every bot probing a non-existent `/blog/...` URL.
+- **Now:** one list call is the single source for the sitemap, home, blog index and every post page (the list already carries each post's body and meta). Cache window is 6 hours (stale-while-revalidate), so about 4 calls a day. New posts appear within 6 hours. Detail calls happen only for a post whose list entry has no body, or if the list call fails; unknown slugs 404 without touching the API. Only 200 responses are cached, so failures retry. Pagination is handled if the blog grows past 100 posts.
+- **Tested on a local mock of 100 posts:** full build = 2 calls (1 list + 1 fallback), then 36 page views and 4 bot probes = 0 more.
+- **Verify once on the live site:** open one blog post and compare its full body with Uplift. This design assumes the list endpoint returns complete post bodies (the code's types say it does). If a body ever looks truncated, revert `getBlog` to always call the detail endpoint (cached, still far cheaper than before).
+- To change freshness, edit `REVALIDATE_SECONDS` in `src/lib/uplift.ts` and the three matching `revalidate` literals (`sitemap.ts`, `blog/page.tsx`, `blog/[slug]/page.tsx`).
 - robots.txt now names Googlebot and Bingbot as well as GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended and Applebot-Extended. Removed the Yandex-only `Host:` line.
