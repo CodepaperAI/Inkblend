@@ -15,7 +15,8 @@ import {
   sanitizeBlogHtml,
 } from "@/lib/uplift";
 
-export const revalidate = 300;
+// Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
+export const revalidate = 21600;
 
 type Props = {
   params: Promise<{ slug: string }>;

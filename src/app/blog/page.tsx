@@ -7,7 +7,8 @@ import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
 
-export const revalidate = 300;
+// Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
+export const revalidate = 21600;
 
 const FALLBACK_IMAGES = [
   "/media/placeholders/curved-modern-building-exterior.jpg",

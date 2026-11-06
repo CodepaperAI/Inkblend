@@ -58,3 +58,9 @@ Needs the client or a person (not fabricated):
 ## Image credits
 - `public/media/placeholders/reception-watercolour-mural.jpg`: Pexels, "Modern Reception Area with Artistic Wall Design" (https://www.pexels.com/photo/modern-reception-area-with-artistic-wall-design-39492293/), cropped. Pexels licence, no attribution required. Replace with a real Ink Blend job photo when available.
 - `public/media/video/mural-painting.mp4` + `-poster.jpg`: Pexels, "Artist Painting Colorful Mural Indoors" (https://www.pexels.com/video/artist-painting-colorful-mural-indoors-32316899/), re-encoded to 720p. Pexels licence, no attribution required. Replace with a real Ink Blend install video when available.
+
+## 2026-11-07 — Uplift API cost + robots
+
+- Blog data (list + ~100 post details) was re-fetched every 5 minutes: about 101 Uplift calls per window, roughly 29,000 a day. Cache window is now 6 hours (`REVALIDATE_SECONDS` in `src/lib/uplift.ts`; matching `revalidate` literals in `sitemap.ts`, `blog/page.tsx`, `blog/[slug]/page.tsx`). Tested against a local mock of 100 posts: build costs one-time 101 calls, then 25 page views cost 0.
+- `POST /api/revalidate` (Bearer `REVALIDATE_SECRET`) refreshes on demand so new posts do not wait for the window: no body = refresh the list (about 1-3 calls); `{"slug": "..."}` also refreshes that one post (+1 call). **Action:** set `REVALIDATE_SECRET` in Vercel (`openssl rand -hex 32`) and point an Uplift publish/update webhook at it, or call it manually. Until then new posts appear within 6 hours.
+- robots.txt now names Googlebot and Bingbot as well as GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended and Applebot-Extended. Removed the Yandex-only `Host:` line.

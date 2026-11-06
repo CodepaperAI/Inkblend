@@ -1,5 +1,24 @@
-const API_BASE = "https://api.upliftai.co/api/public/v1";
-const REVALIDATE_SECONDS = 300;
+import { cache } from "react";
+
+// Overridable so the caching behaviour can be tested against a local mock.
+const API_BASE = process.env.UPLIFT_API_BASE || "https://api.upliftai.co/api/public/v1";
+
+/**
+ * How long a fetched list/detail is reused before the next visitor triggers a
+ * background refresh (stale-while-revalidate). This is the main Uplift cost
+ * control: the blog has ~100 posts and listRenderableBlogs() checks every
+ * one, so each refresh window costs ~101 API calls. At 300s that was ~29,000
+ * calls a day; at 6 hours it is ~400.
+ *
+ * Content still goes live promptly: POST /api/revalidate (see
+ * src/app/api/revalidate/route.ts) marks the tags stale the moment Uplift
+ * publishes, so the long window costs nothing in freshness. Only 200 responses
+ * are written to Next's fetch cache, so a failed call is retried, not cached.
+ *
+ * Keep in step with `export const revalidate` in sitemap.ts, blog/page.tsx and
+ * blog/[slug]/page.tsx: those must be literals, so they cannot import this.
+ */
+const REVALIDATE_SECONDS = 21600;
 
 export type UpliftBlogSummary = {
   id: string;
@@ -100,7 +119,9 @@ export async function listBlogs(): Promise<UpliftBlogSummary[]> {
   }
 }
 
-export async function listRenderableBlogs(): Promise<UpliftBlogSummary[]> {
+// React cache(): sitemap, home, blog index and generateStaticParams all call this
+// in one render pass; the verification below runs once, not once per caller.
+export const listRenderableBlogs = cache(async (): Promise<UpliftBlogSummary[]> => {
   const posts = await listBlogs();
   if (posts.length === 0) return [];
 
@@ -112,7 +133,7 @@ export async function listRenderableBlogs(): Promise<UpliftBlogSummary[]> {
   );
 
   return checkedPosts.filter((post): post is UpliftBlogSummary => post !== null);
-}
+});
 
 export async function getBlog(slug: string): Promise<UpliftBlogDetail | null> {
   const token = getToken();
@@ -121,7 +142,9 @@ export async function getBlog(slug: string): Promise<UpliftBlogDetail | null> {
   try {
     const res = await fetch(`${API_BASE}/blog/${encodeURIComponent(slug)}`, {
       headers: { Authorization: `Bearer ${token}` },
-      next: { revalidate: REVALIDATE_SECONDS, tags: ["uplift-blogs", `uplift-blog-${slug}`] },
+      // Per-post tag only (not "uplift-blogs"): a webhook for the list must not
+      // mark all ~100 detail entries stale and re-fetch every one of them.
+      next: { revalidate: REVALIDATE_SECONDS, tags: [`uplift-blog-${slug}`] },
     });
     if (res.status === 404) return null;
     if (!res.ok) {

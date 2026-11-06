@@ -13,7 +13,8 @@ const baseUrl = "https://www.inkblend.ca";
 // Bump this when page content or templates meaningfully change.
 const SITE_LAST_MODIFIED = new Date("2026-11-04T00:00:00Z");
 
-export const revalidate = 300;
+// Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
+export const revalidate = 21600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await listRenderableBlogs();
