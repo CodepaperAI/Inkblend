@@ -11,9 +11,9 @@ const API_BASE = process.env.UPLIFT_API_BASE || "https://api.upliftai.co/api/pub
  *     page are built from it. Previously every post's detail endpoint was also
  *     called to "verify" it (~101 calls per refresh, every 5 minutes, ~29,000 a
  *     day). Now it is 1 call per refresh window.
- *  2. The window is 6 hours (stale-while-revalidate: visitors always get the
- *     cached page; the refresh runs in the background). That is ~4 calls a day.
- *     New posts therefore appear within 6 hours.
+ *  2. The window is 15 minutes (stale-while-revalidate: visitors always get the
+ *     cached page; the refresh runs in the background). That is ~96 calls a day.
+ *     New posts appear within about 15 minutes (at the next visit after the window).
  *  3. The per-post detail endpoint is only a fallback: for a post whose list
  *     entry has no body, or when the list call itself failed. Unknown slugs
  *     (crawlers probing /blog/anything) return 404 without touching the API.
@@ -24,7 +24,7 @@ const API_BASE = process.env.UPLIFT_API_BASE || "https://api.upliftai.co/api/pub
  * Keep in step with `export const revalidate` in sitemap.ts, blog/page.tsx and
  * blog/[slug]/page.tsx: those must be literals, so they cannot import this.
  */
-const REVALIDATE_SECONDS = 21600;
+const REVALIDATE_SECONDS = 900;
 const LIST_PAGE_SIZE = 100;
 
 export type UpliftBlogSummary = {

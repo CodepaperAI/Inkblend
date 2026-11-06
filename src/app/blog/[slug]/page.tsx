@@ -16,7 +16,7 @@ import {
 } from "@/lib/uplift";
 
 // Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
-export const revalidate = 21600;
+export const revalidate = 900;
 
 type Props = {
   params: Promise<{ slug: string }>;

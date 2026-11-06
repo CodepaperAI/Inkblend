@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 import { formatPublishDate, listRenderableBlogs } from "@/lib/uplift";
 
 // Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
-export const revalidate = 21600;
+export const revalidate = 900;
 
 const FALLBACK_IMAGES = [
   "/media/placeholders/curved-modern-building-exterior.jpg",

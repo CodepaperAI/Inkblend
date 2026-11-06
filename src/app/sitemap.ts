@@ -14,7 +14,7 @@ const baseUrl = "https://www.inkblend.ca";
 const SITE_LAST_MODIFIED = new Date("2026-11-04T00:00:00Z");
 
 // Literal required by Next; keep equal to REVALIDATE_SECONDS in src/lib/uplift.ts.
-export const revalidate = 21600;
+export const revalidate = 900;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await listRenderableBlogs();
